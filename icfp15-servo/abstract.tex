@@ -1,42 +1,28 @@
 %!TEX root = paper.tex
 %
 \begin{abstract}
-Inlining is an optimization that replaces a call to a function with that function's 
-body.
-This optimization not only reduces the overhead of a function call, but can 
-expose additional optimization opportunities to the compiler, such as removing
-redundant operations or unused conditional branches.
-Another optimization, copy propagation, replaces a redundant copy of a still-live 
-variable with the original.
-Copy propagation can reduce the total number of live variables, reducing register
-pressure and memory usage, and possibly
-eliminating redundant memory-to-memory copies.
-In practice, both of these optimizations are implemented in nearly every
-modern compiler.
+The Servo project is an effort started at Mozilla Research to build a new web browser
+engine that takes advantage of both modern parallel hardware and advances in language
+technology that prevent many of the common security errors that plague all of the other
+modern browsers.
+The new language, Rust, enabled us to take on this project in a type-centric way instead of
+the traditional C++ that relies on coding conventions, imprecise static analyses, and
+fuzzers.
+While many languages before have offered some combination of memory safety, parallelism,
+and concurrency, Rust is, to our knowledge, the first to do so that provides the programmer
+with the control over both memory and generated code that is required by systems programmers.
+In this paper, \emph{systems} \emph{software} refers to programs that have some combination
+of soft realtime requirements and memory, CPU, and power usage constraints that require the
+programmer to be able to predict these features from their source code --- without being a
+compiler developer.
 
-These two optimizations are practical to implement and effective in first-order 
-languages, but in languages with lexically-scoped first-class functions (aka, closures), these optimizations 
-are not available to code programmed in a higher-order style.
-With higher-order functions, the analysis challenge has been that the 
-environment at the call site must be the same as at the closure capture location, 
-up to the free variables, or the meaning of the program may change.
-Olin Shivers' 1991 dissertation called this family of optimizations 
-\emph{\superbeta} and he proposed one analysis technique, called \emph{reflow},
-to support these optimizations.
-Unfortunately, reflow has proven too expensive to implement in practice.
-Because these higher-order optimizations are not available in functional-language
-compilers, programmers studiously avoid uses of 
-higher-order values that cannot be optimized (particularly in compiler
-benchmarks).
-
-This paper provides the first practical and effective technique for 
-\superbeta (higher-order) inlining and copy propagation, which
-we call unchanged variable analysis.
-We show that this technique is practical by implementing it in the 
-context of a real compiler for an ML-family language and showing 
-that the required analyses have costs below 3\% of the total 
-compilation time.
-This technique's effectiveness is shown through a set of benchmarks
-and example programs, where this analysis exposes additional potential
- optimization sites.
+Servo is currently over 300k lines of code and implements enough of the web to render and
+process many pages, though it is still a far cry from the over 7 million lines of code in
+the Mozilla Firefox browser and its associated libraries.
+However, we believe that we have implemented enough of the web platform to provide an
+early report on the successes, failures, and open problems remaining in Servo, from the
+point of view of programming languages and runtime research.
+It is our hope that this work will spur additional research in new language features
+suitable for a systems language that also scale up to projects the size of a web browser
+engine.
 \end{abstract}
