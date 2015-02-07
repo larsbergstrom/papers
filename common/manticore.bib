@@ -1,0 +1,6478 @@
+% manticore.bib
+%
+% This is the unified bibliography for Manticore papers and proposals.  To keep things
+% sane, we use the following conventions:
+%
+%  1) keys should be based on the title of the paper
+%  2) entries are sorted by the lead author's last name
+%  3) use strings for conference/journal titles, publishers, publisher addresses,
+%     conference locations, etc.  Each string should be defined in strings-long.bib
+%     and strings-short.bib.
+%
+
+%%%%%%%%%%%
+%%%     %%%
+%%% AAA %%%
+%%%     %%%
+%%%%%%%%%%%
+
+        @book{
+flatland,
+        author = "Edwin Abbott Abbott",
+        title = {Flatland: A Romance of Many Dimensions},
+        year = {1884}
+        } %% his name really has two Abbotts
+
+	@article{
+scheme-r5-report,
+	author = "H. Abelson and R.K. Dybvig and C.T. Haynes and G.J. Rozas
+		and N.I. {Adams IV} and D.P. Friedman and E. Kohlbecker
+		and G.L. {Steele Jr.} and D.H. Bartley and R. Halstead
+		and D. Oxley and G.J. Sussman and G. Brooks and C. Hanson
+		and K.M. Pitman and M. Wand",
+	title = "Revised Report on the Algorithmic Language {Scheme}",
+	journal = HOSC,
+	volume = 11, number = 1,
+	year = 1998, month = aug,
+	pages = "7-105"
+	}
+
+	@inproceedings{
+acar:data-locality,
+	author = "Umut A. Acar and Guy E. Blelloch and Robert D. Blumofe",
+	title = "The Data locality of Work Stealing",
+	booktitle = SPAA00,
+	pages = "1-12",
+	year = SPAA00:year
+	}
+%%%    url = "citeseer.ist.psu.edu/article/acar00data.html"
+
+        @inproceedings{
+selective-memoization,
+        author = {Acar, Umut A. and Blelloch, Guy E. and Harper, Robert},
+        title = {Selective memoization},
+        booktitle = POPL30,
+        year = {2003},
+        isbn = {1-58113-628-5},
+        location = {New Orleans, Louisiana, USA},
+        pages = {14--25},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @inproceedings{
+acar:private-deques,
+          title={Scheduling parallel programs by work stealing with private deques},
+          author={Acar, Umut A and Chargueraud, Arthur and Rainey, Mike},
+          booktitle=PPoPP13,
+          volume={48},
+          number={8},
+          pages={219--228},
+          year=2013, month=PPoPP13:month,
+          publisher = acm:pub,
+          address = acm:addr
+        }
+
+        @misc{
+agarwal:multicore,
+	title = "The Why, How and When of Multicore",
+	author = "Anant Agarwal",
+	howpublished = "\textit{Workshop on Edge Computing Using New Commodity Architectures (EDGE)}",
+	year = 2006, month = may,
+	note = "Slides at \url{http://gamma.cs.unc.edu/EDGE/program.htm}"
+	}
+
+        @inproceedings{
+intel-stm,
+        author = {Adl-Tabatabai, Ali-Reza and Lewis, Brian T. and Menon, Vijay and Murphy, Brian R. and Saha, Bratin and Shpeisman, Tatiana},
+        title = {Compiler and runtime support for efficient software transactional memory},
+        booktitle = PLDI06,
+        year = {2006},
+        isbn = {1-59593-320-4},
+        pages = {26--37},
+        location = PLDI06:loc,
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+      @conference{
+agrawal2006asp,
+	title={{Adaptive scheduling with parallelism feedback}},
+	author={Agrawal, K. and He, Y. and Hsu, W.J. and Leiserson, C.E.},
+	booktitle={Proceedings of the eleventh ACM SIGPLAN symposium on Principles and practice of parallel programming},
+	pages={100--109},
+	year={2006},
+	organization={ACM New York, NY, USA}
+	}
+
+      @conference{
+agrawal2006eew,
+	title={{An empirical evaluation of work stealing with parallelism feedback}},
+	author={Agrawal, K. and He, Y. and Leiserson, C.E.},
+	year={2006},
+	organization={ICDCS}
+	}
+
+	@inproceedings{
+x10-may-happen,
+	author = {Shivali Agarwal and Rajkishore Barik and Vivek Sarkar and Rudrapatna K. Shyamasundar},
+	title = {May-happen-in-parallel analysis of {X10} programs},
+	booktitle = PPoPP07,
+	year = {2007}, month = PPoPP07:month,
+	pages = {183--193},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@InProceedings{
+agrawal:adaptive-work-stealing,
+	author = {Kunal Agrawal and Yuxiong He and Charles E. Leiserson},
+	title = {Adaptive Work Stealing with Parallelism Feedback},
+	year = {2006},
+	booktitle = {Submitted for publication},
+	}
+
+        @InProceedings{
+SubstructStateICFP05,
+        author =       {Amal Ahmed and Matthew Fluet and Greg Morrisett},
+        title =        {A Step-Indexed Model of Substructural State},
+        booktitle =    ICFP05,
+        pages =        {78--91},
+        year =         2005,
+        location =     {Tallinn, Estonia},
+        month =        {September},
+	publisher = acm:pub,
+	address = acm:addr,
+        }
+
+        @Article{
+LinLocFI07,
+        author =       {Amal Ahmed and Matthew Fluet and Greg Morrisett},
+        title =        {L$^3$: A Linear Language with Locations},
+        journal =      {Fundamenta Informaticae},
+        year =         2007,
+        volume =       77,
+        number =       4,
+        pages =        {397--449},
+        month =        jun
+        }
+
+        @book{
+optimizing-compilers,
+        author = {Randy Allen and Ken Kennedy},
+        title = {Optimizing Compilers for Modern Architectures: A Dependence-based Approach},
+	publisher = "Morgan Kaufmann Publishers",
+        year = {2001}
+        }
+
+	@inproceedings{
+amdahls-law,
+	author = "G. M. Amdahl",
+	title = "Validity of the single-processor approach to achieving large scale computing capabilities",
+	booktitle = "{AFIPS} Conference Proceedings",
+	volume = 30,
+	year = 1967,
+	pages = "483-485"
+	}
+
+	@techreport{
+absconst-for-sml,
+	title = "Abstract Value Constructors: Symbolic Constants for Standard ML",
+	author = "William E. Aitken and John H. Reppy",
+	institution = cornell-cs,
+	number = "TR 92-1290",
+	year = 1992, month = jun,
+	note = "A shorter version appears in the proceedings of the ``ACM SIGPLAN
+		Workshop on ML and its Applications,'' 1992"
+	}
+
+	@manual{
+ansi-c,
+	key = "ANSI",
+	title = "American National Standard for Information Systems ---
+		Programming Language --- {C}",
+	organization = "American National Standards Institute, Inc.",
+	address = "New York, NY",
+	year = 1990
+	}
+
+	@article{
+scheduler-activations,
+	author = "Thomas E. Anderson and Brian N. Bershad and
+		Edward D. Lazowska and Henry M. Levy",
+	title = "Scheduler activations: {Effective} kernel support for the user-level
+		management of parallelism",
+	journal = TOCS,
+	year = 1992, month = feb,
+	volume = 10, number = 1,
+	pages = "53-79"
+	}
+
+        @inproceedings{
+intel-private-heap,
+        author = {Anderson, Todd A.},
+        title = {Optimizations in a private nursery-based garbage collector},
+        booktitle = ISMM10,
+        year = {2010},
+        location = {Toronto, Ontario, Canada},
+        pages = {21--30},
+        doi = {http://doi.acm.org/10.1145/1806651.1806655},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@article{
+appel:simple-gc,
+	author = {Andrew W. Appel},
+	title = {Simple generational garbage collection and fast allocation},
+	journal = SPE,
+	volume = {19},
+	number = {2},
+	year = {1989},
+	pages = {171--183},
+	publisher = wiley:pub,
+	address = wiley:addr
+	}
+
+	@article{
+appel:smlnj-runtime,
+	author = "Andrew W. Appel",
+	title = "A Runtime System",
+	journal = LASC,
+	volume = 3, number = 4,
+	publisher = Kluwer:pub,
+	address = Kluwer:addr,
+	pages = "383-380",
+	year = 1990
+	}
+
+	@inproceedings{
+smlnj,
+	author = "Andrew W. Appel and D. B. MacQueen",
+	title = "{Standard ML} of {New Jersey}",
+	booktitle = PLILP91,
+	publisher = springer:pub-addr,
+	series = LNCS,
+	volume = PLILP91:vol,
+	year = 1991, month = PLILP91:month,
+	pages = "1-26"
+	}
+
+	@book{
+appel:cps-book,
+	author = "Andrew W. Appel",
+	title = "Compiling with Continuations",
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 1992
+	}
+
+	@book{
+appel:modern-book,
+	author = "Andrew W. Appel",
+	title = "Modern Compiler Implementation in {ML}",
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 1998
+	}
+
+	@book{
+erlang-book-2ed,
+	author = {Joe Armstrong and Robert Virding and Claes Wikstr{\"{o}}m and Mike Williams},
+	title = {Concurrent programming in {ERLANG} (2nd ed.)},
+	year = {1996},
+	publisher = {Prentice Hall International (UK) Ltd.},
+	address = {Hertfordshire, UK, UK},
+	}
+
+        @Book{
+java-lang-2ed,
+        title = "The {Java} Programming Language",
+        edition = "2nd",
+        author = "Ken Arnold and James Gosling",
+        publisher = addison-wesley:pub,
+        address = addison-wesley:addr,
+        year = 1998
+        }
+
+	@misc{
+blumeofe:multiprogrammed-work-stealing,
+	author = "Nimar S. Arora and Robert D. Blumofe and C. Greg Plaxton",
+	title = "Thread Scheduling for Multiprogrammed Multiprocessors",
+	booktitle = SPAA98,
+	publisher = acm:pub,
+	year = SPAA98:year,
+	url = "citeseer.comp.nus.edu.sg/111799.html"
+	}
+
+	@article{
+i-structures,
+	author = "Arvind and Rishiyur S. Nikhil and Keshav K. Pingali",
+	title = "I-structures: Data Structures for Parallel Computing",
+	journal = TOPLAS,
+	volume = 11,
+        number = 4,
+	year = 1989,
+        month = oct,
+	pages = "598-632"
+	}
+
+        @techreport{
+Asanovic:EECS-2006-183,
+	Author = {Asanovic, Krste and Bodik, Ras and Catanzaro, Bryan Christopher and Gebis, Joseph James and Husbands, Parry and Keutzer, Kurt and Patterson, David A. and Plishker, William Lester and Shalf, John and Williams, Samuel Webb and Yelick, Katherine A.},
+	Title = {The Landscape of Parallel Computing Research: A View from Berkeley},
+	Institution = {EECS Department, University of California, Berkeley},
+	Year = {2006},
+	Month = {Dec},
+	URL = {http://www.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-183.html},
+	Number = {UCB/EECS-2006-183},
+}
+	@article{
+sub-zero-cfa,
+	title = "A Practical and Flexible Flow Analysis for Higher-Order Languages",
+	author = "J. Michael Ashley and R. Kent Dybvig",
+	journal = TOPLAS,
+	volume = 20,
+	number = 4,
+	year = 1998, month = jul,
+	pages = "845-868",
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@mastersthesis{
+auhagen:masters-paper,
+	author = "Sven Auhagen",
+	title = "Hybrid {C}hunking",
+	year = 2012, month = apr,
+	school = "University of Chicago",
+	note = "Available from \url{http://www.cs.uchicago.edu/phd/ms_completed}."
+	}
+
+        @inproceedings{
+numa-gc,
+        author = "Sven Auhagen and Lars Bergstrom and Matthew Fluet and John Reppy",
+        title = "{Garbage} {Collection} for {Multicore} {NUMA} {Machines}",
+        booktitle = MSPC11,
+        year = 2011,
+        month = MSPC11:month,
+        location = MSPC11:loc,
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@inproceedings{eng-formal-metatheory,
+	author = {Aydemir, Brian and Chargu{\'e}raud, Arthur and Pierce, Benjamin C. and Pollack, Randy and Weirich, Stephanie},
+	 title = {Engineering Formal Metatheory},
+ 	booktitle = {POPL'08},
+ 	year = {2008},
+ 	location = {San Francisco, California, USA},
+ 	pages = {3--15},
+  	publisher = {ACM},
+	address = {New York, NY, USA},
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% BBB %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inproceedings{
+java-thin-locks,
+	author = "David F. Bacon and Ravi Konuru and Chet Murthy
+		and Mauricio Serrano",
+	title = "Thin locks: {Featherweight} synchronization for {Java}",
+	booktitle = PLDI98,
+	year = 1998, month = PLDI98:month,
+	pages = "258-268"
+	}
+
+        @techreport{
+petsc-users-man,
+        author = {Satish Balay and Kris Buschelman and Victor Eijkhout and William~D. Gropp and Dinesh Kaushik and Matthew~G. Kneplay and Lois Curfan McInnes and Barry~F. Smith and Hong Zhang},
+        title = {{PETS}c Users Manual},
+        institution = {Argonne National Laboratory},
+        month = Aug,
+        year = 2004,
+        number = {ANL-95/11 - Revision 2.2.0},
+        url = {http://www.mcs.anl.gov/petsc/docs}
+        }
+
+        @article{
+clp-independence,
+        author = {Garc\'{\i}a de la Banda, Mar\'{\i}a and Hermenegildo, Manuel and Marriott, Kim},
+        title = "Independence in {CLP} languages",
+        journal = TOPLAS,
+        volume = {22},
+        number = {2},
+        year = {2000},
+        pages = {296--339},
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+        @inproceedings{
+collector-shortcuts,
+        author = {Barabash, Katherine and Petrank, Erez},
+        title = {Tracing garbage collection on highly parallel platforms},
+        booktitle = ISMM10,
+        year = {2010},
+        location = {Toronto, Ontario, Canada},
+        pages = {1--10},
+        numpages = {10},
+        doi = {http://doi.acm.org/10.1145/1806651.1806653},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+       @article{
+quickhull,
+        author = {C. Bradford Barber and David P. Dobkin and Hannu Huhdanpaa},
+        title = {The Quickhull Algorithm for Convex Hulls},
+        journal = TOMS,
+        year = {1996},
+        volume = {22},
+        number = {4},
+        pages = {469--483}
+        }
+
+	@article{
+barnes-hut,
+	author = "Josh Barnes and Piet Hut",
+	title = "A Hierarchical {$O(N \log{} N)$} Force Calculation Algorithm",
+	journal = "Nature",
+	volume = 324,
+	year = 1986, month = dec,
+	pages = "446-449"
+	}
+
+	@InProceedings{
+bossa-design:barreto,
+	author =       "Luciano Porto Barreto and Gilles Muller",
+	title =        "{Bossa}: a Language-based Approach to the Design of
+			Real-time Schedulers",
+	booktitle = RTS02,
+	year = 2002, month = RTS02:month,
+	location = "Paris, France",
+	pages = {19--31}
+	}
+
+	@inproceedings{
+m-structures,
+	author = "Paul Barth and Rishiyur S. Nikhil and Arvind",
+	title = "M-structures: Extending a Parallel, Non-strict, Functional
+		Language with State",
+	booktitle = FPCA91,
+	publisher = springer:pub,
+	address = springer:addr,
+	series = LNCS,
+	volume = 523,
+	year = 1991, month = FPCA91:month,
+	pages = "538-568"
+	}
+
+        @misc{
+cilkpousse,
+        author = {Reid Barton and Dan Adkins and Harald Prokop and Matteo Frigo and Chris Joerg and Martin Renard and Don Dailey and Charles Leiserson},
+        title = {Cilk {P}ousse},
+        url = {http://people.csail.mit.edu/pousse/},
+        note = "Available from \url{http://people.csail.mit.edu/pousse/}",
+        year = 1998
+        }
+
+        @inproceedings{
+distributed-weighted-round-robin,
+        author = "Daniel Baumberger and Tong Li and Scott Hahn",
+        title = "Efﬁcient and Scalable Multiprocessor Fair Scheduling Using Distributed Weighted Round-Robin",
+        booktitle = PPoPP09,
+        year = 2009, month = PPoPP09:month
+        }
+
+	@inproceedings{
+baumann-multikernel,
+	 author = {Baumann, Andrew and Barham, Paul and Dagand, Pierre-Evariste and Harris, Tim and Isaacs, Rebecca and Peter, Simon and Roscoe, Timothy and Sch\"{u}pbach, Adrian and Singhania, Akhilesh},
+	 title = {The multikernel: a new OS architecture for scalable multicore systems},
+	 booktitle = {SOSP '09: Proceedings of the ACM SIGOPS 22nd symposium on Operating systems principles},
+	 year = {2009},
+	 pages = {29--44},
+	 location = {Big Sky, Montana, USA},
+	 doi = {http://doi.acm.org/10.1145/1629575.1629579},
+	 publisher = ACM:pub,
+	 address = ACM:pub,
+	 }
+
+	@inproceedings{
+capriccio,
+	author = "Rob {von Behren} and Jeremy Condit and Feng Zhou
+		and George C. Necula and Eric Brewer",
+	title = "Capriccio: Scalable Threads for Internet Services",
+	booktitle = SOSP19,
+	year = 2003, month = SOSP19:month,
+	pages = "268-281"
+	}
+
+        @inproceedings{
+SMLNet,
+        author = {Benton, Nick and Kennedy, Andrew and Russo, Claudio V.},
+        title = {Adventures in interoperability: the {SML.NET} experience},
+        booktitle = PPDP04,
+        year = {2004},
+        pages = {215--226},
+        location = {Verona, Italy},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @inproceedings{
+MLtoJava,
+        author = {Benton, Nick and Kennedy, Andrew and Russell, George},
+        title = {Compiling standard {ML} to {Java} bytecodes},
+        booktitle = ICFP98,
+        year = {1998},
+        pages = {129--140},
+        location = {Baltimore, Maryland, United States},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @article{
+exn-syntax,
+        author = {Nick Benton and Andrew Kennedy},
+        title = {Exceptional syntax},
+        journal = JFP,
+        volume = {11},
+        number = {4},
+        year = {2001},
+        issn = {0956-7968},
+        pages = {395--410},
+        doi = {http://dx.doi.org/10.1017/S0956796801004099},
+        publisher = CUP:pub,
+        address = CUP:addr
+        }
+
+        @article{
+serializability,
+        author = {P.A. Bernstein and D.W. Shipman and W.S. Wong},
+        title = {Formal Aspects of Serializability in Database Concurrency Control},
+        journal =IEEE-SOFTWARE,
+        volume = {5},
+        year = {1979},
+        pages = {203-216},
+        publisher = IEEE-COMPUTER,
+        address = IEEE-PRESS:addr
+}
+
+        @misc{
+manticore-web,
+        author = "Lars Bergstrom and Matthew Fluet and Mike Rainey and John Reppy and Stephen Rosen and Nora Sandler and Adam Shaw",
+        title = "{The Manticore Project}",
+        url = "http://manticore.cs.uchicago.edu"
+        }
+
+	@mastersthesis{
+bergstrom:masters-paper,
+	author = "Lars Bergstrom",
+	title = "{A}rity raising and control-flow analysis in {M}anticore",
+	year = 2009, month = nov,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+	@phdthesis{
+bergstrom:phd,
+	author = "Lars Bergstrom",
+	title = "Parallel Functional Programming with Mutable State",
+	year = 2013, month = may,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+       @techreport{
+numa-tech-report,
+        author = {Lars Bergstrom},
+        title = {Measuring {NUMA} effects with the {STREAM} benchmark},
+        institution = uchicago:name,
+        year = 2012,
+        month = May,
+        number = {{TR-2012-04}}
+        }
+
+	@inproceedings{
+lazy-tree-splitting,
+	author = "Lars Bergstrom and Matthew Fluet and Mike Rainey and John Reppy
+		and Adam Shaw",
+	title = "Lazy Tree Splitting",
+	booktitle = ICFP10,
+	year = 2010,
+        month = ICFP10:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "93-104"
+	}
+
+	@article{
+lazy-tree-splitting:jfp,
+	author = "Lars Bergstrom and Matthew Fluet and Mike Rainey and John Reppy
+		and Adam Shaw",
+	title = "Lazy Tree Splitting",
+	journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 2012, month = sep,
+        volume = "22", number = "4-5",
+        pages = "382-438"
+	}
+
+	@inproceedings{
+data-only-flattening,
+	author = "Lars Bergstrom and Matthew Fluet and Mike Rainey and John Reppy and Stephen Rosen and Adam Shaw",
+	title = "Data-Only Flattening for Nested Data Parallelism",
+	booktitle = PPoPP13,
+	year = 2013,
+        month = PPoPP13:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "90-106"
+	}
+
+	@inproceedings{
+arity-raising,
+        author = "Lars Bergstrom and John Reppy",
+        title = "Arity raising in Manticore",
+        booktitle = IFL09,
+        year = 2009,
+        month = IFL09:month,
+        publisher = springer:pub,
+        address = springer:addr,
+        series = LNCS,
+        Pages = {90--106},
+	}
+
+        @inproceedings{
+nesl-gpu,
+        author = {Lars Bergstrom and John Reppy},
+        title = {Nested Data-Parallelism on the {GPU}},
+        booktitle = ICFP12,
+        year = ICFP12:year,
+        month = ICFP12:month,
+        location = ICFP12:loc,
+        pages = {247--258},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@inproceedings{
+effective-ho-optimizations,
+	author = {Bergstrom, Lars and Fluet, Matthew and Le, Matthew and Reppy, John and Sandler, Nora},
+	title = {Practical and Effective Higher-order Optimizations},
+	booktitle = ICFP14,
+	year = {2014}, month = ICFP14:month,
+	location = ICFP14:loc,
+	pages = "81-93",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{
+ml-concur-semantics,
+	author = "Dave Berry and Robin Milner and David N. Turner",
+	title = "A semantics for {ML} concurrency primitives",
+	booktitle = POPL19,
+	year = 1992, month = jan,
+	pages = "119-129"
+	}
+
+	@inproceedings{
+fast-uniprocessor-mutex,
+	author = "Brian N. Bershad and David D. Redell and John R. Ellis",
+	title = "Fast mutual exclusion for uniprocessors",
+	booktitle = ASPLOS5,
+	year = ASPLOS5:year, month = ASPLOS5:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "223-233"
+	}
+
+       @article{
+black-scholes,
+        author="Black, Fischer and Scholes, Myron",
+        title="The Pricing of Options and Corporate Liabilities",
+        journal=JPE,
+        volume={81}, number={3},
+        year={1973},
+        pages="637-654",
+        publisher=UofCPress:pub,
+        address=UofCPress:addr
+        }
+
+
+       @inproceedings{
+space-profiling-spoonhower,
+	author = {Daniel Spoonhower and Guy E. Blelloch and Robert Harper and Phillip B. Gibbons},
+	title = {Space profiling for parallel functional programs},
+	booktitle = ICFP08,
+	year = ICFP08:year,
+        month = ICFP08:month,
+	pages = {253--264},
+	location = {Victoria, BC, Canada},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@phdthesis{
+spoonhower:phd-thesis,
+	 author = {Daniel Spoonhower},
+	 title = {Scheduling Deterministic Parallel Programs},
+	 year = {2010},
+	 school = {Carnegie Mellon University},
+	 address = {Pittsburg, PA, USA},
+	 }
+
+	@techreport{
+blelloch:nesl-tr,
+	title = "{NESL: A nested data-parallel language (version 2.6)}",
+	author = "Guy E. Blelloch",
+	institution = CMU-CS:name,
+        address = CMU-CS:addr,
+	number = "CMU-CS-93-129",
+	year = 1993,
+        month = apr
+	}
+
+        @techreport{
+blelloch:prefix-sums,
+	author = "Guy~E. Blelloch",
+	title = "Prefix Sums and Their Applications",
+	institution = "School of Computer Science, Carnegie Mellon University",
+	number = "CMU-CS-90-190",
+	month = nov,
+	year = 1990 }
+
+        @techreport{
+space-profiling-tr,
+        author={Daniel Spoonhower and Guy E. Blelloch and Robert Harper and Phillip B. Gibbons},
+        title={Space Profiling for Parallel Functional Programs},
+        institution=CMU-CS-DEPT,
+        number={CMU-CS-08-110},
+        year=2008,
+        month=apr,
+        note="Companion to ICFP08 paper of the same name."
+        }
+
+	@inproceedings{
+deviations-spoonhower,
+	  title={Beyond Nested Parallelism: Tight Bounds on Work-Stealing Overheads for Parallel Futures},
+	  author={Daniel Spoonhower and Guy E. Blelloch and Phillip B. Gibbons and Robert Harper},
+          booktitle = SPAA08,
+          year = SPAA08:year,
+          month = SPAA08:month,
+          publisher = acm:pub,
+  	  address = acm:addr
+	}
+
+       @inproceedings{
+blelloch:sharing-cache,
+	author = {Guy E. Blelloch and Phillip B. Gibbons},
+	title = {Effectively sharing a cache among threads},
+	booktitle = SPAA04,
+	year = SPAA04:year,
+	pages = {235--244},
+	location = {Barcelona, Spain},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+%%%     isbn = {1-58113-840-7},
+%%%     doi = {http://doi.acm.org/10.1145/1007912.1007948},
+
+	@book{
+blelloch:data-parallel-book,
+	author = {Guy E. Blelloch},
+	title = {Vector models for data-parallel computing},
+	year = {1990},
+	publisher = {MIT Press},
+	address = {Cambridge, MA, USA}
+	}
+%%%     isbn = {0-262-02313-X},
+
+	@article{
+portable-nesl,
+	author = {Guy E. Blelloch and Siddhartha Chatterjee and Jonathan C. Hardwick
+		and Jay Sipelstein and Marco Zagha},
+	title = {Implementation of a portable nested data-parallel language},
+	journal = JPDC,
+	volume = {21}, number = {1},
+	year = {1994},
+	pages = "4-14",
+	publisher = academic-press:pub,
+	address = academic-press:addr
+	}
+%%% 	doi = {http://dx.doi.org/10.1006/jpdc.1994.1038},
+
+	@article{
+blelloch:progpar,
+	author = {Guy E. Blelloch},
+	title = {Programming parallel algorithms},
+	journal = CACM,
+	volume = {39}, number = {3},
+	year = {1996}, month = mar,
+	pages = {85-97},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+provable-nesl,
+	author = {Guy E. Blelloch and John Greiner},
+	title = {A provable time and space efficient implementation of {NESL}},
+	booktitle = ICFP96,
+	year = {1996}, month = ICFP96:month,
+	pages = {213-225},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@article{
+bs:massively-parallel,
+	author = {Guy E. Blelloch and Gary W. Sabot},
+	title = {Compiling collection-oriented languages onto massively parallel computers},
+	journal = JPDC,
+	volume = {8},
+	number = {2},
+	year = {1990},
+	pages = {119--134},
+	publisher = academic-press:pub,
+	address = {Orlando, FL, USA}
+	}
+%%% issn = {0743-7315},
+%%% doi = {http://dx.doi.org/10.1016/0743-7315(90)90087-6},
+
+        @inproceedings{
+blelloch:vcode,
+	author = {Guy Blelloch and Siddhartha Chatterjee},
+	title = {{VCODE}: A Data-Parallel Intermediate Language},
+	booktitle = FOMPC3,
+	year = {1990},
+	pages = {471--480}
+	}
+
+        @misc{
+blelloch:cvl,
+	author = {Guy Blelloch and Siddhartha Chatterjee},
+	title = {{CVL}: A {C} Vector Language},
+	year = {1993},
+	}
+
+	@article{
+blelloch:provably-efficient-scheduling,
+	author = {Guy E. Blelloch and Phillip B. Gibbons and Yossi Matias},
+	title = {Provably efficient scheduling for languages with fine-grained parallelism},
+	journal = JACM,
+	volume = {46},
+	number = {2},
+	year = {1999},
+	pages = {281--321},
+	publisher = acm:pub,
+	address = ACM:pub,
+	}
+%%%    issn = {0004-5411},
+%%%    doi = {http://doi.acm.org/10.1145/301970.301974},
+
+
+	@article{
+blume:first-class-cases,
+	 author = {Blume, Matthias and Acar, Umut A. and Chae, Wonseok},
+	 title = {Extensible programming with first-class cases},
+	 journal = {SIGPLAN Not.},
+	 volume = {41},
+	 number = {9},
+	 year = {2006},
+	 issn = {0362-1340},
+	 pages = {239--250},
+	 doi = {http://doi.acm.org/10.1145/1160074.1159836},
+	 publisher = ACM:pub,
+	 address = ACM:pub,
+	 }
+
+	@inproceedings{
+variadic-function-calls,
+	 author = {Blume, Matthias and Rainey, Michael and Reppy, John},
+	 title = {Calling variadic functions from a strongly-typed language},
+	 booktitle = ML08,
+	 year = {2008},
+	 pages = {47--58},
+	 location = {Victoria, BC, Canada},
+	 doi = {http://doi.acm.org/10.1145/1411304.1411312},
+	 publisher = ACM:pub,
+	 address = ACM:addr
+	 }
+
+       @phdthesis{
+blumofe:phd,
+	author = {Blumofe, Robert D.},
+	title = {Executing multithreaded programs efficiently},
+	year = {1995},
+	publisher = {Massachusetts Institute of Technology},
+	address = {Cambridge, MA, USA},
+	}
+
+	@inproceedings{
+blumofe:space-efficient-scheduling,
+	 author = {Blumofe, Robert D. and Leiserson, Charles E.},
+	 title = {Space-efficient scheduling of multithreaded computations},
+	 booktitle = STOC12,
+	 year = STOC12:year,
+	 pages = {362--371},
+	 location = STOC12:loc,
+	 doi = {http://doi.acm.org/10.1145/167088.167196},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+	@inproceedings{
+cilk-runtime-system,
+	author = "Robert D. Blumofe and Christopher F. Joerg
+		and Bradley C. Kuszmaul and Charles E. Leiserson
+		and Keith H. Randall and Yuli Zhou",
+	 title = {Cilk: an efficient multithreaded runtime system},
+	 booktitle = PPoPP95,
+	 year = {1995}, month = PPoPP95:month,
+	 pages = {207--216},
+	 location = PPoPP95:loc,
+	 publisher = ACM:pub,
+	 address = ACM:addr
+	 }
+
+	@article{
+work-stealing,
+	author = {Robert D. Blumofe and Charles E. Leiserson},
+	title = {Scheduling multithreaded computations by work stealing},
+	journal = JACM,
+	volume = {46}, number = {5},
+	year = {1999},
+	pages = {720-748},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+%%%	doi = {http://doi.acm.org/10.1145/324133.324234},
+
+	@misc{
+blumofe:mugging,
+	author = {Robert D. Blumofe and Charles C. Leiserson and Bin Song},
+	title = {Automatic Processor Allocation for Work-stealing Jobs},
+	year = {1998}
+	}
+
+	@inproceedings{
+cilk,
+	author = {Robert D. Blumofe and Christopher F. Joerg and Bradley C. Kuszmaul
+		and Charles E. Leiserson and Keith H. Randall and Yuli Zhou},
+	title = {{Cilk}: An Efficient Multithreaded Runtime System},
+	booktitle = PPoPP95,
+	year = {1995}, month = PPoPP95:month,
+	publisher = acm:pub, address = acm:addr,
+	location = PPoPP95:loc,
+	pages = {207--216}
+	}
+
+        @inproceedings{
+blumofe:analysis,
+	author = {Robert D. Blumofe and Matteo Frigo and Christopher F. Joerg and Charles E. Leiserson and Keith H. Randall},
+	title = {An Analysis of Dag-Consistent Distributed Shared-Memory Algorithms},
+	booktitle = SPAA96,
+	pages = {297-308},
+	publisher = ACM:pub,
+	address = ACM:addr,
+	year = {1996}
+	}
+%%%    doi = "citeseer.ist.psu.edu/blumofe96analysis.html"
+
+	@inproceedings{
+blumofe:performance-multiprogrammed-work-stealing,
+	author = "Robert D. Blumofe and Dionisios Papadopoulos",
+	title = "The Performance of Work Stealing in Multiprogrammed Environments (Extended Abstract)",
+	booktitle = "Measurement and Modeling of Computer Systems",
+	pages = "266-267",
+	year = "1998",
+	url = "citeseer.ist.psu.edu/blumofe98performance.html"
+	}
+
+        @inproceedings{
+dpj,
+        author = {Bocchino,Jr., Robert L. and Adve, Vikram S. and Adve, Sarita V. and Snir, Marc},
+        title = {Parallel programming must be deterministic by default},
+        booktitle = HOTPAR09,
+        year = {2009},
+        pages = {4--4},
+        location = {Berkeley, California},
+        publisher = USENIX:pub,
+        address = USENIX:addr
+        }
+
+	@inproceedings{type-and-effect-dpj,
+ 	author = {Bocchino,Jr., Robert L. and Adve, Vikram S. and Dig, Danny and Adve, Sarita V. and Heumann, Stephen and Komuravelli, Rakesh and Overbey, Jeffrey and Simmons, Patrick and Sung, Hyojin and Vakilian, Mohsen},
+ 	title = {A Type and Effect System for Deterministic Parallel Java},
+ 	booktitle = {OOPSLA'09},
+	 year = {2009},
+ 	location = {Orlando, Florida, USA},
+ 	pages = {97--116},
+	 publisher = acm:pub,
+ 	address = acm:addr
+	}
+
+	@article{
+ropes,
+	author = {Hans-J. Boehm and Russ Atkinson and Michael Plass},
+	title = {Ropes: an alternative to strings},
+	journal = SPE,
+	volume = 25, number = 12,
+	year = 1995, month = dec,
+	issn = {0038-0644},
+	pages = {1315--1330},
+	publisher = wiley:pub,
+	address = wiley:addr
+	}
+
+	@inproceedings{
+boehm:threads-library-not,
+	author = "Hans-Juergen Boehm",
+	title = "Threads cannot be implemented as a library",
+	booktitle = PLDI05,
+	year = 2005, month = PLDI05:month,
+	location = PLDI05:loc,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "261-268"
+	}
+
+        @inproceedings{
+cplusplus-memory-model,
+        author = {Boehm, Hans-J. and Adve, Sarita V.},
+        title = {Foundations of the {C++} concurrency memory model},
+        booktitle = PLDI08,
+        year = {2008},
+        isbn = {978-1-59593-860-2},
+        pages = {68--78},
+        location = {Tucson, AZ, USA},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+% NOTE: the capitalization of occam is correct in the following title
+	@article{
+bornat:general-occam,
+	author = "Bornat, R.",
+	title = "A protocol for generalized {occam}",
+	journal = SPE,
+	volume = 16, number = 9,
+	year = 1986, month = sep,
+	pages = "783-799"
+	}
+
+	@unpublished{
+xbox360-cpu,
+	title = "Application-customized {CPU} design: The {Microsoft} {Xbox} 360 {CPU} story",
+	author = "Jeffrey Brown",
+	year = 2005, month = dec,
+	note = "Available at \url{http://www-128.ibm.com/developerworks/power/library/pa-fpfxbox}"
+	}
+
+	@inproceedings{
+one-shot-continuations,
+	author = "Carl Bruggeman and Oscar Waddell and R. Kent Dybvig",
+	title = "Representing control in the presence of one-shot continuations",
+	booktitle = PLDI96,
+	year = 1996, month = PLDI96:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "99-107"
+	}
+
+	@article{
+brook-gpus,
+	author = {Ian Buck and Tim Foley and Daniel Horn and Jeremy Sugerman
+		and Kayvon Fatahalian and Mike Houston and Pat Hanrahan},
+	title = {Brook for {GPU}s: stream computing on graphics hardware},
+	journal = SIGGRAPH04,
+	volume = {23}, number = {3},
+	year = {2004}, month = jul,
+	pages = {777-786},
+	doi = {http://doi.acm.org/10.1145/1015706.1015800},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@article{
+general-csp-impl,
+	author = "G. N. Buckley and A. Silberschatz",
+	title = "An Effective Implementation for the Generalized
+		Input-output Construct of {CSP}",
+	journal = TOPLAS,
+	volume = 5, number = 2,
+	year = 1983, month = apr,
+	pages = "223-235"
+	}
+
+	@article{cnc,
+ 	author = {Budimli\'{c}, Zoran and Burke, Michael and Cav{\'e}, Vincent and Knobe, Kathleen and 	Lowney, Geoff and Newton, Ryan and Palsberg, Jens and Peixotto, David and Sarkar, Vivek 		and Schlimbach, Frank and Tacsirlar, Sa\u{g}nak},
+ 	title = {Concurrent Collections},
+ 	journal = {Sci. Program.},
+ 	volume = {18},
+ 	number = {3-4},
+ 	month = aug,
+	 year = {2010},
+ 	pages = {203--217}
+	}
+
+	@article{
+trips-overview,
+	title = "Scaling to the End of Silicon with {EDGE} Architectures",
+	author = "Doug Burger and Steephen W. Keckler and Kathryn S. McKinley
+		and Mike Dahlin and Lizy K. John and Calvin Lin and Charles R. Moore and James Burrill
+		and Robert G. McDonald and William Yoder",
+	journal = COMPUTER,
+	volume = 37, number = 7,
+	year = 2004, month = jul,
+	publisher = ieee-press:pub,
+	address = ieee-press:addr,
+	pages = "44-55"
+	}
+
+	@inproceedings{
+burton-work-stealing,
+        author = {F. Warren Burton and M. Ronan Sleep },
+        title = {Executing functional programs on a virtual tree of processors},
+        booktitle = FPCA81,
+        year = 1981, month = FPCA81:month,
+        pages = {187-194},
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+	@article{
+encapsulating-nondeterminacy,
+	author = "F. Warren Burton",
+	title = "Encapsulating non-determinacy in an abstract data type with
+		determininate semantics",
+	journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 1991, month = jan,
+	volume = 1, number = 1,
+	pages = "3-20"
+	}
+
+	@article{burton-spec-par,
+  	author    = {F. Warren Burton},
+  	title     = {Speculative Computation, Parallelism, and Functional Programming},
+ 	 journal   = {IEEE Trans. Computers},
+  	volume    = {34},
+  	number    = {12},
+  	year      = {1985},
+ 	 pages     = {1190-1193},
+	}
+
+	@article{
+improving-intervals,
+	author = "W. Ken Jackson and F. Warren Burton",
+	title = "Improving intervals",
+	journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 1993, month = apr,
+	volume = 3, number = 2,
+	pages = "53-169"
+	}
+
+        @InCollection{
+bh-gpu,
+        author = {Martin Burtscher and Keshav Pingali},
+        title =	{An Efficient {CUDA} Implementation of the Tree-Based
+		{B}arnes {H}ut n-Body Algorithm},
+        booktitle = {{GPU} Computing Gems Emerald Edition},
+        pages = {75--92},
+	publisher = Elsevier:pub,
+	address = Elsevier:addr,
+        year = 2011,
+        chapter = 6,
+        }
+
+	@book{
+butenhof:pthreads-book,
+	author = "David R. Butenhof",
+	title = "Programming with {POSIX} Threads",
+	publisher = addison-wesley:pub,
+	address = addison-wesley:addr,
+	year = 1997
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% CCC %%%
+%%%     %%%
+%%%%%%%%%%%
+
+       @inproceedings{
+numa-locks,
+        author = {Calciu, Irina and Dice, Dave and Lev, Yossi and Luchangco, Victor and Marathe, Virendra J. and Shavit, Nir},
+        title = {{NUMA}-aware reader-writer locks},
+        booktitle = PPoPP13,
+        year = {2013},
+        location = {Shenzhen, China},
+        pages = {157--166},
+        publisher = acm:pub,
+        address = acm:addr,
+        }
+
+	@inproceedings{
+chapel,
+	author = {David Callahan and Bradford L. Chamberlain and Hans P. Zima},
+	title = {The {C}ascade {H}igh {P}roductivity {L}anguage},
+	booktitle = HIPS04,
+	pages = {52-60},
+	year = 2004,
+	month = Apr,
+	doi = "10.1109/HIPS.2004.1299190",
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+
+        @inproceedings{
+copperhead,
+        author = {Bryan Catanzaro and Michael Garland and Kurt Keutzer},
+        title = {Copperhead: compiling an embedded data parallel language},
+        booktitle = PPoPP11,
+        year = 2011, month = PPoPP11:month,
+        isbn = {978-1-4503-0119-0},
+        location = PPoPP11:loc,
+        pages = {47--56},
+        numpages = {10},
+        url = {http://doi.acm.org/10.1145/1941553.1941562},
+        doi = {http://doi.acm.org/10.1145/1941553.1941562},
+        acmid = {1941562},
+        publisher = acm:pub,
+        address = acm:addr,
+        }
+
+	@inproceedings{
+lazy-binary-splitting,
+	 author = {Alexandros Tzannes and George C. Caragea and Rajeev Barua and Uzi Vishkin},
+	 title = {Lazy binary-splitting: a run-time adaptive work-stealing scheduler},
+	 booktitle = PPoPP10,
+	 year = {2010}, month = PPoPP10:month,
+	 pages = {179--190},
+	 location = PPoPP10:loc,
+	 doi = {http://doi.acm.org/10.1145/1693453.1693479},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+        @inproceedings{
+squeak-siggraph,
+        author = {Luca Cardelli and Rob Pike},
+        title = {{Squeak}: A Language for Communicating with Mice},
+        booktitle = SIGGRAPH85,
+        pages = {199-204},
+        year = 1985,
+        month = July,
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+	@article{
+toplas-olden,
+	author = {Martin Carlisle and Laurie J. Hendren and Anne Rogers and John Reppy},
+	title = {Supporting {SPMD} Execution for Dynamic Data Structures},
+	journal = TOPLAS,
+	volume = 17, number = 2,
+	year = 1995, month = mar,
+	pages = "233-263"
+	}
+
+	@inproceedings{
+olden-caching,
+	author = "Martin C. Carlisle and Anne Rogers",
+	title = "Software caching and computation migration in {Olden}",
+	booktitle = PPOPP95,
+	year = 1995, month = PPoPP95:month,
+	pages = "29-38",
+	location = PPoPP95:loc,
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@article{
+message-analysis,
+	author = "Richard Carlsson and Konstantinos Sagonas and Jesper Wilhelmsson",
+	title = "Message Analysis for Concurrent Programs Using Message Passing",
+	journal = TOPLAS,
+	volume = 28, number = 4,
+	year = 2006, month = jul,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "715-746"
+	}
+
+	@misc{
+magny-cours,
+        author = "Tracy Carver",
+        title = "Magny-Cours and Direct Connect Architecture 2.0",
+	year = 2010, month = mar,
+        note = "Available from \url{http://developer.amd.com/documentation/articles/pages/Magny-Cours-Direct-Connect-\-Architecture-2.0.aspx}"
+        }
+
+        @inproceedings{
+predictable-performance-smt,
+	author = {Francisco J. Cazorla and Peter M.W. Knijnenburg and Rizos Sakellariou and
+		Enrique Fern{\'{a}}ndez and Alex Ramirez and Mateo Valero},
+	title = {Predictable performance in {SMT} processors},
+	booktitle = CF04,
+	year = {2004}, month = CF05:month,
+	pages = {433--443},
+	location = CF04:loc,
+	doi = {http://doi.acm.org/10.1145/977091.977152},
+	publisher = ACM:pub,
+	address = ACM:pub,
+	}
+
+        @inproceedings{
+mlton-cfa,
+        author = {Cejtin, Henry and Jagannathan, Suresh and Weeks, Stephen},
+        title = {Flow-Directed Closure Conversion for Typed Languages},
+        booktitle = ESOP00,
+        year = {2000},
+        pages = {56--71},
+	publisher = springer:pub,
+	address = springer:addr
+        }
+
+        @inproceedings{
+haskell-gpu,
+        author = {Chakravarty, Manuel M.T. and Keller, Gabriele and Lee, Sean and McDonell, Trevor L. and Grover, Vinod},
+        title = {Accelerating {Haskell} array codes with multicore {GPUs}},
+        booktitle = DAMP11,
+        year = {2011}, month = DAMP11:month,
+        location = DAMP11:loc,
+        acmid = {1926358},
+        publisher = acm:pub,
+        address = acm:addr,
+	pages = "3-14"
+        }
+
+	@inproceedings{
+more-types-for-par,
+	author = {Manuel M. T. Chakravarty and Gabriele Keller},
+	title = {More types for nested data parallel programming},
+	booktitle = ICFP00,
+	year = 2000, month = ICFP00:month,
+	pages = {94-105},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+nepal,
+	author = {Manuel M. T. Chakravarty and Gabriele Keller and Roman Leshchinskiy and Wolf Pfannenstiel},
+	title = {{Nepal} -- Nested Data Parallelism in {Haskell}},
+	booktitle = EUROPAR01,
+	series = LNCS,
+	volume = {2150},
+	publisher = springer:pub,
+	address = springer:addr,
+	year = {2001}, month = aug,
+	pages = "524-534"
+	}
+
+	@inproceedings{
+fun-array-fusion,
+	author = {Manuel M. T. Chakravarty and Gabriele Keller},
+	title = {Functional array fusion},
+	booktitle = ICFP01,
+	year = {2001}, moth = ICFP01:month,
+	pages = {205--216},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+        @InProceedings{
+partial-vectorisation,
+        author = "Manuel M. T. Chakravarty and Roman Leshchinskiy and Simon {Peyton Jones}
+                  and Gabriele Keller",
+        title = "Partial Vectorisation of {Haskell} Programs",
+        booktitle = DAMP08,
+        year = 2008, month = DAMP08:month,
+        publisher = acm:pub,
+        address = acm:addr,
+	pages = "2-16",
+	note = "Available from \url{http://clip.dia.fi.upm.es/Conferences/DAMP08/}"
+        }
+
+	@InProceedings{
+dph-status-report,
+	author = "Manuel M. T. Chakravarty and Roman Leshchinskiy and Simon {Peyton Jones}
+		and Gabriele Keller and Simon Marlow",
+	title = "{Data} {Parallel} {Haskell}: A Status Report",
+	booktitle = DAMP07,
+	year = 2007,
+	month = DAMP07:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "10-18"
+	}
+
+	@inproceedings{
+accelerating-haskell-w-gpus,
+	author = {Chakravarty, Manuel M.T. and Keller, Gabriele and Lee, Sean
+		and McDonell, Trevor L. and Grover, Vinod},
+	title = {Accelerating {Haskell} array codes with multicore {GPU}s},
+	booktitle = DAMP11,
+	year = {2011}, month = DAMP11:month,
+	location = DAMP11:loc,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = {3-14}
+	}
+
+        @article{
+chapel2007,
+        author = {Chamberlain,, B.L. and Callahan,, D. and Zima,, H.P.},
+        title = {{P}arallel {P}rogrammability and the {C}hapel {L}anguage},
+        journal = IHPC,
+        volume = {21},
+        number = {3},
+        year = {2007},
+        pages = {291--312},
+        publisher = sage:pub,
+        address = sage:addr
+        }
+
+        @article{
+hierarchical-scheduling-multiprocessors:chandra,
+        author = {Abhishek Chandra and Prashant Shenoy},
+        title = {Hierarchical Scheduling for Symmetric Multiprocessors},
+        journal = {IEEE Trans. Parallel Distrib. Syst.},
+        volume = {19},
+        number = {3},
+        year = {2008},
+        issn = {1045-9219},
+        pages = {418--431},
+        doi = {http://dx.doi.org/10.1109/TPDS.2007.70755},
+        publisher = IEEE:pub,
+        address = IEEE:addr
+        }
+
+	@inproceedings{
+predicting-intra-thread-cache-contention,
+	author = {Dhruba Chandra and Fei Guo and Seongbeom Kim and Yan Solihin},
+	title = {Predicting Inter-Thread Cache Contention on a Chip Multi-Processor Architecture},
+	booktitle = HPCA11,
+	year = HPCA11:year, month = HPCA11:month,
+	pages = {340--351},
+	doi = {http://dx.doi.org/10.1109/HPCA.2005.27},
+	publisher = IEEE:pub,
+	address = IEEE:addr,
+	}
+
+	@book{
+parallel-prog-in-openmp,
+	author = "Rohit Chandra and Leonardo Dagum and Dave Kohr and Dror Maydan
+		and Jeff McDonald and Ramesh Menon",
+	title = "Parallel Programming in {OpenMP}",
+	publisher = mk:pub,
+	address = mk:addr,
+	year = 2001
+	}
+
+	@inproceedings{
+dynamic-circular-deque,
+	author = {David Chase and Yossi Lev},
+	title = {Dynamic circular work-stealing deque},
+	booktitle = SPAA05,
+	year = {2005},
+	pages = {21--28},
+	location = SPAA05:loc,
+	doi = {http://doi.acm.org/10.1145/1073970.1073974},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@article{
+compiling-nesl,
+	author = {Siddhartha Chatterjee},
+	title = {Compiling nested data-parallel programs for shared-memory multiprocessors},
+	journal = TOPLAS,
+	volume = {15}, number = {3},
+	year = {1993}, month = jul,
+	pages = {400-462},
+	publisher = acm:pub, address = acm:addr
+	}
+
+	@inproceedings{
+cml-in-concurrent-haskell,
+	author = {Avik Chaudhuri},
+	title = {A {Concurrent} {ML} library in {Concurrent} {Haskell}},
+	booktitle = ICFP09,
+	year = 2009, month = ICFP09:month,
+	location = ICFP09:loc,
+	publisher = acm:pub,
+        address = acm:addr,
+	pages = "269-280"
+	}
+
+	@book{
+real-time-book:cheng,
+	author = "Albert M. K. Cheng",
+	title = "Real-Time Systems: Scheduling, Analysis, and Veriﬁcation",
+	publisher = "Wiley",
+	year = 2002
+	}
+
+	@weblog{
+hphysics:cheplyaka,
+	author = "Roman Cheplyaka",
+	title = "Building a physics engine in {D}ata-parallel {Haskell}",
+	note = "Available from \url{http://physics-dph.blogspot.com}"
+	}
+
+	@inproceedings{
+chien:ppopp-keynote,
+	title = "Pervasive parallel computing --- An historic
+		opportunity for innovation in programming
+		and architecture",
+	author = "Andrew A. Chien",
+	booktitle = PPoPP07,
+	year = 2007, month = PPoPP07:month,
+	pages = "160",
+	note = "Keynote talk; slides available from \url{http://ftg.lbl.gov/ppopp07/program.html}."
+	}
+
+
+	@inproceedings{
+cache-conscious-struct,
+	author = {Trishul M. Chilimbi and Bob Davidson and James R. Larus},
+	title = {Cache-conscious structure definition},
+	booktitle = PLDI99,
+	year = {1999}, month = PLDI99:month,
+	pages = "13-24",
+	location = {Atlanta, Georgia, United States},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+        @inproceedings{
+sized-types,
+        author = "Wei-Ngan Chin and Siau-Cheng Khoo and Dana N. Xu",
+        title = "Extending sized type with collection analysis",
+        booktitle = PEPM03,
+        year = 2003,
+        month = PEPM03:month,
+        pages = {75--84},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@inproceedings{
+colby:comm-topology,
+	author = "Christopher Colby",
+	title = "Analyzing the Communication Topology of Concurrent Programs",
+	booktitle = pepm95,
+	month = pepm95:month, year = 1995,
+	pages = "202-213"
+	}
+
+        @inproceedings{
+implementation-strategies-cont,
+	 author = {Will Clinger and Anne Hartheimer and Eric Ost},
+	 title = {Implementation strategies for continuations},
+	 booktitle = LISP88,
+	 year = {1988}, month = LISP88:month,
+	 location = LISP88:loc,
+	 publisher = acm:pub,
+	 address = acm:addr,
+	 pages = {124--131}
+	 }
+
+	@book{
+cole:algorithmic-skeletons,
+	 author = {Cole, Murray},
+	 title = {Algorithmic skeletons: structured management of parallel computation},
+	 year = {1991},
+	 publisher = {MIT Press},
+	 address = {Cambridge, MA, USA},
+	 }
+
+        @techreport{
+nova,
+        title = {{NOVA}: A Functional Language for Data Parallelism},
+        author = {Alexander Collins and Dominik Grewe and Vinod Grover and Sean Lee and Adriana Susnea},
+        institution = "NVIDIA",
+        year = {2013},
+        month = jul,
+        number = "NVR-2013-002"
+        }
+
+	@inproceedings{
+jocaml,
+	author = "Sylvain Conchon and Fabrice {Le Fessant}",
+	title = "{JoCaml}: Mobile Agents for {Objective-Caml}",
+	booktitle = "First International Symposium on Agent Systems
+		and Applications ({ASA}'99)/Third International Symposium
+		on Mobile Agents ({MA}'99)",
+	address = "Palm Springs, CA, USA",
+	year = "1999", month = oct,
+	pages = "22-29",
+	note = "Available from \url{http://pauillac.inria.fr/jocaml/}"
+	}
+
+        @article{
+opteron,
+        author = {Pat Conway and Nathan Kalyanasundharam and Gregg Donley and Kevin Lepak and Bill Hughes},
+        title = {Cache Hierarchy and Memory Subsystem of the {AMD} {Opteron} Processor},
+        journal = MICRO,
+        volume = {30},
+        issn = {0272-1732},
+        year = {2010},
+        pages = {16-29},
+        doi = {http://doi.ieeecomputersociety.org/10.1109/MM.2010.31},
+        publisher = IEEE-PRESS:pub,
+        address = IEEE-PRESS:addr,
+        }
+
+	@techreport{
+ml-threads,
+	author = "Eric C. Cooper and J. G. Morrisett",
+	title = "Adding threads to {Standard ML}",
+	number = "CMU-CS-90-186",
+	institution = CMU-CS:name,
+	year = 1990, month = dec
+	}
+
+        @inproceedings{
+dml-dist-prog,
+        author = "Robert Cooper and Clifford D. Krumvieda",
+        title = "Distributed Programming with Asynchronous Ordered Channels in
+                {Distributed ML}",
+        booktitle = ML92,
+        year = 1992, month = jun,
+        pages = "134-148"
+        }
+
+	@article{
+cormack:concur-kernel,
+	author = "Gordon V. Cormack",
+	title = "A Micro-kernel for Concurrency in {C}",
+	journal = SPE,
+	volume = 18, number = 5,
+	year = 1988, month = may,
+	pages = "485-491",
+	note = "Short Communication"
+	}
+
+	@inproceedings{
+stream-fusion,
+	author = {Duncan Coutts and Roman Leshchinskiy and Don Stewart},
+	title = {Stream fusion: from lists to streams to nothing at all},
+	booktitle = ICFP07,
+	year = {2007}, month = ICFP07:month,
+	pages = {315--326},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@techreport{
+cubric:cml-dataflow,
+	author = "Marija {\v{C}}ubri{\'{c}}",
+	title = "Dataflow language embedded in {CML}",
+	institution = MCGILL-CS,
+	address = MCGILL-CS:addr,
+	type = "ACAPS Technical Memo",
+	number = 83,
+	year = 1994, month = feb
+	}
+
+	@phdthesis{
+cubric:phd-thesis,
+	author = "Marija {\v{C}}ubri{\'{c}}",
+	title = "The Behaviour of Dataflow Networks with Finite Buffers",
+	school = "Department of Computer Science, Concordia University",
+	address = "Montr\'{e}al, Canada",
+	year = 1994
+	}
+
+        @misc{
+cudpp,
+        title = {CUDPP},
+        note = {Available from \url{http://cudpp.github.io}}
+        }
+
+         @inproceedings{
+culler:tam,
+	author = {Culler, David E. and Sah, Anurag and Schauser, Klaus E. and von Eicken, Thorsten and Wawrzynek, John},
+	title = {Fine-grain parallelism with minimal hardware support:
+		A compiler-controlled threaded abstract machine},
+	booktitle = ASPLOS91,
+	year = ASPLOS91:year,
+	pages = {164--175},
+	location = {Santa Clara, California, United States},
+	doi = {http://doi.acm.org/10.1145/106972.106990},
+	publisher = ACM:pub,
+	address = ACM:pub,
+	}
+
+	@inproceedings{
+culler:splitc,
+	author = {Krishnamurthy, A. and Culler, D. E. and Dusseau, A. and Goldstein, S. C. and Lumetta, S. and von Eicken, T. and Yelick, K.},
+	title = {Parallel programming in Split-C},
+	booktitle = {Supercomputing '93: Proceedings of the 1993 ACM/IEEE conference on Supercomputing},
+	year = SUPER93:year,
+	pages = {262--273},
+	location = SUPER93:loc,
+	doi = {http://doi.acm.org/10.1145/169627.169724},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+x10-on-gpus,
+	author = "David Cunningham and Rajesh Bordawekar and Vijay Saraswat",
+	title = "{GPU} Programming in a High Level Language Compiling {X10} to {CUDA}",
+	booktitle = X10-11,
+	year = 2011, month = X10-11:month,
+	location = X10-11:loc,
+	note = {Available from \url{http://x10-lang.org/}}
+	}
+
+	@inproceedings{
+parallel-astar,
+	author = "Z. Cvetanovic and C. Nofsinger",
+	title = "Parallel Astar Search on Message-Passing Architectures",
+	booktitle = HICSS23,
+	year = HICSS23:year, month = HICSS23:month,
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr,
+	pages = "82-90"
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% DDD %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@article{
+danaher:jcilk-exceptions,
+	author = {John S. Danaher and I-Ting Angelina Lee and Charles E. Leiserson},
+	title = {Programming with {E}xceptions in {JCilk}},
+	journal = SCP,
+	volume = {63},
+	number = {2},
+	year = {2006},
+	issn = {0167-6423},
+	pages = {147--171},
+	publisher = Elsevier:pub,
+	address = Elsevier:addr
+	}
+
+	@article{
+cilkchess,
+	author = {Don Dailey and Charles E. Leiserson},
+	title = {Using {Cilk} to Write Multiprocessor Chess Programs},
+	journal = {The Journal of the International Computer Chess Association},
+	year = {2002},
+	}
+
+	@article{
+representing-control:cps-study,
+	author = "Olivier Danvy and Andrzej Filinski",
+	title = "Representing Control: {A} study of the {CPS} transformation",
+	journal = MSCS,
+	volume = "2",
+	number = "4",
+	pages = "361--391",
+	year = "1992"
+        }
+
+% the following paper is about SASL
+	@inproceedings{
+davis:functional-fine-grain-parallel,
+	author = {Davis, J. A.},
+	title = {A functional language architecture that supports fine-grain parallelism (extended abstract)},
+	booktitle = {Proceedings of the 15th annual conference on Computer Science ({CSC '87})},
+	year = {1987},
+	isbn = {0-89791-218-7},
+	pages = {384},
+	location = {St. Louis, Missouri, United States},
+	doi = {http://doi.acm.org/10.1145/322917.323045},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@inproceedings{
+map-reduce,
+	author = "Jeffrey Dean and Sanjay Ghemawat",
+	title = "{MapReduce}: Simplified Data Processing on Large Clusters",
+	booktitle = OSDI6,
+	year = OSDI6:year,
+        month = OSDI6:month,
+	location = OSDI6:loc,
+	pages = "137--150",
+        publisher = USENIX:pub,
+        address = USENIX:addr,
+	}
+
+        @article{
+wait-free-work-stealing,
+        title = {Wait-free cache-affinity thread scheduling},
+        author = {Kurt Debattista, Kevin Vella, J. Cordina},
+        publisher = IEEE-PRESS:pub,
+        address = IEEE-PRESS:addr,
+        journal = {IEEE Proceedings Software},
+        volume = {150},
+        number = {2},
+        year = {2003},
+        pages = {137-146},
+        issn = {1462-5970}
+        }
+
+	@InProceedings{
+typed-cfa-for-cml,
+	author = "M. Debbabi and A. Faour and N. Tawbi",
+	title = "Efficient Type-Based Control-Flow Analysis of
+		Higher-Order Concurrent Programs",
+	booktitle = "Proceedings of the International Workshop on
+		Functional and Logic Programming, IFL'96",
+	publisher = springer:pub,
+	address = springer:addr,
+	series = LNCS,
+	volume = 1268,
+	pages = "247-266",
+	month = sep,
+	year = "1996"
+	}
+
+	@article{
+process-based-parallel-lp,
+	author = {De Bosschere, Koen},
+	title = {Process-based parallel logic programming: a survey of the basic issues},
+	journal = JCSS,
+	volume = {39},
+	number = {1},
+	year = {1997},
+	pages = {71--82},
+	doi = {http://dx.doi.org/10.1016/S0164-1212(96)00164-1},
+	publisher = Elsevier:pub,
+	address = Elsevier:addr,
+	}
+
+	@inproceedings{
+demaine:ho-concur-in-java,
+	title = "Higher-order concurrency in {Java}",
+	author = "Erik D. Demaine",
+	booktitle = WOTUG20,
+	year = WOTUG20:year, month = WOTUG20:month,
+	pages = "34-47",
+	note = "Available from \url{http://theory.csail.mit.edu/~edemaine/papers/WoTUG20/}"
+	}
+
+	@inproceedings{
+demaine:protocols-for-channels,
+	title = "Protocols for Non-Deterministic Communication
+		over Synchronous Channels",
+	author = "Erik D. Demaine",
+	booktitle = IPPS12,
+	year = IPPS12:year, month = IPPS12:month,
+	pages = "24-30",
+	note = "Available from \url{http://theory.csail.mit.edu/~edemaine/papers/IPPS98/}"
+	}
+
+	@inproceedings{
+dmp,
+	author = {Devietti, Joseph and Lucia, Brandon and Ceze, Luis and Oskin, Mark},
+	title = {{DMP}: deterministic shared memory multiprocessing},
+	booktitle = ASPLOS09,
+	year = {2009}, month = ASPLOS09:month,
+	isbn = {978-1-60558-406-5},
+	pages = {85--96},
+	location = ASPLOS09:loc,
+	doi = {http://doi.acm.org/10.1145/1508244.1508255},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+        @inproceedings{
+k-means-gpu,
+        author = {Dhanasekaran, Balaji and Rubin, Norman},
+        title = {A new method for {GPU} based irregular reductions and its application to k-means clustering},
+        booktitle = GPGPU4,
+        year = {2011}, month = mar,
+        location = {Newport Beach, California},
+        url = {http://doi.acm.org/10.1145/1964179.1964182},
+        doi = {http://doi.acm.org/10.1145/1964179.1964182},
+        acmid = {1964182},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @inproceedings{
+dinan:scalable-work-stealing,
+	author = {Dinan, James and Larkins, D. Brian and Sadayappan, P. and Krishnamoorthy, Sriram and Nieplocha, Jarek},
+	title = {Scalable work stealing},
+	booktitle = SC09,
+	year = SC09:year,
+	pages = {1--11},
+	location = SC09:loc,
+	doi = {http://doi.acm.org/10.1145/1654059.1654113},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@inproceedings{
+type-based-alias,
+	author = "Amer Diwan and Kathryn S. McKinley and J. Eliot B. Moss",
+	title = "Type-based alias analysis",
+	booktitle = PLDI98,
+	year = 1998, month = PLDI98:month,
+	pages = "106-117",
+	location = "Montreal, Quebec, Canada",
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@inproceedings{
+compiler-support-for-gc,
+	author = "Amer Diwan and J. Eliot B. Moss and Richard L. Hudson",
+	title = "Compiler support for garbage collection in a statically typed
+		language",
+	booktitle = PLDI92,
+	year = 1992, month = PLDI92:month,
+	pages = "273-282"
+	}
+
+	@inproceedings{
+deutsch:storeless-model,
+	title = "A storeless model of aliasing and its abstractions
+		using finite representations of right-regular equivalence relations",
+	author = "Alain Deutsch",
+	booktitle = ICCL92,
+	year = 1992, month = ICCL92:month,
+	location = ICCL92:loc,
+	pages = "2-13"
+	}
+
+	@manual{
+ada-manual,
+	title = "Reference Manual for the {Ada} Programming Language",
+	key = "DoD",
+	institution = "United States Department of Defense",
+	year = 1983, month = jan,
+	}
+
+	@inproceedings{
+concurrent-caml-gc,
+	author = {Damien Doligez and Xavier Leroy},
+	title = {A concurrent, generational garbage collector for a multithreaded implementation of {ML}},
+	booktitle = POPL20,
+	year = {1993}, month = jan,
+	pages = {113--123},
+	location = {Charleston, South Carolina, United States},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+portable-multiprocessor-gc,
+	author = {Damien Doligez and Georges Gonthier},
+	title = {Portable, unobtrusive garbage collection for multiprocessor systems},
+	booktitle = POPL21,
+	year = POPL21:year, month = jan,
+	pages = {70--83},
+	location = {Portland, Oregon, United States},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+        @inproceedings{
+java-local-heaps,
+        author = {Domani, Tamar and Goldshtein, Gal and Kolodner, Elliot K. and Lewis, Ethan and Petrank, Erez and Sheinwald, Dafna},
+        title = {Thread-local heaps for {Java}},
+        booktitle = ISMM02,
+        year = {2002},
+        location = {Berlin, Germany},
+        pages = {76--87},
+        doi = {http://doi.acm.org/10.1145/512429.512439},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+transactional-events:icfp,
+	author = {Kevin Donnelly and Matthew Fluet},
+	title = {Transactional events},
+	booktitle = ICFP06,
+	year = {2006},
+	pages = {124--135},
+	location = {Portland, Oregon, USA},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@article{
+transactional-events:jfp,
+	author = {Kevin Donnelly and Matthew Fluet},
+	title = {Transactional events},
+	journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	volume = 18, number = {5--6},
+	year = 2008, month = sep,
+	pages = "649-706"
+	}
+
+	@inproceedings{
+roam,
+	author = {Mark Duchaineau and Murray Wolinsky and David E. Sigeti and Mark C. Miller
+		and Charles Aldrich and Mark B. Mineev-Weinstein},
+	title = {{ROAMing} terrain: Real-time optimally adapting meshes},
+	booktitle = VIZ97,
+	year = {1997}, month = VIZ97:month,
+	pages = {81--88},
+	location = VIZ97:loc,
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+
+        @article{
+nested-engines,
+        author = {R. Kent Dybvig and Robert Hieb},
+        title = {Engines from continuations},
+        journal = CL,
+        volume = {14},
+        number = {2},
+        year = {1989},
+        pages = {109-123},
+        publisher = permagon:pub,
+        address = permagon:addr
+        }
+%%% issn = {0096-0551},
+%%% doi = {http://dx.doi.org/10.1016/0096-0551(89)90018-0},
+
+
+%%%%%%%%%%%
+%%%     %%%
+%%% EEE %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inproceedings{te-ml,
+ 	author = {Effinger-Dean, Laura and Kehrt, Matthew and Grossman, Dan},
+ 	title = {Transactional Events for ML},
+ 	booktitle = {ICFP'08},
+ 	year = {2008},
+ 	location = {Victoria, BC, Canada},
+ 	pages = {103--114},
+ 	publisher = {ACM},
+ 	address = {New York, NY, USA},
+	}
+
+       @inproceedings{
+active-messages,
+       author = {von Eicken, Thorsten and Culler, David E. and Goldstein, Seth Copen and Schauser, Klaus Erik},
+       title = {Active messages: a mechanism for integrating communication and computation},
+       booktitle = ICSA98,
+       year = {1998},
+       pages = {430--440},
+       location = ICSA98:loc,
+       doi = {http://doi.acm.org/10.1145/285930.286002},
+       publisher = acm:pub,
+       address = acm:addr
+       }
+
+       @incollection{
+gta-knapsack,
+       title={Generate, Test, and Aggregate},
+       author={Emoto, Kento and Fischer, Sebastian and Hu, Zhenjiang},
+       year={2012},
+       booktitle=PLAS,
+       volume={7211},
+       series = LNCS,
+       editor={Seidl, Helmut},
+       publisher = springer:pub,
+       address = springer:addr,
+       pages={254-273}
+       }
+
+
+        @inproceedings{
+ertl:threaded-code-opt,
+        author = "M. Anton Ertl",
+        title = "Threaded code variations and optimizations",
+        booktitle = EUROFORTH01,
+        year = 2001, month = EUROFORTH01:month,
+        location = EUROFORTH01:loc,
+        pages = "49-55",
+        note = "Available from \url{http://www.complang.tuwien.ac.at/papers/}"
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% FFF %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@phdthesis{
+fedorova:phd-thesis,
+	author = "Alexandra Fedorova",
+	title = "Operating System Scheduling for Chip Multithreaded Processors",
+	school = "Department of Computer Science, Harvard University",
+	address = "Boston, MA",
+	year = 2007
+	}
+
+	@inproceedings{
+improving-performance-isolation,
+	 author = {Alexandra Fedorova and Margo Seltzer and Michael D. Smith},
+	 title = {Improving Performance Isolation on Chip Multiprocessors via an Operating System Scheduler},
+	 booktitle = PACT16,
+	 year = PACT16:year, month = PACT16:month,
+	 pages = {25--38},
+	 doi = {http://dx.doi.org/10.1109/PACT.2007.40},
+	 publisher = IEEE:pub,
+	 address = IEEE:addr,
+	 }
+
+	@inproceedings{
+soft-polling,
+	author = "Marc Feeley",
+	title = "Polling efficiently on stock hardware",
+	booktitle = FPCA93,
+	year = 1993, month = FPCA93:month,
+	location = FPCA93:loc,
+	doi = {http://doi.acm.org/10.1145/165180.165205},
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "179-187"
+	}
+
+        @phdthesis{
+efficient-general-futures,
+	author = {Feeley, Marc},
+	title = {An efficient and general implementation of futures on large scale shared-memory multiprocessors},
+	year = {1993},
+	order_no = {UMI Order No. GAX93-22348},
+	school = {Brandeis University},
+	address = {Waltham, MA, USA}
+        }
+
+        @inproceedings{
+message-passing-ltc,
+	author = {Feeley, Marc},
+       title = {A Message Passing Implementation of Lazy Task Creation},
+       booktitle = {Proceedings of the US/Japan Workshop on Parallel Symbolic Computing: Languages, Systems, and Applications},
+       year = {1993},
+       pages = {94--107},
+       publisher = {Springer-Verlag},
+       address = {London, UK},
+       }
+
+
+	@techreport{
+job-scheduling-survey,
+	author = "Dror G. Feitelson",
+	title = "Job Scheduling in Multiprogrammed Parallel Systems",
+	institution = "IBM",
+	type = "Research Report",
+	number = "RC 19790 (87657)",
+	note = "Second revision, August 1997",
+	year = 1994, month = oct
+	}
+
+	@inproceedings{
+job-sched-issues,
+	author = "Dror G. Feitelson and Larry Rudolph",
+	title = "Parallel Job Scheduling: Issues and Approaches",
+	booktitle = JSSPP95,
+	year = 1995, month = JSSPP95:month,
+	publisher = springer:pub,
+	address = springer:addr,
+	series = LNCS, number = JSSPP95:number,
+	pages = "1-18"
+	}
+
+	@incollection{
+control-secd-lambda,
+	author = "Matthias Felleisen and Daniel P. Friedman",
+	title = "Control Operators, the {SECD}-machine, and the $\lambda$-calculus",
+	booktitle = "Formal Description of Programming Concepts -- {III}",
+	editor = "Martin Wirsing",
+	publisher = "North-Holland",
+	address = "New York, N.Y.",
+	year = 1986,
+	pages = "193-219"
+	}
+
+	@inproceedings{
+weak-bisim-for-cml,
+	author = "William Ferreira and Matthew Hennessy and Alan Jeffrey",
+	title = "A Theory of Weak Bisimulation for Core {CML}",
+	booktitle = ICFP96,
+	year = 1996, month = ICFP96:month,
+	pages = "201-212"
+	}
+
+	@InProceedings{
+moby-classes,
+	author = "Kathleen Fisher and John Reppy",
+	title = "The design of a class mechanism for {Moby}",
+	booktitle = PLDI99,
+	year = 1999, month = PLDI99:month,
+	pages = "37-49"
+	}
+
+	@inproceedings{
+moby-interop-framework,
+	author = "Kathleen Fisher and Riccardo Pucella and John Reppy",
+	title = "A framework for interoperability",
+	booktitle = "Electronic Notes in Theoretical Computer Science",
+	volume = 59,
+	issue = 1,
+	publisher = Elsevier:pub,
+	address = Elsevier:addr,
+	editor = "Nick Benton and Andrew Kennedy",
+	year = "2001",
+	pages = "2-17"
+	}
+
+	@techreport{
+moby-concur,
+	author = "Kathleen Fisher and John Reppy",
+	title = "Compiler support for lightweight concurrency",
+	institution = "Bell Labs",
+	type = "Technical Memorandum",
+	year = 2002, month = mar,
+	note = "Available from \url{http://moby.cs.uchicago.edu/}"
+	}
+
+	@inproceedings{
+essence-of-comp-w-conts,
+	author = "Cormac Flanagan and Amr Sabry and Bruce F. Duba
+		and Matthias Felleisen",
+	title = "The essence of compiling with continuations",
+	booktitle = PLDI93,
+	year = 1993, month = jun,
+	pages = "237-247",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{
+phluid,
+	author = "Cormac Flanagan and Rishiyur S. Nikhil",
+	title = "{pHluid}: the design of a parallel functional language implementation
+		on workstations",
+	booktitle = ICFP96,
+	year = {1996}, month = ICFP96:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "169-179",
+	}
+
+	@inproceedings{
+kill-safe-abstractions,
+	author = "Matthew Flatt and Robert B. Findler",
+	title = "Kill-Safe Synchronization Abstractions",
+	booktitle = PLDI04,
+	year = 2004, month = PLDI04:month,
+	pages = "47-58"
+	}
+
+	@inproceedings{
+contification:icfp,
+	author = {Matthew Fluet and Stephen Weeks},
+	title = {Contification using dominators},
+	booktitle = ICFP01,
+	year = {2001},
+	pages = {2--13},
+	location = {Florence, Italy},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+        @InProceedings{
+RgnMonadICFP04,
+        author = 	 {Matthew Fluet and Greg Morrisett},
+        title = 	 {Monadic Regions},
+        booktitle =	 ICFP04,
+        pages = 	 {103--114},
+        year =  	 2004,
+        location =	 {Snow Bird, UT, USA},
+        month = 	 sep,
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+        @Article{
+RgnMonadJFP06,
+        author = 	 {Matthew Fluet and Greg Morrisett},
+        title = 	 {Monadic Regions},
+        journal = 	 JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+        year =  	 2006,
+        volume =	 16,
+        number =	 {4--5},
+        pages = 	 {485--545},
+	month = 	 {July--September}
+        }
+
+        @InProceedings{
+SubstructRegionsESOP06,
+        author =       {Matthew Fluet and Greg Morrisett and Amal Ahmed},
+        title =        {Linear Regions Are All You Need},
+        booktitle =    ESOP06,
+        series =       LNCS,
+        pages =        {7--21},
+        year =         2006,
+        location =     {Vienna, Austria},
+        month =        ESOP06:month,
+        publisher =    springer:pub,
+        address =      springer:addr
+        }
+
+        @PhdThesis{
+fluet:phd-thesis,
+        author =       {Matthew Fluet},
+        title =        {Monadic and Substructural Type Systems for Region-Based Memory Management},
+        school =       cornell-cs,
+        address =      "Ithaca, NY",
+        year =         2007,
+        month =        jan
+        }
+
+	@InProceedings{
+implicit-threading-in-manticore,
+	author =       {Matthew Fluet and Mike Rainey and John Reppy and Adam Shaw},
+	title =        {Implicitly-threaded Parallelism in {Manticore}},
+	booktitle =    ICFP08,
+	year =         2008,
+	month =        ICFP08:month,
+	location =     ICFP08:loc,
+	publisher =    acm:pub,
+	address =      acm:addr,
+	pages = "119-130"
+	}
+
+	@article{
+implicit-threading-in-manticore:jfp,
+	author =       {Matthew Fluet and Mike Rainey and John Reppy and Adam Shaw},
+	title =        {Implicitly-threaded Parallelism in {Manticore}},
+        journal =      JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	volume = 20, number = {5--6},
+	year = 2011,
+	pages = "537-576"
+	}
+
+	@InProceedings{
+sched-framework-for-parallel,
+	author =       {Matthew Fluet and Mike Rainey and John Reppy},
+	title =        {A Scheduling Framework for General-purpose Parallel Languages},
+	booktitle =    ICFP08,
+	year =         2008,
+	month =        ICFP08:month,
+	location =     ICFP08:loc,
+	publisher =    acm:pub,
+	address =      acm:addr,
+	pages = "241-252"
+	}
+
+	@inproceedings{
+manticore-damp07,
+	author = "Matthew Fluet and Mike Rainey and John Reppy
+		and Adam Shaw and Yingqi Xiao",
+	title = "Manticore: A heterogeneous parallel language",
+	booktitle = DAMP07,
+	year = 2007,
+        month = DAMP07:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "37-44"
+	}
+
+	@inproceedings{
+manticore-ml07,
+	author = "Matthew Fluet and Nic Ford and Mike Rainey and John Reppy
+		and Adam Shaw and Yingqi Xiao",
+	title = "{S}tatus {R}eport: {T}he {Manticore} {P}roject",
+	booktitle = ML07,
+	year = 2007,
+        month = ML07:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "15-24"
+	}
+
+	@Unpublished{
+schedulers-cc08,
+	author = "Matthew Fluet and Mike Rainey and John Reppy",
+	title = {Nested schedulers for heterogenous parallelism},
+	note = {Submitted for publication},
+	month = oct,
+        year = 2007
+	}
+
+	@inproceedings{
+manticore-cefp09,
+	author = "Matthew Fluet and Lars Bergstrom and Nic Ford and Mike Rainey and John Reppy
+		and Adam Shaw and Yingqi Xiao",
+	title = "Programming in {Manticore}, a Heterogeneous Parallel Functional Language",
+	booktitle = CEFP09,
+        series = lncs,
+        volume = 6299,
+        editor = CEFP09:editor,
+        year = 2010,
+        pages = "94-145",
+        publisher = springer:pub,
+        address = springer:addr
+	}
+
+	@article{
+cpu-inheritance:ford,
+       author = {Bryan Ford and Sai Susarla},
+       title = {CPU inheritance scheduling},
+       journal = {SIGOPS Oper. Syst. Rev.},
+       volume = {30},
+       number = {SI},
+       year = {1996},
+       issn = {0163-5980},
+       pages = {91--105},
+       doi = {http://doi.acm.org/10.1145/248155.238765},
+       publisher = ACM:pub,
+       address = ACM:pub,
+       }
+
+       @article{
+freeh:compare,
+       author = {Vincent W. Freeh},
+       title = {A comparison of implicit and explicit parallel programming},
+       journal = JPDC,
+       volume = {34},
+       number = {1},
+       year = {1996},
+       pages = {50-65},
+       publisher = {Academic Press, Inc.},
+       address = {Orlando, FL, USA},
+       }
+
+	@InProceedings{
+cilk5-implementation,
+	author = {Matteo Frigo and Charles E. Leiserson and Keith H. Randall},
+	title = {The Implementation of the {C}ilk-5 Multithreaded Language},
+	booktitle = PLDI98,
+	pub = acm:pub,
+	address = acm:addr,
+	year = {1998},
+        month = PLDI98:month,
+	pages = {212--223},
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% GGG %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inbook{
+multithreaded-windows,
+	author = "Emden R. Gansner and John H. Reppy",
+	title = "A Multi-threaded Higher-order User Interface Toolkit",
+	booktitle = "User Interface Software, Bass and Dewan (Eds.)",
+	series = "Software Trends", volume = 1,
+	publisher = "John Wiley \& Sons",
+	year = 1993,
+	pages = "61-80"
+	}
+
+	@book{
+sml-basis-library,
+	editor = {Emden R. Gansner and John H. Reppy},
+	title = {The {Standard} {ML} Basis Library},
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 2004
+	}
+
+	@techreport{
+ghull-gpu,
+	title = {{A} {GPU} {A}lgorithm for {C}onvex {H}ull},
+	author = "Mingcen Gao and Thanh-Thun Cao and Ashwin Nanjappa and Tiow-Seng Tan and Zhiyong Huang",
+	institution = "National University of Singapore, School of Computing",
+	number = "TRA1/12",
+	year = 2012, month = jan,
+	}
+
+	@book{
+garey-n-johnson,
+	author = "Michael R. Garey and David S. Johnson",
+	title = "Computers and Intractability: A Guide to the Theory of {NP}-Completeness",
+	publisher = "W.H. Freeman",
+	year = 1979
+	}
+
+	@inproceedings{
+sisal,
+	author = {Jean-Luc Gaudiot and Tom DeBoni and John Feo and Wim Bohm and Walid Najjar and Patrick Miller},
+	title = {The {Sisal} Model of Functional Programming and its Implementation},
+	booktitle = pAs97,
+	year = {1997}, month = mar,
+	pages = "112-123",
+	doi = {http://doi.ieeecomputersociety.org/10.1109/AISPAS.1997.581640},
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+
+	@inproceedings{
+packing-gang-scheduling,
+	author = "Jorn Gehring and Friedhelm Ramme",
+	title = "Packing Schemes for Gang Scheduling",
+	booktitle = JSSPP96,
+	year = {1996},
+	month = JSSPP96:month,
+	publisher = springer:pub,
+	address = springer:addr,
+	series = LNCS, number = JSSPP96:number,
+	pages = "89-110"
+	}
+
+	@inproceedings{
+mlrisc,
+	author = "Lal George and Florent Guillame and John Reppy",
+	title = "A portable and optimizing back end for the {SML/NJ} compiler",
+	booktitle = CC5,
+	year = CC5:year, month = CC5:month,
+	pages = "83-97"
+	}
+
+	@article{
+mlrisc-register-alloc,
+	author = "Lal George and Andrew Appel",
+	title = "Iterated register coalescing",
+	journal = TOPLAS,
+	volume = 18, number = 3,
+	year = 1996, month = may,
+	pages = "300-324"
+	}
+
+	@misc{
+GHC,
+	author = "{GHC}",
+	title = "The {G}lasgow {H}askell {C}ompiler",
+	note = "Available from \url{http://www.haskell.org/ghc}"
+	}
+
+        @misc{
+barnes-hut-haskell-bench,
+        author = "{GHC}",
+        title = "{B}arnes {H}ut benchmark written in {H}askell.",
+        note = "Available from \url{http://darcs.haskell.org/packages/ndp/examples/barnesHut/}"
+        }
+
+	@TechReport{
+fx87-manual,
+	author = {David K. Gifford and Pierre Jouvelot and Mark A. Sheldon},
+	title = {The {FX-87} Reference Manual},
+	institution = mit,
+	year = 1987,
+	number = {TR-407},
+	month = sep
+	}
+
+	@TechReport{
+fx-report,
+	author = {David K. Gifford and Pierre Jouvelot and Mark A. Sheldon and James W. O'Toole},
+	title = {Report on the {FX} Programming Language},
+	institution = mit,
+	year = 1992,
+	number = {TR-531},
+	month = feb
+	}
+
+	@InProceedings{
+integrating-fun-n-imp,
+	author = {David K. Gifford and John M. Lucassen},
+	title =	 {Integrating Functional and Imperative Programming},
+	booktitle = LISP86,
+	pages = {22--38},
+	year = 1986,
+	location = {Cambridge},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+        @InProceedings{
+goldstein:lazy-threads,
+        author = {Seth Copen Goldstein and Klaus Erik Schauser and David E. Culler},
+        title = {Lazy threads: implementing a fast parallel call},
+        booktitle = JPDC,
+        year = 1996,
+        pages = {37(1):5--20},
+        issn = {0743-7315}
+        }
+
+        @InProceedings{
+pg_poosc_recursion,
+	author = {Peter Gottschling and David S. Wise and Adwait Joshi},
+	title = {Generic Support of Algorithmic and Structural Recursion
+		for Scientific Computing},
+	booktitle = {POOSC 2008 workshop at ECOOP08, Paphros, Cyprus},
+	year = 2008,
+	location = {Paphros, Cyprus}
+	}
+
+        @article{
+icon-dynamic-hash,
+        author = {Griswold, William G. and Townsend, Gregg M.},
+        title = {The design and implementation of dynamic hashing for sets and tables in {I}con},
+        journal = SPE,
+        issue_date = {April 1993},
+        volume = {23},
+        number = {4},
+        month = apr,
+        year = {1993},
+        issn = {0038-0644},
+        pages = {351--367},
+        numpages = {17},
+        doi = {10.1002/spe.4380230402},
+        acmid = {159185},
+        publisher = wiley:pub,
+        address = wiley:addr
+        }
+
+	@article{
+glds:mpi,
+	author = "William Gropp and Ewing Lusk and Nathan Doss and Anthony Skjellum",
+	title = "High-performance, portable implementation of the
+		{MPI} {Message Passing Interface Standard}",
+	journal = "Parallel Computing",
+	volume = "22",
+	number = "6",
+	pages = "789-828",
+	year = "1996",
+	url = "citeseer.ist.psu.edu/gropp96highperformance.html"
+	}
+
+	@techreport{
+ct-terascale,
+	author = "Anwar Ghuloum and Eric Sprangle and Jesse Fang
+		and Gansha Wu and Xin Zhou",
+	title = "{Ct}: A flexible parallel programming model for tera-scale
+		architectures",
+	institution = "Intel",
+	year = 2007, month = oct,
+	note = "Available at
+		\url{http://techresearch.intel.com/UserFiles/en-us/File/terascale/Whitepaper-Ct.pdf}"
+	}
+
+        @proceedings{
+gpgpu4,
+	key={GPGPU},
+        title = {Proceedings of the Fourth Workshop on General Purpose Processing on Graphics
+		Processing Units ({GPGPU-4})},
+        year = {2011}, month = mar,
+        isbn = {978-1-4503-0569-3},
+        location = GPGPU4:loc,
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @article{
+sac,
+        author =       {Clemens Grelck and Sven-Bodo Scholz},
+        title =        {{SAC} --- {A} {F}unctional {A}rray {L}anguage for {E}fficient {M}ulti-threaded {E}xecution},
+        journal =      IJPP,
+        year =         2006,
+        volume =       34,
+        number =       4,
+        pages =        {383--427},
+        month =        aug
+        }
+
+        @inproceedings{
+stmbench,
+        author = {Guerraoui, Rachid and Kapalka, Michal and Vitek, Jan},
+        title = {{STMBench7}: a benchmark for software transactional memory},
+        booktitle = {Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems 2007},
+        year = {2007},
+        location = {Lisbon, Portugal},
+        pages = {315--324},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @inproceedings{
+sac-gpu,
+        author = {Guo, Jing and Thiyagalingam, Jeyarajan and Scholz, Sven-Bodo},
+        title = {Breaking the {GPU} programming barrier with the auto-parallelising {SAC} compiler},
+        booktitle = DAMP11,
+        year = {2011}, month = DAMP11:month,
+        location = DAMP11:loc,
+        acmid = {1926359},
+        publisher = acm:pub,
+        address = acm:addr,
+	pages = "15-24"
+        }
+
+        @article{
+parallelprolog,
+        author = {Gopal Gupta and Enrico Pontelli and Khayri Ali and Mats Carlsson and Manuel Hermenegildo},
+        title = {Parallel Execution of {P}rolog Programs: A Survey},
+        journal = TOPLAS,
+        volume = {23},
+        number = {4},
+        year = {2001},
+        issn = {0164-0925},
+        pages = {472--602},
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+	@article{
+reevaluating-amdahls-law,
+	author = "John L. Gustafson",
+	title = "Reevaluating {Amdahl}'s Law",
+	journal = CACM,
+	volume = 31, number = 5,
+	year = 1988, month = may,
+	pages = "532-533",
+	note = "\url{http://www.scl.ameslab.gov/Publications/Gus/AmdahlsLaw/Amdahls.html}"
+	}
+
+
+%%%%%%%%%%%
+%%%     %%%
+%%% HHH %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@techreport{
+efficient-ada-tasks,
+	author = "A. N. Habermann and Isaac R. Nassi",
+	title = "Efficient Implementation of {Ada} Tasks",
+	number = "CMU-CS-80-103",
+	institution = cmu-cs-dept,
+	year = 1980, month = jan
+	}
+
+        @inproceedings{
+halstead-work-stealing,
+        author = {Robert H. {Halstead Jr.}},
+        title = {Implementation of multilisp: Lisp on a multiprocessor},
+        booktitle = LISP84,
+        year = {1984},
+        month = LISP84:month,
+        pages = {9--17},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @article{
+multilisp,
+        author = {Robert H. {Halstead Jr.}},
+        title = {Multilisp: A Language for Concurrent and Symbolic Computation},
+        journal = TOPLAS,
+        year = 1985,
+        volume = 7,
+        pages = {501--538},
+	publisher = acm:pub,
+	address = acm:addr
+        }
+
+	@TechReport{
+fx87-performance,
+	author = {R. Todd Hammel and David K. Gifford},
+	title = {{FX-87} Performance Measurements: Dataflow Implementation},
+	institution = mit,
+	year = 1988,
+	number = {TR-421},
+	month = sep
+	}
+
+	@book{
+parallel-sml,
+	title = "Parallel {SML}: a Functional Language and its Implementation in {Dactl}",
+	author = "Kevin Hammond",
+	publisher = mit-press:pub,
+	address = mit-press:addr,
+	year = 1991
+	}
+
+        @INPROCEEDINGS{
+profiling-scheduling:hammond,
+	author = {Kevin Hammond and Simon Peyton Jones},
+	title = {Profiling scheduling strategies on the GRIP parallel reducer},
+	booktitle = {Proceedings of the 4th International Workshop on
+		the Parallel Implementation of Functional Languages},
+	year = {1992},
+	pages = {92--19}
+        }
+
+        @article{
+gum-portable-haskell,
+	author = {Trinder, P. W. and Hammond, K. and Mattson,Jr., J. S. and Partridge, A. S. and Peyton Jones, S. L.},
+	title = {GUM: a portable parallel implementation of Haskell},
+	journal = PLDI96,
+	volume = {31},
+	number = {5},
+	year = {1996},
+	issn = {0362-1340},
+	pages = {79--88},
+	doi = {http://doi.acm.org/10.1145/249069.231392},
+	publisher = ACM:pub,
+	address = ACM:pub,
+	}
+
+        @inproceedings{
+ho-uncurrying,
+        author = {John Hannan and Patrick Hicks},
+        title = {Higher-order unCurrying},
+        booktitle = POPL25,
+        year = POPL25:year,
+        pages = {1--11},
+        location = {San Diego, California, United States},
+        doi = {http://doi.acm.org/10.1145/268946.268947},
+        publisher = ACM:pub,
+        address = ACM:pub,
+        }
+
+        @inproceedings{
+intensional-type-analysis,
+        author = {Harper, Robert and Morrisett, Greg},
+        title = {Compiling polymorphism using intensional type analysis},
+        booktitle = POPL22,
+        year      = POPL22:year,
+        location  = POPL22:loc,
+        publisher = ACM:pub,
+        address   = ACM:addr,
+        pages     = {130--141}
+        }
+
+        @inproceedings{
+stm-haskell,
+        author = {Tim Harris and Simon Marlow and Simon {Peyton Jones} and Maurice Herlihy},
+        title = {Composable Memory Transactions},
+        booktitle = PPoPP05,
+        pages = {48-60},
+        year = 2005, month = PPoPP05:month,
+        location = PPoPP05:loc,
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@inproceedings{
+haskell-on-multiprocessor,
+	 author = {Harris, Tim and Marlow, Simon and Jones, Simon Peyton},
+	 title = {Haskell on a shared-memory multiprocessor},
+	 booktitle = HASKELL05,
+	 year = {2005},
+	 isbn = {1-59593-071-X},
+	 pages = {49--61},
+	 location = HASKELL05:loc,
+	 doi = {http://doi.acm.org/10.1145/1088348.1088354},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+         @article {
+harrison:phd-thesis,
+         author = {Harrison, Williams Ludwell},
+         title = {The interprocedural analysis and automatic parallelization of Scheme programs},
+         journal = LASC,
+         pages = {179-396},
+         volume = {2},
+         issue = {3},
+         publisher = springer:pub,
+         address = springer:addr,
+         year = {1989}
+         }
+
+	@inproceedings{
+interactive-threads-case-study,
+	author = "Carl Hauser and Cristian Jacobi and Marvin Theimer
+		and Brent Welch and Mark Weiser",
+	title = "Using threads in interactive systems: A case study",
+	booktitle = SOSP14,
+	year = SOSP14:year, month = SOSP14:month,
+	pages = "94-105"
+	}
+
+	@inproceedings{
+continuations-n-coroutines,
+	author = "Christopher T. Haynes and Daniel P. Friedman and Mitchell Wand",
+	title = "Continuations and coroutines",
+	booktitle = LISP84,
+	year = 1984, month = LISP84:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "293-298"
+	}
+
+	@inproceedings{
+engines,
+	author = {Christopher T. Haynes and Daniel P. Friedman},
+	title = {Engines build process abstractions},
+	booktitle = LISP84,
+	year = {1984}, month = LISP84:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "18-24"
+	}
+
+	@mastersthesis{
+parallel-erlang-implementation,
+	author = "Pekka Hedqvist",
+	title = "A Parallel and Multithreaded {ERLANG} Implementation",
+	school = "Computer Science Department, Uppsala University",
+	address = "Uppsala, Sweden",
+	year = 1998, month = jun
+	}
+
+        @inproceedings{
+linear-time-cfa,
+        author = {Heintze, Nevin and McAllester, David},
+        title = {Linear-time subtransitive control flow analysis},
+        booktitle = PLDI97,
+        year = {1997},
+        location = {Las Vegas, Nevada, United States},
+        doi = {10.1145/258915.258939},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+dynamicmemoryabp:hendler,
+	author = {Danny Hendler and Yossi Lev and Nir Shavit},
+	title = {Dynamic Memory {ABP} Work-Stealing},
+        booktitle = DISC04,
+	year = 2004,
+	series = lncs,
+	volume = 3274,
+	publisher = springer:pub,
+        address = springer:addr,
+	pages = "188-200"
+	}
+
+        @InCollection{
+HengleinEtAl05,
+        author = {Fritz Henglein and Henning Makholm and Henning Niss},
+        title =	{Effect Types and Region-based Memory Management},
+        booktitle = {{A}dvanced {T}opics in {T}ypes and {P}rogramming {L}anguages},
+        pages = {87--135},
+        publisher = mit-press:pub,
+        address = mit-press:addr,
+        year = 2005,
+        editor = {Benjamin Pierce},
+        chapter = 3,
+        }
+
+        @inproceedings{
+controlling-chaos,
+        author = {Stephan Herhut and Sven-Bodo Scholz and Clemens Grelck},
+        title = {Controlling Chaos: On Safe Side-Effects in Data-Parallel Operations},
+	booktitle = DAMP09,
+	year = 2009,
+	month = DAMP09:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "59-67"
+        }
+
+        @inproceedings{
+transactional-boosting,
+        author = {Herlihy, Maurice and Koskinen, Eric},
+        title = {Transactional boosting: {A} methodology for highly-concurrent transactional objects},
+        booktitle = PPoPP08,
+        year = {2008}, month = PPoPP08:month,
+        pages = {207--216},
+        location = PPoPP08:loc,
+	publisher = acm:pub,
+	address = acm:addr,
+        }
+
+	@book{
+art-of-mp-programming,
+	author = "Maurice Herlihy and Nir Shavit",
+	title = "The Art of Multiprocessor Programming",
+	publisher = mk:pub,
+	address = mk:addr,
+	year = 2008
+	}
+
+        @article{
+linearizability,
+        author = {Herlihy, Maurice P. and Wing, Jeannette M.},
+        title = {Linearizability: {A} correctness condition for concurrent objects},
+        journal = TOPLAS,
+        volume = {12},
+        number = {3},
+        year = {1990},
+        issn = {0164-0925},
+        pages = {463--492},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@InProceedings{
+granularity-aware-parellelization,
+	author = "Manuel Hermenegildo",
+	title = "Automatic Granularity-Aware Parallelization of Programs with Predicates, Functions, and Constraints",
+	booktitle = DAMP07,
+	year = 2007,
+	month = DAMP07:month,
+	publisher = acm:pub,
+	address = acm:addr,
+        pages = "1",
+	note = "Invited talk; slides available from \url{www.clip.dia.fi.upm.es/papers/damp07.pdf}"
+	}
+
+        @techreport{
+trilinos-overview,
+        author = {Michael Heroux and Roscoe Bartlett and Vicki Howle and Robert Hoekstra and Jonathan Hu and Tamara Kolda and Richard Lehoucq and Kevin Long and Roger Pawlowski and Eric Phipps and Andrew Salinger and Heidi Thomquist and Ray Tuminaro and James Willenbring and Alan Williams},
+        title = {An overview of {Trilinos}},
+        institution = {Sandia National Laboratories},
+        month = Aug,
+        year = 2003,
+        number = {SAND2003-2927},
+        address = {P.O. Box 5800, Albuquerque, NM 87185-110, USA}
+        }
+
+	@inproceedings{
+control-with-cont,
+	author = "R. Hieb and R. Kent Dybvig and C. Bruggeman",
+	title = "Representing control in the presence of first-class continuations",
+	booktitle = PLDI90,
+	year = 1990, month = jun,
+	pages="66-77"
+	}
+
+	@misc{
+hpf-spec-v2,
+	author = "{High Performance Fortran Forum}",
+	title = "{High} {Performance} {Fortran} {Language}
+		{Specification} ({Version} 2.0)",
+	year = 1997, month = jan
+	}
+
+	@article{
+amdahls-law-multicore-era,
+	author = "Mark D. Hill and Michael R. Marty",
+	title = "{Amdahl}'s Law in the Multicore Era",
+	journal = COMPUTER,
+	year = 2008, month = jul,
+	volume = 41, number = 7,
+	pages = "33-38",
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+
+        @inproceedings{
+hinze:generic-fp,
+        author = "Hinze, Ralf",
+        title = {A New Approach to Generic Functional Programming},
+        booktitle = POPL27,
+        year      = POPL27:year,
+        location  = POPL27:loc,
+        pages     = "119--132"
+        }
+
+	@article{
+hinze:finger-trees,
+	author = {Hinze, Ralf and Paterson, Ross},
+	title = {Finger trees: a simple general-purpose data structure},
+	journal = JFP,
+	volume = {16}, number = {2},
+	year = {2006},
+	issn = {0956-7968},
+	pages = {197--217},
+	doi = {http://dx.doi.org/10.1017/S0956796805005769},
+	publisher = CUP:pub,
+	address = CUP:addr
+	}
+
+        @inproceedings{
+hinze:constructing-rb-trees,
+        author = "Hinze, Ralf",
+        title = {Constructing Red-Black Trees},
+        booktitle = {WAAAPL'99: Workshop on Algorithmic Aspects of Advanced Programming Languages},
+        year      = 1999,
+        location  = {Paris, France},
+        pages     = "89--99"
+        }
+
+
+	@inproceedings{
+backtracking-based-load-balancing,
+	author = {Hiraishi, Tasuku and Yasugi, Masahiro and Umatani, Seiji and Yuasa, Taiichi},
+	title = {Backtracking-based load balancing},
+	booktitle = PPoPP09,
+	year = {2009}, month = PPoPP09:month,
+	location = PPoPP09:loc,
+	issn = {0362-1340},
+	pages = {55--64},
+	doi = {http://doi.acm.org/10.1145/1594835.1504187},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@article{
+hoare:monitors,
+	author = "C. A. R. Hoare",
+	title = "Monitors: An Operating System Concept",
+	journal = CACM,
+	volume = 17, number = 10,
+	year = 1974, month = oct,
+	pages = "549-557"
+	}
+
+	@article{
+hoare:csp,
+	author = "C. A. R. Hoare",
+	title = "Communicating Sequential Processes",
+	journal = CACM,
+	volume = 21, number = 8,
+	year = 1978, month = aug,
+	pages = "666-677"
+	}
+
+	@book{
+hoare:csp-book,
+	author = "C. A. R. Hoare",
+	title = "Communicating Sequential Processes",
+	publisher = prentice-hall:pub,
+	address = prentice-hall:addr,
+	year = 1985
+	}
+
+        @incollection{
+thrust,
+        author = {Jared Hoberock and Nathan Bell},
+        title = {{Thrust}: A Productivity-Oriented Library for {CUDA}},
+	chapter = "26",
+        booktitle = "{GPU} Computing Gems, Jade Edition",
+        editor = {{Wen-mei} W. Hwu},
+	publisher = "Morgan Kaufmann Publishers",
+        year = 2011, month = oct,
+	pages = "359-372"
+        }
+
+        @unpublished{
+cell-from-20k-feet,
+	author = "H. Peter Hofstee",
+	title = "Cell Broadband Engine Architecture from 20,000 feet",
+	year = 2005,
+        month = aug,
+	note = "Available at \url{http://www-128.ibm.com/developerworks/power/library/pa-cbea.html}"
+	}
+
+        @inproceedings{
+abstract-ref-counting,
+        author = {Hudak, Paul},
+        title = {A semantic model of reference counting and its abstraction (detailed summary)},
+        booktitle = LISP86,
+        year = {1986},
+        location = {Cambridge, Massachusetts, USA},
+        pages = {351--363},
+        numpages = {13},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @article{
+haskell,
+        author = {Hudak, Paul and Peyton Jones, Simon and Wadler, Philip and
+                  Boutel, Brian and Fairbairn, Jon and Fasel, Joseph and
+                  Guzm\'{a}n, Mar\'{\i}a M. and Hammond, Kevin and Hughes, John and
+                  Johnsson, Thomas and Kieburtz, Dick and Nikhil, Rishiyur and
+                  Partain, Will and Peterson, John},
+        title = {Report on the programming language Haskell: a non-strict, purely functional language version 1.2},
+        journal = SIGPLAN,
+        volume = {27},
+        issue = {5},
+        month = may,
+        year = {1992},
+        pages = {1--164},
+        publisher = ACM:pub,
+        address = ACM:pub,
+        }
+
+	@PhdThesis{
+huelsbergen:phd-thesis,
+	author = {Lorenz Huelsbergen},
+	title = {Dynamic Language Parallelization},
+	school = {University of Wisconsin -- Madison},
+	year = 1993
+	}
+
+	@article{
+huet-zipper,
+	author = {Huet, G\'{e}rard},
+	title = {The Zipper},
+	journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+	volume = {7},
+	number = {5},
+	year = {1997},
+	issn = {0956-7968},
+	pages = {549--554},
+	doi = {http://dx.doi.org/10.1017/S0956796897002864}
+	}
+
+        @inproceedings{
+lazy-memo-functions,
+        author = {Hughes, John},
+        title = {Lazy memo-functions},
+        booktitle = FPCA85,
+        year = {1985},
+        location = {Nancy, France},
+        pages = {129--146},
+        numpages = {18},
+	publisher = springer:pub,
+	address = springer:addr
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% III %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@misc{
+xeon,
+        author = "Intel",
+        title = "{Intel Xeon Processor X7560}",
+        note = "Specifications at \url{http://ark.intel.com/Product.aspx?id=46499}"
+        }
+
+        @misc{
+intel-mic,
+        author = "Intel",
+        title = "{Intel Many Integrated Core Architecture}",
+        url = "http://www.intel.com/content/www/us/en/architecture-and-technology/many-integrated-core/intel-many-integrated-core-architecture.html"
+        }
+
+        @misc{
+intel-mtl,
+        author = "Intel",
+        title = "{Intel Manycore Testing Lab}",
+        url = "http://software.intel.com/en-us/{\linebreak[0]}intel-manycore-testing-lab"
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% JJJ %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inproceedings{
+sting,
+	author = {Suresh Jagannathan and Jim Philbin},
+	title = {A foundation for an efficient multi-threaded scheme system},
+	booktitle = LISP92,
+	year = {1992}, month = LISP92:month,
+	pages = {345--357},
+	location = {San Francisco, California, United States},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+sting-schedulers,
+	author = {Suresh Jagannathan and Jim Philbin},
+	title = {A customizable substrate for concurrent languages},
+	booktitle = PLDI92,
+	year = {1992}, month = PLDI92:month,
+	pages = {55--81},
+	publisher = acm:pub, address = acm:addr
+	}
+
+% location = {San Francisco, California, United States},
+% isbn = {0-89791-475-9},
+% doi = {http://doi.acm.org/10.1145/143095.143119},
+
+	@inproceedings{
+analyzing-refs-in-parallel-scheme,
+	author = {Suresh Jagannathan and Stephen Weeks},
+	title = {Analyzing stores and references in a parallel symbolic language},
+	booktitle = LISP94,
+	year = {1994}, month = LISP94:month,
+	pages = {294--305},
+	publisher = ACM:pub,
+	address = ACM:addr,
+	}
+
+	@inproceedings{
+typed-directed-flow,
+	author = "Suresh Jagannathan and Stephen Weeks and Andrew K. Wright",
+	title = "Type-Directed Flow Analysis for Typed Intermediate Languages",
+	booktitle = "SAS '97: Proceedings of the 4th International Symposium on Static Analysis",
+	series = lncs,
+	volume = 1302,
+	year = 1997,
+	pages = "232--249",
+	publisher = springer:pub,
+	address = springer:addr
+	}
+
+
+        @inproceedings{
+jay:monadic-parallel-costing,
+        author = {C. B. Jay and M. I. Cole and M. Sekanina and P. Steckler},
+        title = {A Monadic Calculus for Parallel Costing of a Functional Language of Arrays},
+        booktitle = EUROPAR97,
+        series = lncs,
+        volume = 1300,
+        year = EUROPAR97:year,
+        pages = {650--661},
+        publisher = springer:pub,
+        address = springer:addr
+        }
+
+	@inproceedings{
+cml-bisimulation,
+	author = "Alan Jeffrey and Julian Rathke",
+	title = "A theory of bisimulation for a fragment of {Concurrent} {ML}
+		with local names",
+	booktitle = "Proceedings of the 15th Annual IEEE Symposium on Logic in Computer Science",
+	year = 2000,
+	pages = "311-321"
+	}
+
+	@incollection{
+jensen:types-in-analysis,
+	author = {Thomas Jensen},
+	title = {Types in program analysis},
+	booktitle = {The essence of computation: complexity, analysis, transformation},
+	series = LNCS,
+	volume = 2566,
+	year = {2002},
+	pages = {204-222},
+	publisher = springer:pub,
+	address = springer:addr
+	}
+
+        @inproceedings{
+par-haskell-tuning,
+        author = {Jones,Jr., Don and Marlow, Simon and Singh, Satnam},
+        title = {Parallel performance tuning for {H}askell},
+        booktitle = HASKELL09,
+        year = {2009},
+        pages = {81--92},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@techreport{
+implicit-explicit-par,
+	author = {Mark P. Jones and Paul Hudak},
+	title = {Implicit and explicit parallel programming in {Haskell}},
+	number = {Research Report YALEU/DCS/RR-982},
+	institution = {Yale University},
+	month = aug,
+	year = {1993}
+	}
+
+        @TechReport{
+JouvelotGifford89a,
+        author =	 {Pierre Jouvelot and David K. Gifford},
+        title =	 {Communication Effects for Message-Based Concurrency},
+        institution =	 mit,
+        year =	 1989,
+        number =	 {TM-386},
+        month =	 mar
+        }
+
+        @InProceedings{
+JouvelotGifford89b,
+        author =	 {Pierre Jouvelot and David K. Gifford},
+        title =	 {Reasoning about Continuations with Control Effects},
+        booktitle =	 PLDI89,
+        pages =	 {218--226},
+        year =	 1989,
+        publisher =	 acm:pub,
+        address =      acm:addr
+        }
+
+        @InProceedings{
+JouvelotGifford91,
+        author =	 {Pierre Jouvelot and David K. Gifford},
+        title =	 {Algebraic Reconstruction of Types and Effects},
+        booktitle =	 POPL18,
+        pages =	 {303--309},
+        year =	 POPL18:year,
+        publisher =	 acm:pub,
+        address =      acm:addr
+        }
+
+	@inproceedings{
+phasers,
+	 author = {Shirako, Jun and Peixotto, David M. and Sarkar, Vivek and Scherer, William N.},
+	 title = {Phasers: a unified deadlock-free construct for collective and point-to-point synchronization},
+	 booktitle = ICS08,
+	 year = {2008},
+	 pages = {277--288},
+	 location = {Island of Kos, Greece},
+	 doi = {http://doi.acm.org/10.1145/1375527.1375568},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% KKK %%%
+%%%     %%%
+%%%%%%%%%%%
+
+       @article{
+keller:applicative-caching,
+        author = {Keller, Robert M. and Sleep, M. R.},
+        title = {Applicative caching},
+	journal = TOPLAS,
+        volume = {8},
+        number = {1},
+        month = jan,
+        year = {1986},
+        pages = {88--108},
+        publisher = acm:pub,
+        address = acm:addr,
+        }
+
+	@phdthesis{
+keller:phd-thesis,
+	title = "Transformation-based Implementation of Nested Data Parallelism for
+		Distributed Memory Machines",
+	author = "Gabriele Keller",
+	school = "Technische Universit{\"{a}}t Berlin",
+	address = "Berlin, Germany",
+	year = 1999
+	}
+
+	@inproceedings{
+kc:flat-trees,
+	author = {Gabriele Keller and Manuel M. T. Chakravarty},
+	title = {Flattening Trees},
+	booktitle = {Euro-Par '98: Proceedings of the 4th International Euro-Par Conference
+		on Parallel Processing},
+	year = {1998},
+	pages = {709--719},
+	publisher = {Springer-Verlag},
+	address = {London, UK}
+	}
+%%% isbn = {3-540-64952-2},
+
+        @inproceedings{
+keller-chak:dtypes,
+        author = {Gabriele Keller and Manuel M. T. Chakravarty},
+        title = {On the Distributed Implementation of Aggregate Data Structures
+		by Program Transformation},
+        booktitle = HIPS99,
+        pages = {108-122},
+        year = 1999,
+        editor = {Jos{\'{e}} Rolim \etal},
+        number = 1586,
+        series = LNCS,
+        address = springer:pub,
+        publisher = springer:addr,
+        url = {citeseer.ist.psu.edu/keller99distributed.html}
+        }
+
+        @inproceedings{
+vectorisation-avoidance,
+        author = {Gabriele Keller and Manuel M. T. Chakravarty and Roman Leshchinskiy and Ben Lippmeier and Simon {Peyton Jones}},
+        title = {Vectorisation {A}voidance},
+        booktitle = HASKELL12,
+        year = 2012,
+        month = HASKELL12:month,
+        location = HASKELL12:loc,
+        note = "Forthcoming",
+        publisher = acm:pub,
+	address = acm:addr
+        }
+
+	@manual{
+opencl-spec-v1_1,
+	title = "The {OpenCL} Specification (Version 1.1)",
+	organization = "Khronos {OpenCL} Working Group",
+	year = 2010,
+	note = "Available from \url{http://www.khronos.org/opencl}."
+	}
+
+	@inproceedings{
+fair-cache-sharing-and-partitioning,
+	 author = {Seongbeom Kim and Dhruba Chandra and Yan Solihin},
+	 title = {Fair Cache Sharing and Partitioning in a Chip Multiprocessor Architecture},
+	 booktitle = PACT13,
+	 year = PACT13:year, month = PACT13:month,
+	 pages = {111--122},
+	 doi = {http://dx.doi.org/10.1109/PACT.2004.15},
+	 publisher = IEEE:pub,
+	 address = IEEE:addr,
+	 }
+
+	@techreport{
+knabe:choice-protocol,
+	author = "Frederick Knabe",
+	title = "A Distributed Protocol for Channel-based Communication
+		with Choice",
+	institution = "European Computer-industry Research Center",
+	number = "ECRC-92-16",
+	year = 1992, month = oct
+	}
+
+        @techreport{
+libnuma,
+        author = "Andi Kleen",
+        title = "A {NUMA} {API} for {Linux}",
+        institution = "{SUSE} Labs",
+        year = 2004,
+        month = aug,
+        note = "Available from \url{http://halobates.de/numaapi3.pdf}",
+        url = "http://halobates.de/numaapi3.pdf"
+        }
+
+        @inproceedings{
+coarse-grained-transactions,
+        author = {Koskinen, Eric and Parkinson, Matthew and Herlihy, Maurice},
+        title = {Coarse-grained transactions},
+        booktitle = POPL37,
+        year = POPL37:year,
+        pages = {19--30},
+        location = POPL37:loc,
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+        @inproceedings{
+multi-core-clojure,
+        author = {Kraus, Johann M. and Kestler, Hans A.},
+        title = {Multi-core parallelization in {Clojure}: a case study},
+        booktitle = ELW09,
+        year = {2009},
+        pages = {8--17},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @inproceedings{
+krumvieda:dml,
+        author = "Clifford D. Krumvieda",
+        title = "{DML}: Packaging High-level Distributed Abstractions in {SML}",
+        booktitle = ML91,
+        year = 1991, month = sep
+        }
+
+        @inproceedings{
+krumvieda:dml-fault-tolerant,
+        author = "Clifford D. Krumvieda",
+        title = "Expressing Fault-tolerant and Consistency-preserving Programs
+                in {Distributed ML}",
+        booktitle = ML92,
+        year = 1992, month = jun,
+        pages = "157-162"
+        }
+
+        @phdthesis{
+krumvieda:phd-thesis,
+        author = "Clifford D. Krumvieda",
+        title = "Distributed {ML}:
+                Abstractions for Efficient and Fault-Tolerant Programming",
+        school = cornell-cs,
+        address = "Ithaca, NY",
+        year = 1993, month = aug,
+        note = "Available as Technical Report TR 93-1376."
+        }
+
+	@inproceedings{
+optimistic-parallel-abstraction,
+	author = "Milind Kulkarni and Keshav Pingali and Bruce Walter
+		and Ganesh Ramanarayanan and Kavita Bala and L. Paul Chew",
+	title = "Optimistic Parallelism Requires Abstractions",
+	booktitle = PLDI07,
+	year = {2007}, month = PLDI07:month,
+	pages = "211-222",
+	location = PLDI07:loc,
+	doi = {http://doi.acm.org/10.1145/1250734.1250759},
+	publisher = ACM:pub,
+	address = ACM:addr
+	}
+
+	@inproceedings{
+lonestar-suite,
+	author = "Milind Kulkarni and Martin Burtscher and
+	C{\u{a}}lin Ca{\c{s}}caval and Keshav Pingali",
+	title = "Lonestar: A suite of parallel irregular programs",
+	booktitle = ISPASS09,
+	year = 2009, month = ISPASS09:month,
+	pages = "65-76",
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+%	location = PLDI07:loc,
+%	doi = {http://doi.acm.org/10.1145/1250734.1250759},
+
+	@inproceedings{
+parallel-best-fit-search,
+	author = "Vipin Kumar and K. Ramesh and V. Nageshwara Rao",
+	title = "Parallel Best-fit Search of State-space Graphs: {A} summary of results",
+	booktitle = AAAI88,
+	year = 1988, month = AAAI88:month,
+	pages = "122-127"
+	}
+
+	@inproceedings{lvars-fhpc,
+         author = {Kuper, Lindsey and Newton, Ryan R.},
+         title = {LVars: lattice-based data structures for deterministic parallelism},
+         booktitle = {FHPC'13},
+         year = {2013},
+         location = {Boston, Massachusetts, USA},
+         pages = {71--84},
+         publisher = acm:pub,
+         address = acm:addr,
+	}
+
+	@inproceedings{freeze-after-writing,
+ 	author = {Kuper, Lindsey and Turon, Aaron and Krishnaswami, Neelakantan R. and Newton, Ryan R.},
+ 	title = {Freeze After Writing: Quasi-deterministic Parallel Programming with LVars},
+	 booktitle = {POPL'14},
+ 	year = {2014},
+	location = {San Diego, California, USA},
+ 	pages = {257--270},
+ 	publisher = acm:pub,
+ 	address = acm:addr,
+	}
+
+	@inproceedings{lvars-pldi,
+	author = {Kuper, Lindsey and Todd, Aaron and {Tobin-Hochstadt}, Sam and Newton, Ryan},
+	title = {Taming the parallel effect zoo},
+	booktitle = {PLDI'14},
+	year={2014},
+	location = {Edinburgh, UK},
+	publisher=acm:pub,
+	address = acm:addr
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% LLL %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@article{
+sequential-consistency,
+	author={Lamport, L.},
+	journal=IEEE-COMPUTER,
+	title={How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Programs},
+	year={1979},
+	month={Sep},
+	volume={C-28},
+	number={9},
+	pages={690 -691},
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr
+	}
+
+	@inproceedings{
+barracuda,
+	author = {Larsen, Bradford},
+	title = {Simple optimizations for an applicative array language for graphics processors},
+	booktitle = DAMP11,
+	year = {2011}, month = DAMP11:month,
+	isbn = {978-1-4503-0486-3},
+	location = DAMP11:loc,
+	pages = {25--34},
+	numpages = {10},
+	url = {http://doi.acm.org/10.1145/1926354.1926360},
+	doi = {http://doi.acm.org/10.1145/1926354.1926360},
+	acmid = {1926360},
+	publisher = ACM:pub,
+	address = ACM:pub,
+	keywords = {array programming, cuda, gpgpu}
+	}
+
+        @article{
+dynamic-hash,
+        author = {Larson, Per-\AAke},
+        title = {Dynamic hash tables},
+        journal = CACM,
+        issue_date = {April 1988},
+        volume = {31},
+        number = {4},
+        month = apr,
+        year = {1988},
+        issn = {0001-0782},
+        pages = {446--457},
+        numpages = {12},
+        doi = {10.1145/42404.42410},
+        acmid = {42410},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+       @mastersthesis{
+lattner:masters-thesis,
+        author  = {Chris Lattner},
+        title   = "{LLVM}: An Infrastructure for Multi-Stage Optimization",
+        school  = UIUC-CS,
+        address = UIUC-CS:addr,
+        year    = {2002},
+        month   = dec
+        }
+
+	@inproceedings{
+bossa-nova,
+	title="{Bossa} {Nova}: Introducing Modularity into the {Bossa} Domain-Specific Language",
+	author={Lawall, J.L. and Duchesne, H. and Muller, G. and Le Meur, A.},
+	booktitle = GPCE05,
+	series= LNCS,
+	volume = GPCE05:volume,
+	year = 2005, month = GPCE05:month,
+	publisher = springer:pub,
+	address = springer:addr,
+	pages = "78-93"
+	}
+
+       @conference{
+bossa-hierarchies:lawal,
+       title={Language Design for Implementing Process Scheduling Hierarchies},
+       author={Lawall, J.L. and Muller, G. and Duchesne, H.},
+       booktitle={Symposium on Partial Evaluation and Program Manipulation},
+       year={2004}
+       }
+
+	@inproceedings{
+bossa-verification:lawal,
+       author = {Julia L. Lawall and Gilles Muller and Luciano Porto Barreto},
+       title = {Capturing OS expertise in an event type system: the Bossa experience},
+       booktitle = {EW10: Proceedings of the 10th workshop on ACM SIGOPS European workshop},
+       year = {2002},
+       pages = {54--61},
+       location = {Saint-Emilion, France},
+       doi = {http://doi.acm.org/10.1145/1133373.1133384},
+       publisher = ACM:pub,
+       address = ACM:pub,
+       }
+
+	@book{
+concur-prog-in-java-2ed,
+	title = "Concurrent Programming Java: Design Principles and Patterns",
+	edition = "2nd",
+	author = "Doug Lea",
+	year = 1999,
+	publisher = prentice-hall:pub,
+	address = prentice-hall:addr
+	}
+
+        @inproceedings{
+java-fork-join,
+        author = "Doug Lea",
+        title = {A {J}ava Fork/Join Framework},
+        booktitle = JAVA00,
+        year = {2000},
+        pages = {36--43},
+        location = JAVA00:loc,
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+cilk-plus-plus,
+	 author = {Leiserson, Charles E.},
+	 title = {The {Cilk++} concurrency platform},
+	 booktitle = DAC09,
+	 year = {2009},
+	 pages = {522--527},
+	 location = {San Francisco, California},
+	 doi = {http://doi.acm.org/10.1145/1629911.1630048},
+	 publisher = ACM:pub,
+	 address = ACM:addr
+	 }
+
+	@inproceedings{
+staged-allocation,
+	 author = {Olinsky, Reuben and Lindig, Christian and Ramsey, Norman},
+	 title = {Staged allocation: a compositional technique for specifying and implementing procedure calling conventions},
+	 booktitle = POPL33,
+	 year = POPL33:year,
+	 pages = {409--421},
+	 doi = {http://doi.acm.org/10.1145/1111037.1111073},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+         @inproceedings{
+dp-incrementalization,
+         author = {Liu, Yanhong A. and Stoller, Scott D.},
+         title = {Dynamic Programming via Static Incrementalization},
+         booktitle =    ESOP99,
+         series =       LNCS,
+         pages = {288--305},
+         year =         1999,
+         publisher =    springer:pub,
+         address =      springer:addr
+         }
+
+@inproceedings{
+compiling-join-patterns,
+        author = "Fabrice {Le Fessant} and Luc Maranget",
+        title = "Compiling Join-Patterns",
+	booktitle = HLCL98,
+        series = ENTCS,
+        volume = HLCL98:volume, number = HLCL98:number,
+        year = 1998, month = HLCL98:month,
+        publisher = elsevier:pub,
+	pages = "205-224"
+	}
+
+        @inproceedings{
+leroy-unboxed,
+        author = {Leroy, Xavier},
+        title = {Unboxed objects and polymorphic typing},
+        booktitle = POPL19,
+        year = POPL19:year,
+        location = POPL19:loc,
+        pages = {177--188},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @Manual{
+ocaml-manual-3.0,
+        title = "The Objective Caml System (release 3.00)",
+        author = "Xavier Leroy",
+        year = 2000, month = apr,
+        note = "Available from \url{http://caml.inria.fr}"
+        }
+
+        @article{
+leroy:exns,
+        author = {Xavier Leroy and Fran\c{c}ois Pessaux},
+        title = {Type-based analysis of uncaught exceptions},
+        journal = TOPLAS,
+        volume = {22},
+        number = {2},
+        year = {2000},
+        pages = {340--377},
+        publisher = ACM:pub,
+        address = ACM:pub,
+        }
+
+	@phdthesis{
+roman:phd-thesis,
+	author = "Roman Leshchinskiy",
+	title = "Higher-Order Nested Data Parallelism: Semantics and Implementation",
+	school = "Technische Universit{\"{a}}t Berlin",
+	address = "Berlin, Germany",
+	year = 2005
+	}
+
+	@inproceedings{
+ho-flattening,
+	author = {Roman Leshchinskiy and Manuel M. T. Chakravarty and Gabriele Keller},
+	title = {Higher Order Flattening},
+	booktitle = ICCS06,
+	year = 2006, month = ICCS06:month,
+	editor = {V. Alexandrov and D. van Albada and P. Sloot and J. Dongarra},
+	series = {LNCS}, number = 3992,
+	publisher = springer:pub,
+	address = springer:addr,
+	pages = "920-928"
+	}
+
+	@inproceedings{
+multithreaded-sat-solving,
+	author = "Matthew Lewis and Tobias Schubert and Bernd Becker",
+	title = "Multithreaded {SAT} Solving",
+	booktitle = ASP-DAC12,
+	year = ASP-DAC12:year, month = ASP-DAC12:month,
+	publisher = IEEE-PRESS:pub,
+	address = IEEE-PRESS:addr,
+	pages = "926-931"
+	}
+
+	@inproceedings{
+ada-tasks-to-monitors,
+	author = {Bangqing Li and Baowen Xu and Huiming Yu},
+	title = {Transforming Ada serving tasks into protected objects},
+	booktitle = "Proceedings of the
+		1998 Annual {ACM} {SIGAda} International Conference on {Ada}",
+	year = {1998}, month = nov,
+	pages = {240-245},
+	location = {Washington, D.C., United States},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@PhdThesis{
+pengli:phd-thesis,
+	author = {Peng Li},
+	title = {Programmable concurrency in a pure and lazy language},
+	school = {University of Pensylvania},
+	year = 2008
+	}
+
+	@inproceedings{
+ghc-lw-conc,
+	author = {Peng Li and Simon Marlow and Simon {Peyton Jones} and Andrew Tolmach},
+	title = {Lightweight concurrency primitives for {GHC}},
+	booktitle = HASKELL07,
+	year = 2007, month = HASKELL07:month,
+	pages = {107-118},
+	location = HASKELL07:loc,
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+argus-impl,
+	author = "Liskov, B. and D. Curtis and P. Johnson and R. Scheifler",
+	title = "Implementation of {Argus}",
+	booktitle = SOSP11,
+	publisher = acm:pub,
+	address = acm:addr,
+	year = SOSP11:year, month = SOSP11:month,
+	pages = "111-122"
+	}
+
+        @article{
+alzain2006mhg,
+	title={{Managing Heterogeneity in a Grid Parallel Haskell}},
+	author={H. W. Loid and P. Trinder and G. Michaelson and A. Al Zain},
+	publisher=springer:pub,
+	address = springer:addr
+        }
+
+       @inproceedings{
+granularity-parallelism,
+        author = {Hans Wolfgang Loidl and Kevin Hammond},
+        title = {On the {G}ranularity of {D}ivide-and-{C}onquer {P}arallelism},
+        booktitle = GWFP95,
+        year = {1995},
+        pages = {8--10},
+        publisher = {Springer-Verlag}
+        }
+
+        @article{
+jfp-eden,
+        author = {Rita Loogen and Yolanda Ortega-Mall\'{e}n and Ri\cardo Pe{\~n}a-Mar\'{i}},
+        title = {Parallel {F}unctional {P}rogramming in {E}den},
+        journal = JFP,
+        volume = {15},
+        number = {3},
+        year = {2005},
+        pages = {431--475},
+        publisher = CUP:pub,
+        address = CUP:addr
+        }
+
+        @article{
+lopez:granularity-control,
+	author = {Lopez, P. and Hermenegildo, M. and Debray, S.},
+	title = {A methodology for granularity-based control of parallelism in logic programs},
+	journal = JSC,
+	volume = {21},
+	issue = {4-6},
+	month = jun,
+	year = {1996},
+	issn = {0747-7171},
+	pages = {715--734},
+	numpages = {20},
+	url = {http://dx.doi.org/10.1006/jsco.1996.0038},
+	doi = {http://dx.doi.org/10.1006/jsco.1996.0038},
+	acmid = {241165},
+	publisher = academic-press:pub,
+	address = academic-press:addr
+	}
+
+        @inproceedings{
+scott:deterministic-semantics,
+        author = {Lu, Li and Scott, Michael L.},
+        title = {Toward a formal semantic framework for deterministic parallel programming},
+        booktitle = DISC11,
+        year = {2011},
+        location = {Rome, Italy},
+        pages = {460--474},
+        publisher = springer:pub,
+        address = springer:addr
+        }
+
+	@PhdThesis{
+lucassen:phd-thesis,
+	author = {John M. Lucassen},
+	title = {Types and Effects: Towards the Integration of Functional and Imperative Programming},
+	school = mit,
+	year = 1987
+	}
+
+	@InProceedings{
+poly-effect-systems,
+	author = {John M. Lucassen and David K. Gifford},
+	title =	 {Polymorphic Effect Systems},
+	booktitle =	 POPL15, year = POPL15:year,
+	pages =	 {47--57},
+	publisher =	 acm:pub,
+	address =      acm:addr
+	}
+
+        @book{
+luckham:specs,
+        author = {David Luckham},
+        title = {Programming with Specifications},
+        publisher = springer:pub,
+        year = 1990,
+        series = {Texts and Monographs in Computer Science}
+        }
+
+        @article{
+hashing,
+        author = {Lum, V. Y. and Yuen, P. S. T. and Dodd, M.},
+        title = {Key-to-address transform techniques: {A} fundamental performance study on large existing formatted files},
+        journal = CACM,
+        issue_date = {April 1971},
+        volume = {14},
+        number = {4},
+        month = apr,
+        year = {1971},
+        issn = {0001-0782},
+        pages = {228--239},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @article{
+aurora,
+        author = {Lusk, Ewing and Butler, Ralph and Disz, Terrence and Olson, Robert and Overbeek, Ross and Stevens, Rick and Warren, D.H.D. and Calderwood, Alan and Szeredi, P\'{e}ter and Haridi, Seif and Others},
+        title = {{The Aurora or-parallel Prolog system}},
+        issn = {0288-3635},
+        journal = NGC,
+        month = feb,
+        number = {2},
+        pages = {243--271},
+        publisher = springer:pub,
+        volume = {7},
+        year = {1990}
+        }
+
+
+%%%%%%%%%%%
+%%%     %%%
+%%% MMM %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inproceedings{
+nikola,
+	author = {Geoffrey Mainland and Greg Morrisett},
+	title = {Nikola: Embedding Compiled {GPU} Functions in {Haskell}},
+	booktitle = HASKELL10,
+	year = {2010}, month = HASKELL10:month,
+	location = HASKELL10:loc,
+        publisher = ACM:pub,
+        address = ACM:addr,
+	pages = "67-78"
+	}
+
+        @manual{
+jocaml-manual-3.11,
+        title = "{The {JoCaml} Language Release 3.11 Documentation and User's Manual}",
+        author= "Louis Mandel and Luc Maranget",
+        year = 2008,
+        month = dec,
+        note = "Available from \url{http://jocaml.inria.fr/manual/index.html}"
+        }
+
+        @inproceedings{
+java-memory-model,
+        author = {Manson, Jeremy and Pugh, William and Adve, Sarita V.},
+        title = {The {Java} memory model},
+        booktitle = POPL32,
+        year = {2005},
+        isbn = {1-58113-830-X},
+        pages = {378--391},
+        location = {Long Beach, California, USA},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+partial-eval-for-concur,
+	author = "Mihnea Marinescu and Benjamin Goldberg",
+	title = "Partial-evaluation techniques for concurrent programs",
+	booktitle = PEPM97,
+	year = 1997, month = PEPM97:month,
+	pages = "47-62"
+	}
+
+	@inproceedings{
+haskell-apply,
+	author = "Simon Marlow and Simon {Peyton Jones}",
+	title = "Making a Fast Curry: Push/Enter vs. Eval/Apply for Higher-order Languages",
+	booktitle = ICFP04,
+	year = 2004, month = ICFP04:month,
+	publisher = acm:pub,
+	address = acm:addr
+	}
+	
+	@inproceedings{
+	ghc-local-heap-multicore,
+ 	author = {Simon Marlow and Simon {Peyton Jones}},
+ 	title = {Multicore Garbage Collection with Local Heaps},
+ 	booktitle = ISMM11,
+ 	year = {2011},
+ 	publisher = acm:pub,
+ 	address = acm:addr,
+	location = {San Jose, California, USA},
+ 	pages = {21--32},
+ 	numpages = {12},
+ 	url = {http://doi.acm.org/10.1145/1993478.1993482},
+ 	doi = {10.1145/1993478.1993482},
+	}
+
+	@inproceedings{
+async-exns,
+	author = "Simon Marlow and Simon {Peyton Jones} and Andrew Moran and John Reppy",
+	title = "Asynchronous exceptions in {Haskell}",
+	booktitle = PLDI01,
+	month = PLDI01:month, year = 2001,
+	pages = "274-285"
+	}
+
+	@inproceedings{
+multicore-haskell,
+	author = "Simon Marlow and Simon {Peyton Jones} and Satnam Singh",
+	title = "Runtime Support for Multicore {Haskell}",
+	booktitle = ICFP09,
+	year = 2009, month = ICFP09:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "65-77"
+	}
+
+	@inproceedings{par-monad,
+ 	author = "Simon Marlow and Ryan Newton and Simon {Peton Jones}",
+ 	title = "A Monad for Deterministic Parallelism",
+ 	booktitle = {Proceedings of the 4th ACM Symposium on Haskell},
+ 	year = 2011,
+ 	pages = "71--82",
+	 publisher = acm:pub,
+	 address = acm:addr
+	}
+
+	@inproceedings{
+comm-topology-analysis,
+	author = "Matthieu Martel and Marc Gengler",
+	title = "Communication topology analysis for concurrent programs",
+	booktitle = "7th International {SPIN} Workshop",
+	publisher = springer:pub,
+	address = springer:addr,
+	month = sep, year = 2000,
+	series = lncs,
+	volume = 1885,
+	pages = "265-286"
+	}
+
+	@inproceedings{
+non-concurrency,
+	author = {Stephen P. Masticola and Barbara G. Ryder},
+	title = {Non-concurrency analysis},
+	booktitle = PPoPP93,
+	year = {1993}, month = PPoPP93:month,
+	pages = {129-138},
+	location = PPoPP93:loc,
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@inproceedings{
+mccarthy63basis,
+	author = "John McCarthy",
+	title = "{A Basis for a Mathematical Theory of Computation}",
+	booktitle = "Computer Programming and Formal Systems",
+	publisher = "North-Holland, Amsterdam",
+	editor = "P. Braffort and D. Hirschberg",
+	pages = "33--70",
+	year = "1963",
+	url = "citeseer.ist.psu.edu/mccarthy63basis.html"
+	}
+
+	@InProceedings{
+mcbride-clowns,
+	 author = {McBride, Conor},
+	 title = {Clowns to the left of me, jokers to the right (pearl): dissecting data structures},
+         booktitle = POPL35,
+         month = POPL35:month,
+	 year = POPL35:year,
+	 pages = {287--295},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+
+        @misc{
+mcbride:type-derivative,
+	  author = {Conor Mcbride},
+	  title = {The Derivative of a Regular Type is its Type of One-Hole Contexts (Extended Abstract)},
+	  year = {2001}
+	}
+
+        @techreport{
+stream,
+        author = {John D. McCalpin},
+        title = {STREAM: Sustainable Memory Bandwidth in High Performance Computers},
+        institution = {University of Virginia},
+        year = {1991-2007},
+        address = {Charlottesville, Virginia},
+        note = {A continually updated technical report. \url{http://www.cs.virginia.edu/stream/}},
+        url = {http://www.cs.virginia.edu/stream/}
+        }
+
+
+        @inproceedings{
+memphis,
+        author = {McCurdy, Collin and Vetter, Jeffrey},
+        title = {{Memphis: Finding and Fixing NUMA-related Performance Problems on Multi-core Platforms}},
+        booktitle = ISPASS10,
+        year = {2010},
+        publisher = IEEE-PRESS:pub,
+        address = IEEE-PRESS:addr
+        }
+
+        @inproceedings{
+hera-jvm,
+        author = {McIlroy, Ross and Sventek, Joe},
+        title = {Hera-JVM: a runtime system for heterogeneous multi-core architectures},
+        booktitle = OOPSLA10,
+        year = {2010},
+        location = {Reno/Tahoe, Nevada, USA},
+        pages = {205--222},
+        doi = {http://doi.acm.org/10.1145/1869459.1869478},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+@article{
+ticket-locks,
+        author = {Mellor-Crummey, John M. and Scott, Michael L.},
+        title = {Algorithms for scalable synchronization on shared-memory multiprocessors},
+        journal = TOCS,
+        volume = {9},
+        number = {1},
+        month = feb,
+        year = {1991},
+        pages = {21--65},
+        numpages = {45},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @inproceedings{
+gpu-points-to,
+        author = {Mendez-Lojo, Mario and Burtscher, Martin and Pingali, Keshav},
+        title = {{A GPU implementation of inclusion-based points-to analysis}},
+        booktitle = PPoPP12,
+        year = {2012}, month = PPoPP12:month,
+        isbn = {978-1-4503-1160-1},
+        location = PPoPP12:loc,
+        pages = {107--116},
+        numpages = {10},
+        publisher = ACM:pub,
+        address = ACM:addr
+       }
+
+       	@InProceedings{
+estimating-execution-times,
+	author = "Edison Mera and Pedro L{\'{o}}pez-Garc{\'{i}}a and Germ{\'{a}}n Puebla
+		and Manuel Carro and and ManuelÊV. Hermenegildo",
+	title = "Combining Static Analysis and Profiling for Estimating Execution Times",
+	booktitle = PADL07,
+	year = 2007,
+	month = PADL07:month,
+	series = LNCS,
+	volume = PADL07:vol,
+	publisher = springer:pub,
+	address = springer:addr,
+	pages = "140-154"
+	}
+
+	@inproceedings{
+mercouroff:analyzing-csp,
+	author = "Nicholas Mercouroff",
+	title = "An algorithm for analyzing communicating processes",
+	booktitle = "7th International Conference on the Mathematical
+		Foundations of Programming Semantics",
+	location = "Pittsburgh, PA",
+	month = mar, year = 1991,
+	series = lncs,
+	volume = 598,
+	publisher = springer:pub,
+	address = springer:addr,
+	pages = "312-325"
+	}
+
+        @inproceedings{
+gpu-graphs,
+        author = {Merrill, Duane and Garland, Michael and Grimshaw, Andrew},
+        title = {{Scalable GPU graph traversal}},
+        booktitle = PPOPP12,
+        year = {2012}, month = PPoPP12:month,
+        isbn = {978-1-4503-1160-1},
+        location = PPoPP12:loc,
+        pages = {117--128},
+        numpages = {12},
+        doi = {10.1145/2145816.2145832},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+       	@inproceedings{
+fast-concur-queues,
+	author = {Maged M. Michael and Michael L. Scott},
+	title = {Simple, fast, and practical non-blocking and blocking
+		concurrent queue algorithms},
+	booktitle = PODC96,
+	year = {1996}, month = PODC96:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "267-275"
+	}
+% 	isbn = {0-89791-800-2},
+%	location = {Philadelphia, Pennsylvania, United States},
+%	doi = {http://doi.acm.org/10.1145/248052.248106},
+
+	@article{
+memo-functions,
+	author = "Donald Michie",
+	title = {"{M}emo" Functions and Machine Learning},
+	journal = "Nature",
+	volume = 218,
+	year = 1968, month = apr,
+	pages = "19-22"
+	}
+
+        @article{
+midtgaard-cfa-survey,
+        author = {Midtgaard, Jan},
+        title = {Control-flow analysis of functional programs},
+        journal = SURVEYS,
+        issue_date = {June 2012},
+        volume = {44},
+        number = {3},
+        month = jun,
+        year = {2012},
+        pages = {10:1--10:33},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@phdthesis{
+might:environment-analysis,
+	 author = {Might, Matthew},
+	 title = {Environment Analysis of Higher-Order Languages},
+	 year = {2007},
+	 school = {Georgia Institute of Technology},
+         address = {Atlanta, GA, USA}
+	 }
+
+        @inproceedings{
+might:shape,
+        author = {Might, Matthew},
+        title = {Shape analysis in the absence of pointers and structure},
+        booktitle = VMCAI10,
+        year = {2010},
+        location = {Madrid, Spain},
+        pages = {263--278},
+        numpages = {16},
+	publisher = springer:pub,
+	address = springer:addr
+        }
+
+        @inproceedings{
+might:delta,
+        author = {Might, Matthew and Shivers, Olin},
+        title = {Environment analysis via {$\Delta$}{CFA}},
+        booktitle = POPL33,
+        year = {2006},
+        isbn = {1-59593-027-2},
+        pages = {127--140},
+        location = {Charleston, South Carolina, USA},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @inproceedings{
+might:gamma,
+        author = {Might, Matthew and Shivers, Olin},
+        title = {Improving flow analyses via {$\Gamma$}{CFA}: abstract garbage collection and counting},
+        booktitle = ICFP06,
+        year = {2006},
+        location = {Portland, Oregon, USA},
+        pages = {13--25},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@article{
+milewski:fun-data-structures,
+	author = "Jaroslaw Milewski",
+	title = "Functional Data Structures as Updatable Objects",
+	journal = IEEE-SOFTWARE,
+	volume = 16, number = 12,
+	year = 1990, month = dec,
+	pages = "1427-1432"
+	}
+
+	@Book{
+sml97-definition,
+	title = "The {D}efinition of {Standard} {ML} (Revised)",
+	author = "Robin Milner and Mads Tofte and Robert Harper and David MacQueen",
+	publisher = mit-press:pub,
+	address = mit-press:addr,
+	year = 1997
+	}
+
+	@article{
+monadic-schedules:mirani,
+	author = {Rajiv Mirani and Paul Hudak},
+	title = {First-class monadic schedules},
+	journal = TOPLAS,
+	volume = {26}, number = {4},
+	year = {2004}, month = jul,
+	pages = {609--651},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+      @inproceedings{
+monadic-scheduler-and-virtual-maps:hudak,
+       author = {Rajiv Mirani and Paul Hudak},
+       title = {First-class schedules and virtual maps},
+       booktitle = {FPCA '95: Proceedings of the seventh international conference on Functional programming languages and computer architecture},
+       year = {1995},
+       pages = {78--85},
+       location = {La Jolla, California, United States},
+       doi = {http://doi.acm.org/10.1145/224164.224185},
+       publisher = ACM:pub,
+       address = ACM:addr,
+       }
+
+	@misc{
+mlton,
+	author = "{MLton}",
+	title = "The {MLton} {S}tandard {ML} compiler",
+	note = "Available at \url{http://mlton.org}"
+	}
+
+	@misc{
+mlton-concur,
+	author = "{MLton}",
+	title = "{Concurrent} {ML}",
+	note = "Available at \url{http://mlton.org/ConcurrentML}"
+	}
+
+	@misc{
+mlton-concur-impl,
+	author = "{MLton}",
+	title = "{Concurrent} {ML} {Implementation}",
+	note = "Available at \url{http://mlton.org/ConcurrentMLImplementation}"
+	}
+
+	@inproceedings{
+lazy-task-creation,
+	author = {Eric Mohr and David A. Kranz and Robert H. {Halstead Jr.}},
+	title = {Lazy task creation: a technique for increasing the granularity of parallel programs},
+	booktitle = LISP90,
+	year = {1990}, month = LISP90:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = {185-197}
+	}
+
+	@article{
+mogul:network-locality,
+	 author = {Mogul, Jeffrey C.},
+	 title = {Network locality at the scale of processes},
+	 journal = TOCS,
+	 volume = {10},
+	 number = {2},
+	 year = {1992},
+	 issn = {0734-2071},
+	 pages = {81--109},
+	 doi = {http://doi.acm.org/10.1145/128899.128900},
+	 publisher = acm:pub,
+	 address = acm:addr,
+	 }
+
+
+	@phdthesis{
+mohr:lazy-task-creation,
+	 author = {Mohr, Eric},
+	 title = {Dynamic partitioning of parallel Lisp programs},
+	 year = {1992},
+	 order_no = {UMI Order No. GAX92-35551},
+	 publisher = {Yale University},
+	 address = {New Haven, CT, USA},
+	 }
+
+
+         @inproceedings{
+transactional-semantics,
+         author = {Moore, Katherine F. and Grossman, Dan},
+         title = {High-level small-step operational semantics for transactions},
+         booktitle = POPL35,
+         year = {2008},
+         location = {San Francisco, California, USA},
+         pages = {51--62},
+         publisher = acm:pub,
+         address = acm:addr,
+        }
+
+	@article{
+moore:cramming,
+	author = "Gordon E. Moore ",
+	title = "Cramming more components onto integrated circuits",
+	journal = "Electronics",
+	year = 1965, month = apr,
+	volume = 38,
+	pages = "114-117",
+	url = "http://download.intel.com/research/silicon/moorespaper.pdf"
+	}
+
+	@inproceedings{
+pcks-machine,
+	author = "Luc Moreau",
+	title = "The {PCKS} Machine: an Abstract Machine for Sound Evaluation of Parallel Functional
+		Programs with First Class Continuations",
+	booktitle = ESOP94,
+	series = LNCS,
+	publisher = springer:pub,
+	address = springer:addr,
+	year = 1994, month = ESOP94:month,
+	pages = "424-438"
+	}
+
+	@inproceedings{
+procs-n-locks,
+	author = "J. Gregory Morrisett and Andrew Tolmach",
+	title = "Procs and Locks: A Portable Multiprocessing Platform for
+		{Standard} {ML} of {New} {Jersey}",
+	booktitle = PPoPP93,
+	year = 1993, month = PPoPP93:month,
+	pages = "198-207",
+	note = "An earlier version is available as {CMU} report {CMU-CS-92-155}"
+	}
+
+        @article{
+consistency-survey,
+        author = {Mosberger, David},
+        title = {Memory consistency models},
+        journal = SIGOPSR,
+        volume = {27},
+        number = {1},
+        year = {1993},
+        pages = {18--26},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+trellis-owl:concur,
+	author = "J.E.B. Moss and W.H. Kohler",
+	title = "Concurrency features for the Trellis/Owl language",
+	booktitle = ECOOP1,
+	series = LNCS,
+	publisher = springer:pub,
+	address = springer:addr,
+	volume = 276,
+	year = ECOOP1:year,
+	pages = "171-180"
+	}
+
+        @book{
+modern-compiler-impl,
+        author = {Stephen Muchnick},
+        title = {Advanced Compiler Design and Implementation},
+	publisher = "Morgan Kaufmann Publishers",
+        year = {1997}
+        }
+
+	@inproceedings{
+kernel-scheduler-framework,
+	title = {A Framework for Simplifying the Development of Kernel
+		Schedulers: Design and Performance Evaluation},
+	author = {Gilles Muller and Julia L. Lawall and Herv{\'e} Duchesne},
+	booktitle = HASE05,
+	year = 2005, month = oct,
+	location = {Heidelberg, Germany},
+	pages = {56-65}
+	}
+
+	@misc{
+opencl-spec-v1_2,
+        author = "{Khronos OpenCL Working Group}",
+        editor = "Munshi, Aaftab",
+	year = 2011, month = nov,
+        title = "{OpenCL 1.2 Specification}",
+        note = "Available from \url{http://www.khronos.org/registry/cl/specs/opencl-1.2.pdf}",
+        url = "http://www.khronos.org/registry/cl/specs/opencl-1.2.pdf"
+        }
+
+	@inproceedings{
+fair-stateless-model-checking,
+	 author = {Musuvathi, Madanlal and Qadeer, Shaz},
+	 title = {Fair stateless model checking},
+	 booktitle = PLDI08,
+	 year = {2008},
+	 pages = {362--371},
+	 location = {Tucson, AZ, USA},
+	 doi = {http://doi.acm.org/10.1145/1375581.1375625},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+
+	@inproceedings{
+context-bounded-model-checking,
+	author = "Madanlal Musuvathi and Shaz Qadeer",
+	title = "Iterative context bounding for systematic testing of multithreaded programs",
+	booktitle = PLDI07,
+	publisher = ACM:pub,
+	address = ACM:addr,
+	year = 2007, month = PLDI07:month,
+	location = PLDI07:loc,
+	pages = "446-455"
+	}
+
+        @inproceedings{
+streaming-ndp ,
+        author = {Madsen, Frederik M. and Filinski, Andrzej},
+        title = {Towards a Streaming Model for Nested Data Parallelism},
+        booktitle = {Proceedings of the 2nd ACM SIGPLAN Workshop on Functional High-performance Computing},
+        series = {FHPC '13},
+        year = {2013},
+        location = {Boston, Massachusetts, USA},
+        pages = {13--24},
+        numpages = {12},
+        url = {http://doi.acm.org/10.1145/2502323.2502330},
+        doi = {10.1145/2502323.2502330},
+        acmid = {2502330},
+        publisher = {ACM},
+        address = {New York, NY, USA},
+        keywords = {cost semantics, dataflow networks, space efficiency},
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% NNN %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@article{
+narlikar:space-efficient-ndp,
+	 author = {Narlikar, Girija J. and Blelloch, Guy E.},
+	 title = {Space-efficient scheduling of nested parallelism},
+	 journal = TOPLAS,
+	 volume = {21},
+	 number = {1},
+	 year = {1999},
+	 issn = {0164-0925},
+	 pages = {138--173},
+	 doi = {http://doi.acm.org/10.1145/314602.314607},
+	 publisher = acm:pub,
+	 address = acm:addr,
+	 }
+
+	@inproceedings{quasi-safe-futures,
+ 	author = {Navabi, Armand and Zhang, Xiangyu and Jagannathan, Suresh},
+ 	title = {Quasi-static Scheduling for Safe Futures},
+ 	booktitle = {PPOPP'08},
+  	year = {2008},
+ 	location = {Salt Lake City, UT, USA},
+ 	pages = {23--32},
+ 	publisher = acm:pub,
+ 	address = acm:addr
+	}
+
+        @inproceedings{
+ho-concur-w-finite-topology,
+        author = "Hanne Riis Nielson and Flemming Nielson",
+        title = "Higher-order Concurrent Programs with Finite Communication
+                Topology",
+        booktitle = POPL21,
+        year = 1994, month = jan,
+        pages = "84-97"
+        }
+
+        @inproceedings{
+cml-to-process-algebras,
+        author = "Flemming Nielson and Hanne Riis Nielson",
+        title = "From {CML} to Process Algebras",
+        booktitle = CONCUR4,
+        publisher = springer:pub,
+        address = springer:addr,
+        series = LNCS,
+        volume = 715,
+        year = CONCUR4:year, month = aug,
+        pages = "493-508"
+        }
+
+	@book{
+principles-prog-analysis,
+	title = "Principles of Program Analysis",
+	author = "Flemming Nielson and Hanne Riis Nielson and Chris Hankin",
+	publisher = springer:pub,
+	address = springer:addr,
+	year = 1999
+	}
+
+	@manual{
+id90-manual,
+	author = "Rishiyur S. Nikhil",
+	title = "{ID} Language Reference Manual",
+	organization = "Laboratory for Computer Science, {MIT}",
+	address = "Cambridge, MA",
+	year = 1991, month = jul
+	}
+
+	@inproceedings{
+id-implementation,
+	author = "Rishiyur S. Nikhil",
+	title = "A Multithreaded Implementation of {Id} using {P-RISC} Graphs",
+	booktitle = "Proceedings of the 6th International Workshop on Languages and
+		Compilers for Parallel Computing",
+	year = 1994,
+	series = lncs, number = 768,
+	publisher = springer,
+	address = springer:addr,
+	pages = "390-405"
+	}
+
+	@book{
+ph-book,
+	author = "Rishiyur S. Nikhil and Arvind",
+	title = "Implicit Parallel Programming in {pH}",
+	publisher = "Morgan Kaufmann Publishers",
+	address = "San Francisco, CA",
+	year = 2001
+	}
+
+	@MISC{
+concurrent-clean,
+	    author = {Eric N\"{o}cker and Sjaak Smetsers and Marko van Eekelen and Rinus Plasmeijer},
+	    title = {Concurrent Clean},
+	    year = {1991}
+	}
+
+	@inproceedings{
+pegasus-gc,
+	author = {Steven C. North and John H. Reppy},
+	title = {Concurrent Garbage Collection on Stock Hardware},
+	booktitle = {Third International Conference on Functional
+		Programming Languages and Computer Architecture},
+	year = 1987, month = sep,
+	pages = "113-133"
+	}
+
+        @article{
+efficient-closure,
+        author = {Esko Nuutila},
+        title = {An Efficient Transitive Closure Algorithm for Cyclic Digraphs},
+        journal = IPL,
+        year = {1994},
+        volume = {52}
+        }
+
+        @misc{
+gputech,
+        author = {NVIDIA},
+        title = {{NVIDIA GPU Technical Conference}},
+        year = {2010},
+        location = {Newport Beach, California},
+        }
+
+        @misc{
+cuda,
+        author = {NVIDIA},
+        title = {{NVIDIA CUDA C Programming Guide}},
+        note = "Available from \url{http://developer.nvidia.com/category/zone/cuda-zone}",
+        url = {http://developer.download.nvidia.com/compute/DevZone/docs/html/C/doc/CUDA_C_Programming_Guide.pdf},
+        year = 2011
+        }
+
+        @misc{
+cudaPerf,
+        author = {NVIDIA},
+        title = {{NVIDIA CUDA C Best Practices Guide}},
+        url = {http://developer.download.nvidia.com/compute/DevZone/docs/html/C/doc/CUDA_C_Best_Practices_Guide.pdf},
+        year = 2011
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% OOO %%%
+%%%     %%%
+%%%%%%%%%%%
+
+        @article{
+local-reasoning,
+        author = {O'Hearn, Peter W.},
+        title = {Resources, concurrency, and local reasoning},
+        journal = TCS,
+        issue_date = {April, 2007},
+        volume = {375},
+        number = {1-3},
+        month = apr,
+        year = {2007},
+        pages = {271--307},
+        publisher = Elsevier:pub,
+        address = Elsevier:addr,
+        }
+
+	@article{
+future-of-micro,
+	author = "Kunle Olukotun and Lance Hammond",
+	title = "The Future of Microprocessors",
+	journal = "{ACM} {Queue}",
+	volume = 3, number = 7,
+	month = sep, year = 2005,
+	note = "Available from \url{http://www.acmqueue.org}."
+	}
+
+	@inproceedings{
+speculative-computation,
+	author = {Randy B. Osborne},
+	title = {Speculative computation in multilisp},
+	booktitle = LISP90,
+	year = {1990}, month = LISP90:month,
+	pages = {198--208},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+% isbn = {0-89791-368-X},
+% location = {Nice, France},
+% doi = {http://doi.acm.org/10.1145/91556.91644},
+
+%%%%%%%%%%%
+%%%     %%%
+%%% PPP %%%
+%%%     %%%
+%%%%%%%%%%%
+
+@INPROCEEDINGS{
+piecewise,
+    author = {Daniel W. Palmer and Jan F. Prins and Siddhartha Chatterjee and Rickard E. Faith},
+    title = {Piecewise Execution of Nested Data-Parallel Programs},
+    booktitle = {Languages and Compilers for Parallel Computing, volume 1033 of Lecture Notes in Computer Science},
+    year = {1995},
+    pages = {346--361},
+    publisher = {Springer-Verlag}
+}
+
+        @INPROCEEDINGS{
+palmer-ndp,
+        author = {Daniel W. Palmer and Jan F. Prins and Stephen Westfold},
+        title = {Work-Efficient Nested Data-Parallelism},
+        booktitle = FoMPP5,
+        year = FoMPP5:year,
+        pages = {186--193},
+        publisher = IEEE-PRESS:pub,
+        address = IEEE-PRESS:addr
+        }
+
+	@inproceedings{
+palsberg:type-based-anal,
+	author = "Jens Palsberg",
+	title = "Type-based analysis and applications",
+	booktitle = "PASTE'01",
+	year = 2001, month = jun,
+	pages = "20-27"
+	}
+
+	@incollection{
+essence-of-cml,
+	author = "Prakash Panangaden and John H. Reppy",
+	title = "The Essence of {Concurrent} {ML}",
+	editor = "Flemming Nielson",
+	booktitle = "ML with Concurrency",
+	publisher = springer:pub,
+	address = springer:addr,
+	chapter = "1",
+	year = 1997
+	}
+
+        @mastersthesis{
+papadopoulos:masters-thesis,
+        author = "Dionysios P. Papadopoulos",
+        title = "Hood: A User-Level Thread Library for Multiprogramming Multiprocessors",
+	school = "Department of Computer Sciences, University of Texas at Austin",
+	year = 1998,
+        url = "citeseer.ist.psu.edu/papadopoulos98hood.html"
+        }
+
+        @article{
+optix,
+        author = {Parker, Steven G. and Bigler, James and Dietrich, Andreas and Friedrich, Heiko and Hoberock, Jared and Luebke, David and McAllister, David and McGuire, Morgan and Morley, Keith and Robison, Austin and Stich, Martin},
+        title = {{OptiX}: a general purpose ray tracing engine},
+        journal = TOG,
+        issue_date = {July 2010},
+        volume = {29},
+        issue = {4},
+        month = {July},
+        year = {2010},
+        doi = {http://doi.acm.org/10.1145/1778765.1778803},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@article{
+parnas:spec,
+	author = {David L. Parnas},
+	title = {A technique for software module specification with examples},
+	journal = CACM,
+	volume = {15}, number = {5},
+	year = {1972}, month = may,
+	pages = {330-336},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+
+        @mastersthesis{
+pellerin:masters-thesis,
+        author = "Cl\'{e}ment Pellerin",
+        title = "The Concurrent Constraint Programming Language {Taskell}",
+        school = "School of Computer Science, McGill University",
+        address = "Montr\'{e}al, Qu\'{e}bec, Canada",
+        year = 1992, month = jan,
+        }
+
+        @inproceedings{
+stm-haskell-limits,
+        author = {Perfumo, Cristian and S\"{o}nmez, Nehir and Stipic, Srdjan and Unsal, Osman and Cristal, Adri\'{a}n and Harris, Tim and Valero, Mateo},
+        title = {The limits of software transactional memory ({STM}): {D}issecting {Haskell} {STM} applications on a many-core environment},
+        booktitle = CF08,
+        year = {2008}, month = CF08:month,
+	location = CF08:loc,
+        pages = {67--78},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @inproceedings{
+pettersson:match-comp,
+        title = "A Term Pattern-match Compiler Inspired by Finite Automata
+                Theory",
+        author = "Mikael Pettersson",
+        booktitle = CC4,
+        year = CC4:year, month = CC4:month,
+        publisher = springer:pub,
+        address = springer:addr,
+        series = LNCS, volume = 641,
+        pages = "258-270"
+        }
+
+        @inproceedings{
+harnessing-the-multicores,
+	author = {Simon {Peyton Jones} and Roman Leshchinskiy and Gabriele Keller and Manuel M. T. Chakravarty},
+	title = {Harnessing the {M}ulticores: {N}ested {D}ata {P}arallelism in {H}askell},
+	booktitle = APLAS08,
+	year = {2008},
+        month = APLAS08:month,
+	location = APLAS08:loc,
+	pages = {138--138},
+	numpages = {1},
+	publisher = springer:pub,
+	address = springer:addr
+	}
+
+        @inproceedings{
+compiling-by-trx,
+        author = "Simon {Peyton Jones}",
+        title = "{Compiling Haskell by Program Transformation:
+                  A Report from the Trenches}",
+        booktitle = {ESOP '96: Proceedings of the 6th European Symposium
+                     on Programming Languages and Systems},
+        year = {1996},
+        pages = {18--44},
+        publisher = springer:pub,
+        address = springer:addr
+        }
+
+	@inproceedings{
+concur-haskell,
+	author = "Simon {Peyton Jones} and Andrew Gordon and Sigbjorn Finne",
+	title = "Concurrent {Haskell}",
+	booktitle = POPL23,
+	year = POPL23:year, month = jan,
+	pages = "295-308",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{
+c--,
+	author = "Simon {Peyton Jones} and Thomas Nordin and Dino Oliva",
+	title = "{C--}: {A} Portable Assembly Language",
+	booktitle = IFL9,
+	publisher = springer:pub,
+	address = springer:addr,
+	series = LNCS,
+	volume = 1467,
+	year = IFL9:year, month = IFL9:month,
+	pages = "1-19"
+	}
+
+    @article{
+ghc-inliner,
+    author = {{Peyton Jones}, Simon and Marlow, Simon},
+    title = {Secrets of the {G}lasgow {H}askell {C}ompiler Inliner},
+    journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+    volume = {12},
+    number = {5},
+    month = jul,
+    year = {2002},
+    }
+
+	@incollection{
+awkward-squad,
+	author = "Simon {Peyton Jones}",
+	title = "Tackling the awkward squad: monadic input/output, concurrency,
+		exceptions, and foreign-language calls in {Haskell}",
+	booktitle = "Engineering Theories of Software Construction",
+	publisher = "{IOS} Press",
+	series = "{NTO} Science Series",
+	volume = 180,
+	editor = "Tony Hoare and Manfred Broy and Ralf Steinbruggen",
+	year = 2001,
+	pages = "47-96"
+	}
+
+	@inproceedings{
+ghc-rewriting,
+	author = "Simon {Peyton Jones} and Andrew Tolmach and Tony Hoare",
+	title = "Playing by the Rules: Rewriting as a practical
+		optimization technique in {GHC}",
+	booktitle = "Proceedings of the 2001 Haskell Workshop",
+	year = 2001, month = sep,
+	pages = "203-233"
+	}
+
+	@inproceedings{
+imprec-exns,
+	author = "Simon {Peyton Jones} and Alastair Reid and Fergus Henderson and Tony Hoare and Simon Marlow",
+	title = "A semantics for imprecise exceptions",
+	booktitle = PLDI99,
+	year = 1999, month = PLDI99:month,
+	pages = "25-36",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+      @conference{
+philbin1996vtn,
+	title={{Virtual Topologies: A New Concurrency Abstraction for High-Level Parallel Languages}},
+	author={Philbin, J. and Suresh Jagannathan, R.M.},
+	booktitle={Languages and Compilers for Parallel Computing: 8th International Workshop, LCPC'95, Columbus, Ohio, USA, August 10-12, 1995: Proceedings},
+	year={1996},
+	organization=springer:pub,
+        address=springer:addr
+      }
+
+	@article{
+pike:windows,
+	author = "Rob Pike",
+	title = "A concurrent window system",
+	journal = "Computing Systems",
+	volume = 2, number = 2,
+	year = 1989,
+	pages = "133-153"
+	}
+
+	@article{
+sawzall,
+	title = "Interpreting the Data: Parallel Analysis with Sawzall",
+	author = "Rob Pike and Sean Dorward and Robert Griesemer and Sean Quinlan",
+	volume = 13, number = 4,
+	journal = "Scientific Programming Journal",
+	publisher = "{IOS} Press",
+	address = "Amsterdam, Netherlands",
+	year = 2005,
+	pages = "227-298"
+	}
+
+        @article{
+plummer-distribution,
+	author = {{Plummer}, H.~C.},
+	title = "{On the problem of distribution in globular star clusters}",
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	year = 1911,
+	month = mar,
+	volume = 71,
+	pages = {460-470},
+	}
+
+	@inproceedings{programmable-spec-par,
+ 	author = {Prabhu, Prakash and Ramalingam, Ganesan and Vaswani, Kapil},
+ 	title = {Safe Programmable Speculative Parallelism},
+	booktitle = "PLDI'10",
+
+ 	year = {2010},
+	 location = {Toronto, Ontario, Canada},
+ 	pages = {50--61},
+ 	publisher = ACM:pub,
+ 	address = ACM:addr,
+	}
+
+        @inproceedings{
+prins-palmer-ft,
+        author = {Jan F. Prins and Daniel W. Palmer},
+        title = {Transforming High-Level Data-Parallel Programs into Vector Operations},
+        booktitle = PPoPP93,
+        year = {1993}, month = PPoPP93:month,
+	location = PPoPP93:loc,
+        pages = {119--128},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @mastersthesis{
+press:sml-s,
+        author = {David Press},
+        title = {High-level language support for stream programming on {GPU}s},
+        school = {The {U}niversity of {C}hicago},
+        address = {Chicago, IL},
+        month = Feb,
+        day = 15,
+        year = 2006
+        }
+
+        @inproceedings{
+proebsting:superoperators,
+        author = {Todd A. Proebsting},
+        title = {Optimizing an {ANSI} {C} interpreter with superoperators},
+        booktitle = POPL22,
+        year = POPL22:year, month = jan,
+        location = POPL22:loc,
+        pages = {322--332},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+        @phdthesis{
+pugh:incremental,
+         author = {Pugh, William W.},
+         title = {Incremental Computation and the Incremental Evaluation of Functional Programs},
+         year = {1988},
+         source = {http://www.ncstrl.org:8900/ncstrl/servlet/search?formname=detail\&id=oai%3Ancstrlh%3Acornellcs%3ACORNELLCS%3ATR88-936},
+         school = {Cornell University},
+         address = {Ithaca, NY, USA},
+         }
+
+        @inproceedings{
+pugh:replacement,
+         author = {Pugh, William},
+         title = {An improved replacement strategy for function caching},
+	 booktitle = LISP88,
+	 year = {1988}, month = LISP88:month,
+	 location = LISP88:loc,
+         pages = {269--276},
+         numpages = {8},
+         url = {http://doi.acm.org/10.1145/62678.62719},
+         doi = {10.1145/62678.62719},
+         acmid = {62719},
+         publisher = acm:pub,
+         address = acm:addr,
+         }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% QQQ %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@inproceedings{
+join-pattern-matching,
+        author =  "{Ma Qin} and Luc Maranget",
+        title = "Compiling Pattern-Matching in Join-Patterns",
+        booktitle = CONCUR15,
+        series = "LNCS",
+	volume = CONCUR15:vol,
+	year = CONCUR15:year, month = CONCUR15:month,
+        publisher = springer:pub,
+	address = springer:addr,
+	pages = "417-431"
+	}
+
+	@misc{
+qssc,
+        author = "QSSC",
+        title = "{QSSC-S4R Technical Product Specification}",
+        note = "Available from \url{http://www.qsscit.com/language_config/down.php?hDFile=S4R_TPS_1.0.pdf}"
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% RRR %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@mastersthesis{
+rainey:masters-paper,
+	author = "Mike Rainey",
+	title = "The {Manticore} Runtime Model",
+	year = 2007, month = jan,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+	@phdthesis{
+rainey:phd,
+	author = "Mike Rainey",
+	title = "Effective Scheduling Techniques for High-Level Parallel Programming Languages",
+	year = 2010, month = aug,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+       @inproceedings{
+rainey:prototyping-schedulers,
+       author = "Mike Rainey",
+       title = "Prototyping Nested Schedulers",
+       year = 2009,
+       booktitle = "Semantics Engineering with PLT Redex",
+       editor = "Matthias Felleisen and Robby Findler and Matthew Flatt",
+       publisher = {MIT Press},
+       address = {Cambridge, MA, USA}
+       }
+
+	@techreport{
+ramsey:concur,
+	author = "Norman Ramsey",
+	title = "Concurrent programming in {ML}",
+	number = "CS-TR-262-90",
+	institution = princeton-cs,
+	year = 1990, month = apr
+	}
+
+	@inproceedings{
+c--exceptions,
+	author = "Norman Ramsey and Simon {Peyton Jones}",
+	title = "A single intermediate language that supports multiple
+		implementations of exceptions",
+	booktitle = PLDI00,
+	year = 2000, month = PLDI00:month,
+	pages = "285-298"
+	}
+
+	@Unpublished{
+c--concur,
+	author = "Norman Ramsey and Simon {Peyton Jones}",
+	title = "Featherweight concurrency in a portable assembly language",
+	year = 2000, month = nov,
+	note = "Unpublished paper available at
+		\url{http://www.cminusminus.org/abstracts/c--con.html}"
+	}
+
+	@article{
+reeves:particle-systems,
+	author = {William T. Reeves},
+	title = {Particle Systems --- a Technique for Modeling a Class of Fuzzy Objects},
+	journal = TOG,
+	volume = {2},
+	number = {2},
+	year = {1983},
+	pages = {91-108},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+%%%	doi = {http://doi.acm.org/10.1145/357318.357320},
+
+	@PhdThesis{
+regehr:phd-thesis,
+	author = "John Regehr",
+	title = "{Using Hierarchical Scheduling to Support Soft
+        	 Real-Time Applications on General-Purpose Operating
+        	 Systems}",
+	year = "2001",
+	school = "University of Virginia"
+	}
+
+	@inproceedings {
+reig:annotations,
+	author = "Fermin Reig",
+	title = "Annotations for Portable Intermediate Languages",
+	booktitle = "Electronic Notes in Theoretical Computer Science",
+	volume = "59",
+	issue = "1",
+	publisher = Elsevier:pub,
+	address = Elsevier:addr,
+	editor = "Nick Benton and Andrew Kennedy",
+	year = "2001"
+	}
+
+	@book{
+reinders:intel-tbb,
+	author = "James Reinders",
+	title = "{Intel} Threading Building Blocks",
+	publisher = OREILLY:pub,
+	address = OREILLY:addr,
+	year = 2007
+	}
+
+        @inproceedings{
+found-for-prog-envs,
+        author = {John H. Reppy and Emden Gansner},
+        title = {A foundation for programming environments},
+        booktitle = PSDE86,
+        year = 1986,
+        month = Dec,
+        pages = {218-227},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+
+	@inproceedings{
+reppy:pml-events,
+	author = "John H. Reppy",
+	title = "Synchronous operations as first-class values",
+	booktitle = pldi88,
+	year = 1988, month = jun,
+	pages = "250-259"
+	}
+
+        @techreport{
+reppy:sml-syncops,
+        author = "John H. Reppy",
+        title = "First-class synchronous operations in {Standard ML}",
+        number = "TR 89-1068",
+        institution = cornell-cs,
+        year = 1989, month = dec
+        }
+
+	@techreport{
+reppy:signals,
+	author = "John H. Reppy",
+	title = "Asynchronous signals in {Standard ML}",
+	number = "TR 90-1144",
+	institution = cornell-cs,
+	address = cornell-cs:addr,
+	year = 1990, month = aug
+	}
+
+        @phdthesis{
+reppy:phd-thesis,
+        author = "John H. Reppy",
+        title = "Higher-order concurrency",
+        school = cornell-cs,
+        address = "Ithaca, NY",
+        year = 1992, month = jan,
+        note = "Available as Technical Report TR 92-1285."
+        }
+
+	@inproceedings{
+reppy:cml,
+	author = "John H. Reppy",
+	title = "{CML}: A higher-order concurrent language",
+	booktitle = PLDI91,
+	year = 1991, month = jun,
+	pages = "293-305",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@book{
+reppy:cml-book,
+	author = "John H. Reppy",
+	title = "Concurrent Programming in {ML}",
+	publisher = CUP:pub,
+	address = CUP:addr,
+	year = 1999
+	}
+
+	@inproceedings{
+reppy:lcps,
+	author = "John Reppy",
+	title = "Local {CPS} conversion in a direct-style compiler",
+	booktitle = CW01,
+	year = 2001, month = cw01:month,
+	pages = "13-22"
+	}
+
+	@article{
+reppy:lcps-journal,
+	author = "John Reppy",
+	title = "Optimizing nested loops using local {CPS} conversion",
+	journal = HOSC,
+	volume = 15,
+	year = 2002,
+	pages = "161-180"
+	}
+
+	@inproceedings{
+reppy:typed-cfa,
+	author = "John Reppy",
+	title = "Type-sensitive control-flow analysis",
+	booktitle = ML06,
+	year = 2006, month = ML06:month
+	}
+
+	@inproceedings{
+cml-specialization,
+	author = "John Reppy and Yingqi Xiao",
+	title = "Specialization of {CML} message-passing primitives",
+	booktitle = POPL34,
+	year = POPL34:year, month = POPL34:month,
+        pages = "315-326",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{
+toward-parallel-cml,
+	author = "John Reppy and Yingqi Xiao",
+	title = "Toward a parallel implementation of {Concurrent} {ML}",
+	booktitle = DAMP08,
+	year = 2008,  month = DAMP08:month,
+	publisher = acm:pub,
+        address = acm:addr,
+	pages = "92-106",
+	note = "Available from \url{http://clip.dia.fi.upm.es/Conferences/DAMP08/}"
+	}
+
+	@inproceedings{
+parallel-cml,
+	author = {John Reppy and Claudio Russo and Yingqi Xiao},
+	title = {Parallel {C}oncurrent {ML}},
+	booktitle = ICFP09,
+	year = 2009, month = ICFP09:month,
+	location = ICFP09:loc,
+	publisher = acm:pub,
+        address = acm:addr,
+	pages = "257-268"
+	}
+
+        @inproceedings{
+interprocedural-analysis,
+        author = {Reps, Thomas and Horwitz, Susan and Sagiv, Mooly},
+        title = {Precise interprocedural dataflow analysis via graph reachability},
+        booktitle = POPL22,
+        year = POPL22:year,
+        location = POPL22:loc,
+	publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@article{
+reynolds:continuations,
+	author = "John C. Reynolds",
+	title = "The discoveries of continuations",
+	journal = LASC,
+	publisher = Kluwer:pub,
+	address = Kluwer:addr,
+	volume = 6, number = "3-4",
+	year = 1993,
+	pages = "233-248"
+	}
+
+	@misc{
+ritson:multicore-scheduling-talk,
+	author = "Carl Ritson",
+	title = "Multicore Scheduling for Lightweight Communicating Processes",
+	howpublished = "Talk at the \emph{Workshop on Language and Runtime Support for Concurrent Systems}",
+	year = 2008, month = oct,
+	note = "Slides available from \url{http://www.mm-net.org.uk/workshop171008/mmw07-slides}"
+	}
+
+        @inproceedings{
+robison:tbb-work-stealing,
+        author = {Arch Robison and Michael Voss and Alexay Kukanov},
+        title = {Optimization via {R}eflection on {W}ork {S}tealing in {TBB}.},
+        booktitle = IPDPS08,
+        year = IPDPS08:year,
+        publisher = IEEE-PRESS:pub,
+        address = IEEE-PRESS:addr
+        }
+
+        @inproceedings{
+automatic-complexity-analysis,
+        author = "Mads Rosendahl",
+        title = "Automatic complexity analysis",
+        booktitle = FPCA89,
+        year = 1989,
+        month = FPCA89:month,
+        pages = {144-156},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@unpublished{
+hamlet,
+	author = "Andreas Rossberg",
+	title = "{HaMLet}",
+	note = "Available from \url{http://www.ps.uni-sb.de/hamlet}"
+	}
+
+
+	@book{
+opengl-shading:3ed,
+	title = "{OpenGL} Shading Language",
+	edition = "3rd",
+	author = "Randi J. Rost and Bill Licea-Kane",
+	publisher = addison-wesley:pub,
+	address = addison-wesley:addr,
+	year = 2010
+	}
+
+	@inproceedings{
+events-in-haskell,
+	author = "George Russell",
+	title = "Events in {Haskell}, and how to implement them",
+	booktitle = ICFP01,
+	year = 2001, month = ICFP01:month,
+	pages = "157-168"
+	}
+
+	@book{
+ai-modern-approach-2ed,
+	author = "Stuart Russell and Peter Norvig",
+	title = "Artificial Intelligence: A Modern Approach",
+	edition = "2nd",
+	publisher = prentice-hall:pub,
+	address = prentice-hall:addr,
+	year = 2003
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% SSS %%%
+%%%     %%%
+%%%%%%%%%%%
+
+        @book{
+sabot:paralation,
+        author = {Sabot, Gary W.},
+        title = {The  Paralation Model: Architecture-Independent Parallel Programming},
+        year = {1989},
+        publisher = mit-press:pub,
+        address = mit-press:addr
+        }
+
+	@techreport{
+subtransitive-cfa,
+	author = "Bratin Saha and Nevin Heintze and Dino Oliva",
+	title = "Subtransitive {CFA} using types",
+	institution = "Yale University, Department of Computer Science",
+	address = "New Haven, CT",
+	year = 1998,
+        month = oct,
+	number = "YALEU/DCS/TR-1166"
+	}
+
+	@article{
+flexible-architectural-scheduling:sanchez,
+	 author = {Sanchez, Daniel and Yoo, Richard M. and Kozyrakis, Christos},
+	 title = {Flexible architectural support for fine-grain scheduling},
+	 journal = ASPLOS10,
+	 volume = {38},
+	 number = {1},
+	 year = {2010},
+	 issn = {0163-5964},
+	 pages = {311--322},
+	 doi = {http://doi.acm.org/10.1145/1735970.1736055},
+	 publisher = acm:pub,
+	 address = acm:addr
+	 }
+
+      @techreport{
+saraswat2005rel,
+	title="Report on the Experimental Language {X10}",
+	author={Saraswat, V. and Nystrom, N.},
+	year={2005},
+	institution={IBM Research}
+        }
+
+      @techreport{
+x10-0.41,
+	title = {Report on the Experimental Language {X10}},
+	author = {Vijay Saraswat},
+	year = {2006},
+	month = feb,
+        institution = {IBM Thomas J. Watson Research Lab},
+        address = {Yorktown Heights, NY},
+        number = "DRAFT v 0.41"
+        }
+
+        @misc{
+scandal-algorithms,
+        author = "{Scandal Project}",
+        title = "A library of parallel algorithms written {NESL}.",
+        note = "Available from \url{http://www.cs.cmu.edu/~scandal/nesl/algorithms.html}"
+        }
+
+	@book{
+scientific-parallel-comp,
+	author = "L. Ridgway Scott and Terry Clark and Babak Bagheri",
+	title = "Scientific Parallel Computing",
+	publisher = "Princeton University Press",
+	address = "Princeton, NJ",
+	year = 2005
+	}
+
+        @inproceedings{
+scan-gpus,
+        author = {Sengupta, Shubhabrata and Harris, Mark and Zhang, Yao and Owens, John D.},
+        title = {Scan primitives for {GPU} computing},
+        booktitle = GH07,
+        year = {2007}, month = GH07:month,
+        location = GH07:loc,
+        acmid = {1280110},
+        publisher = Eurographics:pub,
+        address = Eurographics:addr,
+	pages = "97-106"
+        }
+
+        @inproceedings{
+scheme-jvm,
+        author = {Serpette, Bernard Paul and Serrano, Manuel},
+        title = {Compiling scheme to {JVM} bytecode:: a performance study},
+        booktitle = ICFP02,
+        year = {2002},
+        pages = {259--270},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+serrano:cfa-paradigm,
+	author = "Manuel Serrano",
+	title = "Control flow analysis: a functional languages compilation paradigm",
+	booktitle = SAC95,
+	year = "1995",
+	pages = "118-122",
+	location = "Nashville, Tennessee, United States",
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+        @article{
+extensible-hash-table,
+        author = {Shalev, Ori and Shavit, Nir},
+        title = {Split-ordered lists: Lock-free extensible hash tables},
+        journal = JACM,
+        issue_date = {May 2006},
+        volume = {53},
+        number = {3},
+        month = may,
+        year = {2006},
+        issn = {0004-5411},
+        pages = {379--405},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@INPROCEEDINGS{
+list-unroll,
+	author = {Zhong Shao and John Reppy and Andrew Appel},
+	title = {Unrolling lists},
+	booktitle = LISP94,
+	year = 1994, month = LISP94:month,
+	pages = "185-195",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@article{
+space-efficient-closure,
+	author = {Zhong Shao and Andrew W. Appel},
+	title = {Efficient and safe-for-space closure conversion},
+	journal = TOPLAS,
+	volume = {22},
+	number = {1},
+	year = {2000},
+	pages = {129--161},
+	publisher = acm:pub,
+	address = acm:addr
+	}
+
+	@mastersthesis{
+shaw:masters-paper,
+	author = "Adam Shaw",
+	title = "Data Parallelism in {Manticore}",
+	year = 2007, month = jul,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+	@phdthesis{
+shaw:phd-thesis,
+	author = "Adam Shaw",
+	title = "Implementation techniques for nested-data-parallel languages",
+	year = 2011, month = aug,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+	@inproceedings{
+stm,
+	author = {Nir Shavit and Dan Touitou},
+	title = {Software transactional memory},
+	booktitle = PODC95,
+	location = {Ottowa, Ontario, Canada},
+	year = {1995},
+	doi = {http://doi.acm.org/10.1145/224964.224987},
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = {204-213}
+	}
+
+	@inproceedings{
+shivers:cfa-in-scheme,
+	author = {Olin Shivers},
+	title = {Control flow analysis in Scheme},
+	booktitle = PLDI88,
+	year = 1988, month = PLDI88:month,
+	pages = {164-174},
+	location = {Atlanta, Georgia, United States},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@phdthesis{
+shivers:phd-thesis,
+	author = "Olin Shivers",
+	title = "Control-flow analysis of higher-order languages",
+	year = 1991, month = may,
+	school = CMU-CS:name,
+	address = CMU-CS:addr
+	}
+
+	@inproceedings{
+shivers:cont-n-threads,
+	author = "Olin Shivers",
+	title = "Continuations and threads: Expressing machine
+		concurrency directly in advanced languages",
+	booktitle = CW97,
+	month = CW97:month, year = 1997,
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{
+atomic-heap-transactions,
+	author = "Olin Shivers and James W. Clark and Roland McGrath",
+	title = "Atomic heap transactions and fine-grain interrupts",
+	booktitle = ICFP99,
+	year = 1999, month = ICFP99:month,
+	pages = "48-59",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+	@inproceedings{shivers:transducers,
+ 		author = {Shivers, Olin and Might, Matthew},
+		title = {Continuations and Transducer Composition},
+ 		booktitle = PLDI06,
+ 		year = 2006,
+ 		pages = "295-307",
+		location = {Ottawa, Ontario, Canada},
+ 		publisher = acm:pub,
+ 		address = acm:addr,
+	}
+
+	@misc{
+shootout,
+	author = "{CLBG}",
+	title = "The Computer Language Benchmarks Game",
+        year = 2013,
+	note = "Available from \url{http://benchmarksgame.alioth.debian.org/}"
+	}
+
+	@inproceedings{
+pbbs,
+	  title={Brief Announcement: The Problem Based Benchmark Suite},
+	  author={Julian Shun and Guy E. Blelloch and Jeremy T. Fineman and Phillip B. Gibbons and Aapo Kyrola and Harsha Vardhan Simhadri and Kanat Tangwongsan},
+          booktitle = SPAA12,
+          year = SPAA12:year,
+          month = SPAA12:month,
+          publisher = acm:pub,
+  	  address = acm:addr
+	}
+
+	@Article{
+MultiMLton,
+		author = {K. C. Sivaramakrishnan and Lukasz Ziarek and Suresh Jagannathan},
+		title = {MultiMLton: A multicore-aware runtime for standard ML},
+		journal = JFP,
+		publisher = CUP:pub,
+		address = CUP:addr,
+		year = 2014,
+		issn = {1469-7653},
+		volume = {FirstView},
+		pages = {1--62},
+		month = {July}
+	}
+
+        @inproceedings{
+skilli:bmf-par,
+        author = {D. B. Skillicorn},
+        title = {{T}he {B}ird-{M}eertens {F}ormalism as a {P}arallel {M}odel},
+        booktitle = {{NATO} {ARW} ``Software for Parallel Computation''},
+        volume = {106},
+        publisher = {Springer-Verlag NATO ASI},
+        editor = {Kowalik, J.S. and Grandinetti, L.},
+        year = {1993},
+        url = "citeseer.ist.psu.edu/51414.html"
+        }
+
+	@techreport{
+mcc,
+	title = "Mostly-copying collection: {A} viable alternative
+		to conservative mark-sweep",
+	author = "Frederick Smith and Greg Morrisett",
+	institution = cornell-cs,
+	number = "97-1644",
+	year = 1997, month = aug
+	}
+
+	@inproceedings{
+so:optimizing-dlp-operations,
+	author = {Byoungro So and Anwar Ghuloum and Youfeng Wu},
+	title = {Optimizing data parallel operations on many-core platforms},
+	doi = {http: //www.isi.edu/∼ kintali/stmcs06/prog.html},
+	booktitle = STMCS01,
+	year = STMCS01:year,
+	}
+
+	@phdthesis{
+applications-of-sat,
+	author = "Niklas S{\"{o}}rensson",
+	title = "Applications of {SAT} Solving",
+	year = 2003, month = oct,
+	school = "Chalmers University of Technology",
+	address = "G{\"{o}}teborg, Sweden"
+	}
+
+        @inproceedings{
+steele:fortress-ppopp,
+	author = {Guy L. {Steele Jr.}},
+	title = {Parallel programming and code selection in {Fortress}},
+	booktitle = PPoPP06,
+	year = {2006}, month = PPoPP06:month,
+	pages = "1",
+	location = {New York, New York, USA},
+	doi = {http://doi.acm.org/10.1145/1122971.1122972},
+	publisher = acm:pub,
+	address = acm:addr,
+	note = "Keynote talk; slides available from
+		\url{http://research.sun.com/projects/plrg/CGOPPoPP2006public.pdf}."
+	}
+
+        @inproceedings{
+escape-analysis-thread-heaps,
+        author = {Steensgaard, Bjarne},
+        title = {Thread-specific heaps for multi-threaded programs},
+        booktitle = ISMM00,
+        volume = {36},
+        issue = {1},
+        month = {October},
+        year = {2000},
+        pages = {18--24},
+        doi = {http://doi.acm.org/10.1145/362426.362432},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+	@inproceedings{
+gc-at-every-instruction,
+	title = "Support for Garbage Collection at Every Instruction in a
+		{Java} Compiler",
+	author = "James M. Stichnoth and Guei-Yuan Lueh and Michal Cierniak",
+	booktitle = PLDI99,
+	year = 1999, month = PLDI99:month,
+	pages = "118-127"
+	}
+
+	@misc{
+cilk-manual-543,
+	author = "Supercomputing Technologies Group",
+	publisher = {MIT Laboratory for Computer Science},
+	title = {Cilk 5.4.3 (rev 3379) Reference Manual},
+	year = 2007
+	}
+
+	@manual{
+cilk-manual-546,
+	title = "{Cilk} 5.4.6 Reference Manual",
+	author = "Supercomputing Technologies Group",
+	institution = mit-lcs,
+	note = {"Available from \url{http://supertech.csail.mit.edu/cilk}"}
+	}
+
+      @misc{
+microsystems:fpl,
+	title={{Fortress Programming Language}},
+	author={Sun Microsystems.}
+      }
+
+	@article{
+concurrency-revolution,
+	author = "Herb Sutter and James Larus",
+	title = "Software and the Concurrency Revolution",
+	journal = "{ACM} {Queue}",
+	volume = 3, number = 7,
+	month = sep, year = 2005,
+	note = "Available from \url{http://www.acmqueue.org}."
+	}
+
+	@inproceedings{
+sweeney:popl-talk,
+	title = "The next mainstream programming language: {A} game
+		developer's perspective",
+	author = "Tim Sweeney",
+	booktitle = POPL33,
+	year = POPL33:year, month = jan,
+	pages = "269",
+	note = "Invited talk; slides available from \url{http://www.cs.princeton.edu/~dpw/popl/06}."
+	}
+
+	@book{
+expert-f-sharp,
+	author = "Don Syme and Adam Granicz and Antonio Cisternino",
+	title = "Expert {F\#}",
+	publisher = "Apress",
+	address = "Berkeley, CA",
+	year = 2007
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% TTT %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@Article{
+type-and-effect,
+	author = {Jean-Pierre Talpin and Pierre Jouvelot},
+	title = {The Type and Effect Discipline},
+	journal = IC,
+	volume = {111},
+	number = {2},
+	year = 1994,
+	pages = {245--296},
+	publisher = academic-press:pub,
+	address = academic-press:addr,
+	}
+
+	@inproceedings{
+compact-gc-tables,
+	author = "David Tarditi",
+	title = "Compact Garbage Collection Tables",
+	booktitle = ISMM00,
+	year = 2000, month = ISMM00:month,
+	pages = "50-58"
+	}
+
+       @article{
+accelerator,
+       author = {David Tarditi and Sidd Puri and Jose Oglesby},
+       title = {Accelerator: using data parallelism to program GPUs for general-purpose uses},
+       journal = {SIGOPS Oper. Syst. Rev.},
+       volume = {40},
+       number = {5},
+       year = {2006},
+       issn = {0163-5980},
+       pages = {325--335},
+       publisher = ACM:pub,
+       address = ACM:addr
+       }
+
+       @article{
+tarjan-scc,
+       author = {Robert Tarjan},
+       title = {Depth-First Search and Linear Graph Algorithms},
+       journal = SIAMJC,
+       year = 1972,
+       volume = 1,
+       number = 2,
+       pages = "146-160"
+       }
+
+
+       @TECHREPORT{
+effects-with-type-inference,
+       author = {Ross Tate and Daan Leijen},
+       title = {Convenient Explicit Effects using Type Inference with Subeffects},
+       institution = MSR,
+       year = 2010,
+       month = Jun,
+       number = {{MSR-TR-2010-80}}
+       }
+
+	@article{
+raw-microprocessor,
+	author = "Michael Bedford Taylor and Jason Kim and Jason Miller and
+		David Wentzlaff and Fae Ghodrat and Ben Greenwald and Henry Hoffmann and
+		Paul Johnson and Jae-Wook Lee and Walter Lee and
+		Albert Ma and Arvind Saraf and Mark Seneski and Nathan Shnidman and
+		Volker Strumpen Matt Frank and Saman Amarasinghe and Anant Agarwal",
+	title = "The {Raw} Microprocessor: A Computational Fabric for Software Circuits
+		and General Purpose Programs",
+	journal = MICRO,
+	volume = 22, number = 2,
+	year = 2002,
+	pages = "25-35",
+	doi = {http://doi.ieeecomputersociety.org/10.1109/MM.2002.997877}
+	}
+
+        @Manual{
+intel-tbb,
+	key = "Intel",
+        title = "{Intel} Threading Building Blocks Reference Manual",
+	organization = "{Intel Corporation}",
+        year = 2008,
+        note = "Available from \url{http://www.threadingbuildingblocks.org/}"
+        }
+
+        @inproceedings{
+prolog-granularity,
+        author = {Evan Tick and Xiaoxiong Zhong},
+        title = {A compile-time granularity analysis algorithm and its performance evaluation},
+        booktitle = FGCS92,
+        year = {1993},
+        pages = {271--295},
+        location = {Tokyo, Japan},
+        doi = {http://dx.doi.org/10.1007/BF03037179},
+        publisher = springer:pub,
+        address = springer:addr,
+        }
+
+        @article{
+region-inference,
+        author = {Tofte, Mads and Birkedal, Lars},
+        title = {A region inference algorithm},
+        journal = TOPLAS,
+        issue_date = {July 1998},
+        volume = {20},
+        number = {4},
+        month = jul,
+        year = {1998},
+        issn = {0164-0925},
+        pages = {724--767},
+        numpages = {44},
+        doi = {10.1145/291891.291894},
+        publisher = ACM:pub,
+        address = ACM:addr
+        }
+
+
+        @Article{
+strategy-haskell,
+        author = {Philip W. Trinder and Kevin Hammond and Hans-Wolfgang Loidl
+		and Simon L. {Peyton Jones}},
+        title = {Algorithm + strategy = parallelism},
+        journal = JFP,
+	publisher = CUP:pub,
+	address = CUP:addr,
+        year = 1998,
+        volume = 8,
+        number = 1,
+        pages = {23-60},
+        month = jan
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% UUU %%%
+%%%     %%%
+%%%%%%%%%%%
+
+%%%%%%%%%%%
+%%%     %%%
+%%% VVV %%%
+%%%     %%%
+%%%%%%%%%%%
+
+	@article{
+valiant:bsp,
+	author = {Leslie G. Valiant},
+	title = {A bridging model for parallel computation},
+	journal = CACM,
+	volume = {33},
+	number = {8},
+	year = {1990},
+	pages = {103-111},
+	doi = {http://doi.acm.org/10.1145/79173.79181},
+	publisher = acm:pub, address = acm:addr
+	}
+
+	@article{
+workcrews,
+	author = {Mark T. Vandevoorde and Eric S. Roberts},
+	title = {Workcrews: an abstraction for controlling parallelism},
+	journal = IJPP,
+	volume = {17}, number = {4},
+	year = {1988}, month = aug,
+	pages = {347-366},
+	publisher = kluwer:pub,
+	address = kluwer:addr,
+	}
+
+        @inproceedings{
+inferring-cost-eqns,
+        author = "Pedro B. Vasconcelos and Kevin Hammond",
+        title = "Inferring Cost Equations for Recursive, Polymorphic and Higher-Order Functional Programs",
+        booktitle = IFL03,
+        publisher = springer:pub,
+        address = springer:addr,
+        series = LNCS,
+        volume = IFL03:vol,
+        pages = "86--101",
+        month = IFL03:month,
+        year = 2004
+        }
+
+	@inproceedings{
+session-types-for-multithreading,
+	author = "Vasco Vasconcelos and Antonio Ravara and Simon Gay",
+	title = "Session Types for Functional Multithreading",
+	booktitle = CONCUR15,
+	publisher = springer:pub-addr,
+	series = LNCS,
+	volume = CONCUR15:vol,
+	year = CONCUR15:year, month = CONCUR15:month,
+	pages = "497-511"
+	}
+
+        @phdthesis{
+vella:phd-thesis,
+        author = "Kevin Vella",
+        title = "Seamless parallel computing on heterogeneous networks of multiprocessor workstations",
+        year = 1998, month = dec,
+        school = "University of Kent at Canterbury"
+        }
+
+%%%%%%%%%%%
+%%%     %%%
+%%% WWW %%%
+%%%     %%%
+%%%%%%%%%%%
+
+        @inproceedings{
+chez-inlining,
+        author = {Waddell, Oscar and Dybvig, R. Kent},
+        title = {Fast and Effective Procedure Inlining},
+        booktitle = SAS97,
+        series = lncs,
+        year = {1997},
+        pages = {35--52},
+        numpages = {18},
+	publisher = springer:pub,
+	address = springer:addr
+        }
+
+	@inproceedings{
+wall:ilp-limits,
+	author = {David W. Wall},
+	title = {Limits of instruction-level parallelism},
+	booktitle = {Proceedings of the Fourth International Conference on
+		Architectural support for Programming Languages and Operating Systems},
+	year = {1991},
+	pages = {176-188},
+	location = {Santa Clara, California, United States},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+	@inproceedings{
+wand:continuations,
+	author = "Mitchell Wand",
+	title = "Continuation-based multiprocessing",
+	booktitle = LISP80,
+	year = 1980, month = LISP80:month,
+	pages = "19-28",
+        publisher = acm:pub,
+        address = acm:addr
+	}
+
+        @article{
+warshall,
+        author = {Warshall, Stephen},
+        title = {A Theorem on Boolean Matrices},
+        journal = JACM,
+        volume = {9},
+        number = {1},
+        month = jan,
+        year = {1962},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@misc{
+weeks:whole-program-mlton,
+	author = "Stephen Weeks",
+	title = "Whole Program Compilation in {MLton}",
+	howpublished = "Invited talk at {ML} '06 Workshop",
+	year = 2006, month = ML06:month
+	}
+
+	@article{
+processes-tasks-monitors,
+	author = "Peter Wegner and Scott A. Smolka",
+	title = "Processes, Tasks and Monitors: A Comparative Study of Concurrent
+		Programming Primitives",
+	journal = IEEE-SOFTWARE,
+	volume = 9, number = 4,
+	year = 1983, month = jul,
+	pages = "446-462"
+	}
+
+	@inproceedings{safe-futures,
+	 author = {Welc, Adam and Jagannathan, Suresh and Hosking, Antony},
+	 title = {Safe Futures for Java},
+	 booktitle = {OOPSLA'05},
+ 	year = {2005},
+	 location = {San Diego, CA, USA},
+	 pages = {439--453},
+	 publisher = acm:pub,
+ 	address = acm:addr
+	}
+
+        @misc{
+mandelbulb-website,
+        author = "Daniel White",
+        title = "{Mandelbulb: The Unravelling of the Real 3D Mandelbrot Fractal}",
+        note = "\url{http://www.skytopia.com/project/fractal/mandelbulb.html}, viewed 24 June 2011."
+        }
+
+	@article{
+polymorphic-splitting,
+	author = {Andrew K. Wright and Suresh Jagannathan},
+	title = {Polymorphic splitting: an effective polyvariant flow analysis},
+	journal = TOPLAS,
+	volume = {20},
+	number = {1},
+	year = {1998},
+	pages = {166-207},
+	publisher = acm:pub,
+	address = acm:addr,
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% XXX %%%
+%%%     %%%
+%%%%%%%%%%%
+
+       @inproceedings{
+xi:dep-ty,
+       author = {Xi, Hongwei and Pfenning, Frank},
+       title = {Dependent types in practical programming},
+       booktitle = POPL26,
+       year = POPL26:year,
+       location = POPL26:loc,
+       pages = {214--227},
+       publisher = ACM:pub,
+       address = ACM:pub,
+       }
+
+      @inproceedings{
+gc-scheduling:xian,
+       author = {Feng Xian and Witawas Srisa-an and Hong Jiang},
+       title = {Allocation-phase aware thread scheduling policies to improve garbage collection performance},
+       booktitle = {ISMM '07: Proceedings of the 6th international symposium on Memory management},
+       year = {2007},
+       pages = {79--90},
+       location = {Montreal, Quebec, Canada},
+       doi = {http://doi.acm.org/10.1145/1296907.1296919},
+       publisher = ACM:pub,
+       address = ACM:pub,
+       }
+
+      @inproceedings{
+contention-scheduling:xian,
+       author = {Feng Xian and Witawas Srisa-an and Hong Jiang},
+       title = {Contention-aware scheduler: unlocking execution parallelism in multithreaded java programs},
+       booktitle = {OOPSLA '08: Proceedings of the 23rd ACM SIGPLAN conference on Object oriented programming systems languages and applications},
+       year = {2008},
+       pages = {163--180},
+       location = {Nashville, TN, USA},
+       doi = {http://doi.acm.org/10.1145/1449764.1449778},
+       publisher = ACM:pub,
+       address = ACM:pub,
+       }
+
+	@mastersthesis{
+xiao:masters-paper,
+	author = "Yingqi Xiao",
+	title = "Toward optimization of {Concurrent} {ML}",
+	year = 2005, month = dec,
+	school = "University of Chicago"
+	}
+
+	@phdthesis{
+xiao:phd,
+	author = "Yingqi Xiao",
+	title = "Abstract trace analysis for concurrent programs",
+	year = 2010, month = aug,
+	school = "University of Chicago",
+	note = "Available from \url{http://manticore.cs.uchicago.edu}."
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% YYY %%%
+%%%     %%%
+%%%%%%%%%%%
+
+       @inproceedings{
+gpu-stack,
+        author = {Yang, Ke and He, Bingsheng and Luo, Qiong and Sander, Pedro V. and Shi, Jiaoying},
+        title = {Stack-based parallel recursion on graphics processors},
+        booktitle = PPOPP09,
+        year = {2009}, month = PPoPP09:month,
+        location = PPOPP09:loc,
+        doi = {http://doi.acm.org/10.1145/1504176.1504224},
+        acmid = {1504224},
+        publisher = acm:pub,
+        address = acm:addr,
+	pages = "299-300"
+        }
+
+	@article{
+yi:exns,
+	author = {Kwangkeun Yi},
+	title = {An abstract interpretation for estimating uncaught exceptions in {Standard} {ML} programs},
+	journal = {Sci. Comput. Program.},
+	volume = {31},
+	number = {1},
+	year = {1998},
+	issn = {0167-6423},
+	pages = {147--173},
+	publisher = {Elsevier North-Holland, Inc.},
+	address = {Amsterdam, The Netherlands, The Netherlands},
+	}
+%%% doi = {http://dx.doi.org/10.1016/S0167-6423(96)00044-5},
+
+	@inproceedings{
+protium-hotos,
+	author = "Cliff Young and Lakshman YN and Tom Szymanski and John Reppy
+		and Rob Pike and Girija Narlikar and Sape Mullender
+		and Eric Grosse",
+	title = "Protium, an Infrastructure for Partitioned Applications",
+	booktitle = HOTOS05,
+	year = 2001, month = jan,
+	pages = "41-46"
+	}
+
+	@proceedings{
+oopsla99,
+	key = "OOPSLA",
+	title = "OOPSLA'99 Conference Proceedings",
+	year = 1999, month = nov,
+	note = "This proceedings contains several papers on
+		eliminating synchronizations in {Java} using escape
+		analysis."
+	}
+
+%%%%%%%%%%%
+%%%     %%%
+%%% ZZZ %%%
+%%%     %%%
+%%%%%%%%%%%
+
+        @inproceedings{
+lock-free-dynamic-hash,
+        author = {Zhang, Donghui and Larson, Per-\AAke},
+        title = {{LHlf}: {L}ock-free linear hashing (poster paper)},
+        booktitle = PPOPP12,
+        year = {2012}, month = PPoPP12:month,
+        isbn = {978-1-4503-1160-1},
+        location = PPoPP12:loc,
+        pages = {307--308},
+        numpages = {2},
+        doi = {10.1145/2145816.2145868},
+        acmid = {2145868},
+        publisher = acm:pub,
+        address = acm:addr
+        }
+
+	@inproceedings{
+CML-stabilizers,
+	author = {Lukasz Ziarek and Philip Schatz and Suresh Jagannathan},
+	title = "Stabilizers: a modular checkpointing abstraction for concurrent
+		functional programs",
+	booktitle = ICFP06,
+	year = 2006, month = ICFP06:month,
+	location = {Portland, Oregon, USA},
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "136-147"
+	}
+
+	@inproceedings{
+speculative-barriers,
+	author = "Lukasz Ziarek and Suresh Jagannathan
+		and Matthew Fluet and Umut A. Acar",
+	title = "Speculative N-Way Barriers",
+	booktitle = DAMP09,
+	year = 2009, month = DAMP09:month,
+	publisher = acm:pub,
+	address = acm:addr,
+	pages = "1-12"
+        }
+
+        @inproceedings{
+memo-concurrency,
+        author = {Ziarek, Lukasz and Sivaramakrishnan, KC and Jagannathan, Suresh},
+        title = {Partial memoization of concurrency and communication},
+        booktitle = ICFP09,
+        year = {2009},
+        location = {Edinburgh, Scotland},
+        pages = {161--172},
+        publisher = acm:pub,
+        address = acm:addr,
+        }
+
+        @conference{
+cu-nesl,
+	title = "{CuNesl}: Compiling Nested Data-Parallel Languages for {SIMT} Architectures",
+	author = "Yongpeng Zhang and Frank Mueller",
+	booktitle = ICPP12,
+	location = ICPP12:loc,
+	publisher = IEEE-press:pub,
+	address = IEEE-press:addr,
+	year = 2012, month = ICPP12:month,
+	pages = "340-349"
+        }
+
+        @article{
+allocation-wall,
+	   author = {Zhao, Yi and Shi, Jin and Zheng, Kai and Wang, Haichuan and Lin, Haibo and Shao, Ling},
+	   title = {Allocation wall: a limiting factor of {Java} applications on emerging multi-core platforms},
+	   journal = OOPSLA09,
+	   volume = {44},
+	   number = {10},
+	   year = {2009},
+	   issn = {0362-1340},
+	   pages = {361--376},
+	   doi = {http://doi.acm.org/10.1145/1639949.1640116},
+	   publisher = ACM:pub,
+	   address = ACM:pub,
+        }
+
+
+
+
+
+
+

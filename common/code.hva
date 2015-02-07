@@ -1,0 +1,30 @@
+% code.hva
+%
+% COPYRIGHT (c) 2007 The Moby Project (http://moby.cs.uchicago.edu/)
+% All rights reserved.
+%
+% HeVeA macro definitions to simulate the code.sty commands.
+%
+
+\newcommand{\cd}[1]{{\@style{TT}#1}}
+\newcommand{\cdmath}{}
+
+\newcommand{\comment}[1]{\textit{\red{}#1}}%
+\newcommand{\literal}[1]{{\green{}#1}}%
+
+\newenvironment{code@block}{%
+  \renewcommand{\kw}[1]{\textbf{\black{}##1}}%
+  \renewcommand{\tyvar}[1]{\textit{##1}}%
+  \@open{BLOCKQUOTE}{}\blue{}\@style{TT}}{%
+  \@close{BLOCKQUOTE}}
+
+\newenvironment{tightcode}{%
+  \begin{code@block}}{%
+  \end{code@block}}
+\newenvironment{centercode}{%
+  \begin{code@block}}{%
+  \end{code@block}}
+\newenvironment{code}{%
+  \begin{code@block}}{%
+  \end{code@block}}
+

@@ -1,0 +1,123 @@
+% grammar.hva
+%
+% COPYRIGHT (c) 2007 The Moby Project (http://moby.cs.uchicago.edu/)
+% All rights reserved.
+%
+% HeVeA macro definitions to simulate the grammar.sty commands.
+%
+
+\newboolean{GGanchors}		% true means lhs nonterm is anchor
+\newboolean{GGfirstrule}
+\newboolean{GGfirstrhs}
+\newcommand{\GGfirstcell}{
+  \@open{TD}{WIDTH="20"}
+  \@close{TD}
+}
+\newcommand{\GGsepsymb}{
+  \GGfirstcell{}
+  \ifthenelse{\boolean{GGfirstrhs}}{
+    \@open{TD}{ALIGN=CENTER VALIGN=BOTTOM}
+    ::=
+    \@close{TD}
+    \setboolean{GGfirstrhs}{false}
+  }{
+    \@open{TD}{ALIGN=CENTER VALIGN=BOTTOM}
+    |
+    \@close{TD}
+  }
+}
+
+\newcommand{\GGRHS}[2][]{
+  \@open{TR}{}
+  \GGsepsymb{}
+  \@open{TD}{NOWRAP VALIGN=BOTTOM}
+  #2
+  \@close{TD}
+  \@open{TD}{ALIGN=RIGHT VALIGN=TOP}
+  #1
+  \@close{TD}
+  \@close{TR}
+}
+\newcommand{\GGCONT}[1]{
+  \@open{TR}{}
+  \@open{TD}{COLSPAN="2"}
+  \@close{TD}
+  \@open{TD}{NOWRAP VALIGN=BOTTOM}
+  \@print{&nbsp;&nbsp;}
+  #1
+  \@close{TD}
+  \@close{TR}
+}
+\newcommand{\GGITEM}[1]{%
+  \ifthenelse{\boolean{GGfirstrhs}}{\setboolean{GGfirstrhs}{false}}{
+    \@print{&nbsp; | &nbsp;}
+  }%
+  #1
+}
+
+%
+% font commands
+\newcommand{\kw}[1]{{\@style{B}{\@style{TT}#1}}}
+\newcommand{\GGnt}[1]{{\@style{I}#1}}
+\newcommand{\nt}[1]{\GGnt{\url{\#nt:#1}{#1}}}
+\newcommand{\term}[1]{{\@style{I}#1}}
+\newcommand{\sym}[1]{\kw{#1}}
+
+\newenvironment{Grammar}[1][]{%
+  \setboolean{GGanchors}{\equal{#1}{anchors}}%
+  \setboolean{GGfirstrule}{true}%
+  \newcommand{\GRP}[1]{$(\text{##1})$}%
+  \newcommand{\OPT}[1]{$\text{\protect{##1}}^{\textit{opt}}$}%
+  \newcommand{\OPTGRP}[1]{$(\text{##1})^{\textit{opt}}$}%
+  \newcommand{\LIST}[1]{$\text{\protect{##1}}^{*}$}%
+  \newcommand{\LISTGRP}[1]{$(\text{##1})^{*}$}%
+  \newcommand{\LISTONE}[1]{$\text{\protect{##1}}^{+}$}%
+  \newcommand{\LISTONEGRP}[1]{$(\text{##1})^{+}$}%
+  \newenvironment{Rules}[1]{%
+    \setboolean{GGfirstrhs}{true}%
+    \newcommand{\RHS}{\GGRHS}%
+    \newcommand{\CONT}{\GGCONT}%
+    \ifthenelse{\boolean{GGfirstrule}}{
+      \setboolean{GGfirstrule}{false}%
+    }{
+      \@open{TR}{}
+        \@open{TD}{}\@print{&nbsp;}\@close{TD}
+      \@close{TR}
+    }
+    \@open{TR}{}
+    \@open{TD}{ALIGN=LEFT COLSPAN="3"}
+      \ifthenelse{\boolean{GGanchors}}{\anchor{nt:##1}}{}
+      \GGnt{##1}
+    \@close{TD}
+    \@close{TR}
+  }{%
+  }
+  \newenvironment{OneOfRule}[1]{%
+    \setboolean{GGfirstrhs}{true}%
+    \newcommand{\ITEM}{\GGITEM}%
+    \ifthenelse{\boolean{GGfirstrule}}{}{
+      \@open{TR}{}
+        \@open{TD}{}\@print{&nbsp;}\@close{TD}
+      \@close{TR}
+    }
+    \@open{TR}{}
+      \@open{TD}{ALIGN=LEFT COLSPAN="3"}
+      \ifthenelse{\boolean{GGanchors}}{\anchor{nt:##1}}{}
+      \GGnt{##1}
+      \@close{TD}
+    \@close{TR}
+    \@open{TR}{}
+    \GGfirstcell{}
+    \@open{TD}{ALIGN=CENTER VALIGN=BOTTOM}
+    ::=
+    \@close{TD}
+    \@open{TD}{}
+  }{%
+    \@close{TD}
+    \@close{TR}
+  }
+  \@open{TABLE}{}
+}{%
+  \@close{TABLE}
+}
+

@@ -1,0 +1,81 @@
+% slide-defs.tex
+%
+% common definitions for talks.
+%
+% define \TalkDate and \TalkTitle for footers
+%
+
+% for a 1024x768 screen, we have a 1.0:0.75 ratio.
+\setlength{\textwidth}{9.3in}
+\setlength{\textheight}{7.2in}
+\addtolength{\leftmargin}{-0.15in}
+\addtolength{\topmargin}{-0.7in}
+
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{times}
+
+%
+% the following magic makes the tt font in math mode be the same as the
+% normal tt font (i.e., Courier)
+%
+\SetMathAlphabet{\mathtt}{normal}{OT1}{pcr}{n}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{pcr}{bx}{n}
+
+\definecolor{Red}{rgb}{0.8,0.0,0.0}
+\definecolor{Green}{rgb}{0.0,0.4,0.0}
+\definecolor{Blue}{rgb}{0.0,0.0,0.9}
+\definecolor{Purple}{rgb}{0.5,0.0,0.4}
+\definecolor{Black}{rgb}{0.0,0.0,0.0}
+\definecolor{Yellow}{rgb}{1.0,1.0, 0.25}
+\definecolor{Cyan}{rgb}{0.25,1.0, 1.0}
+\newcommand{\blue}[1]{\color{Blue}{#1}}
+\newcommand{\red}[1]{\color{Red}{#1}}
+\newcommand{\green}[1]{\color{Green}{#1}}
+\newcommand{\purple}[1]{\color{Purple}{#1}}
+\newcommand{\textblue}[1]{\textcolor{Blue}{#1}}
+\newcommand{\textred}[1]{\textcolor{Red}{#1}}
+\newcommand{\textgreen}[1]{\textcolor{Green}{#1}}
+\newcommand{\textpurple}[1]{\textcolor{Purple}{#1}}
+\newcommand{\textblack}[1]{\textcolor{Black}{#1}}
+
+\newcommand{\mobycodecolor}{\color{Purple}}
+\newcommand{\punctcolor}{\color{Blue}}
+\newcommand{\kwcolor}{\color{Blue}}
+\newcommand{\bolcodecolor}{\color{Green}}
+\newcommand{\ccodecolor}{\color{Purple}}
+%\newcommand{\highlightC}[1]{\textred{#1}}
+\newcommand{\highlightC}[1]{\colorbox{Yellow}{#1}}
+\newcommand{\highlightCC}[1]{\colorbox{Cyan}{#1}}
+
+\newcommand{\BlueBullet}{\textcolor{Blue}{\ensuremath{\bullet}}}
+\newcommand{\RedBullet}{\textcolor{Red}{\ensuremath{\bullet}}}
+\newcommand{\GreenBullet}{\textcolor{Green}{\ensuremath{\bullet}}}
+
+\newcommand{\EM}[1]{\emph{\textred{#1}}}
+
+\raggedright
+\pagestyle{empty}
+
+\newcommand{\HEAD}[1]{
+  \noindent{\large\bf{}#1}\\[-1ex]
+  \textblue{\hrulefill}\\[1em]}
+\newcommand{\CONTINUE}[1]{
+  \noindent{\bf{}#1 {\it{}(continued ...)}}\\[-1ex]
+   \textblue{\hrulefill}\\[1em]}
+\newcommand{\CHEAD}[1]{{\makebox[\textwidth]{\large\bf{}#1}\\[1em]}}
+\newcommand{\FOOT}{%
+  \vfill\textblue{\hrulefill}\\ %
+  \tiny{
+    \mbox{\rule[-.5ex]{0em}{3ex}} %
+    \TalkDate  \hfill \TalkTitle \hfill \arabic{slide}}%
+}
+
+\newenvironment{FIGURE}{%
+  \begin{center}\small}{%
+  \end{center}}
+
+% code
+\newcommand{\tkw}[1]{\text{\kw{#1}}}
+\newcommand{\tcd}[1]{\text{\cd{#1}}}
+ 

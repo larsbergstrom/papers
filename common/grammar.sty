@@ -1,0 +1,115 @@
+% grammar.sty
+%
+% A package for writing grammars.
+%
+% Usage:
+%
+% Each grammar fragment lives in a Grammar environment:
+%
+%   \begin{Grammar}
+%     ... rules ...
+%   \end{Grammar}
+%
+% The Grammar environment can have an optional argument, which is used in
+% HTML generation.
+% Each rule is a collection of productions with the same lhs:
+%
+%   \begin{Rules}{nonterm}
+%     ... right-hand sides ...
+%   \end{Rules}
+%
+% where "nonterm" is the lhs nonterminal.  A right-hand side is
+% formatted with the \RHS{} command.  The following commands may
+% be used inside a \RHS{} command:
+%
+%   \GRP{item}		-- (item)
+%   \OPT{item}		-- item?
+%   \OPTGRP{item}	-- same as \OPT{\GRP{item}}
+%   \LIST{item}		-- item*
+%   \LISTGRP{item}	-- same as \LIST{\GRP{item}}
+%   \LISTONE{item}	-- item+
+%   \LISTONEGRP{item}	-- same as \LISTONE{\GRP{item}}
+%
+% To support lexical definitions, we also have the form
+%   \begin{OneOfRule}{nonterm}
+%     ... items ...
+%   \end{Rules}
+%
+% where "nonterm" is the lhs nonterminal.  The items are formatted with
+% the \ITEM{item} command.
+%
+% This package also defines the following font commands:
+%
+%   \kw{item}		-- for keywords (default is bold \tt)
+%   \nt{item}		-- for nonterminals (default is \it)
+%   \term{item}		-- for terminal symbols (default is \it)
+%   \sym{item}		-- for literal symbols (default is bold \tt)
+%
+
+\RequirePackage{ifthen}
+\RequirePackage{amstext}
+
+\makeatletter
+
+\newboolean{G@firstrule}
+\newcommand{\G@sepsymb}{
+  \ifthenelse{\boolean{G@firstrule}}{$::=$}{$\mid$}}
+\newcommand{\G@RHS}[2][]{
+  \G@sepsymb{} & {#2} & {#1} \\
+  \setboolean{G@firstrule}{false}%
+}
+\newcommand{\G@CONT}[1]{
+  & \hspace*{1em} {#1} & \\
+}
+\newcommand{\G@ITEM}[1]{%
+  \mbox{%
+    \ifthenelse{\boolean{G@firstrule}}{$::=$}{$\mid$} #1}
+  \setboolean{G@firstrule}{false}%
+}
+
+%
+% font commands
+\newcommand{\kw}[1]{\texttt{\bfseries{}#1}}
+\newcommand{\nt}[1]{\textit{#1}}
+\newcommand{\term}[1]{\textit{#1}}
+\newcommand{\sym}[1]{\kw{#1}}
+
+\newenvironment{Grammar}[1][]{%
+  \begin{list}{}{
+    \setlength{\leftmargin}{4em}%
+    \setlength{\itemindent}{2em}%
+    \setlength{\itemsep}{0em}%
+    \setlength{\parsep}{0em}%
+  }
+  \newcommand{\GRP}[1]{$(\text{##1})$}%
+  \newcommand{\OPT}[1]{$\text{\protect{##1}}^{\textit{opt}}$}%
+  \newcommand{\OPTGRP}[1]{$(\text{##1})^{\textit{opt}}$}%
+  \newcommand{\LIST}[1]{$\text{\protect{##1}}^{*}$}%
+  \newcommand{\LISTGRP}[1]{$(\text{##1})^{*}$}%
+  \newcommand{\LISTONE}[1]{$\text{\protect{##1}}^{+}$}%
+  \newcommand{\LISTONEGRP}[1]{$(\text{##1})^{+}$}%
+  \newenvironment{Rules}[1]{%
+    \begin{samepage}%
+    \setboolean{G@firstrule}{true}%
+    \newcommand{\RHS}{\G@RHS}%
+    \newcommand{\CONT}{\G@CONT}%
+    \item[\nt{##1}]\mbox{}\\
+    \begin{tabular}{clr}%
+  }{%
+    \end{tabular}%
+    \end{samepage}\pagebreak[2]%
+  }
+  \newenvironment{OneOfRule}[1]{%
+    \begin{samepage}%
+    \setboolean{G@firstrule}{true}%
+    \newcommand{\ITEM}{\G@ITEM}%
+    \item[\nt{##1}]\mbox{}\\
+  }{%
+    \end{samepage}\pagebreak[2]%
+  }
+}{%
+  \end{list}
+}
+
+\makeatother
+

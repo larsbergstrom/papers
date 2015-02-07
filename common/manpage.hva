@@ -1,0 +1,76 @@
+% manpage.hva
+%
+% COPYRIGHT (c) 2003 John Reppy (http://www.cs.uchicago.edu/~jhr)
+% All rights reserved.
+%
+% HeVeA macro definitions to simulate the manpage.sty commands.
+%
+
+%%%%%%%%%%%%%%%%%%%% Internal commands %%%%%%%%%%%%%%%%%%%%
+\newenvironment{MPSection}[1]{
+  \@open{H3}{}#1\@close{H3}\@open{BLOCKQUOTE}{}}{%
+  \@close{BLOCKQUOTE}}
+\newcommand{\MPArg}[1]{\textit{#1}}
+\newcommand{\MPOpt}[1]{\textbf{#1}}
+\newcommand{\MPFile}[1]{\texttt{#1}}
+%
+% versions for inside the OPTIONS environment
+%
+\newcommand{\MPOptionsArg}[1]{\textit{#1}}
+\newcommand{\MPOptionsOpt}[1]{\texttt{\textbf{#1}}}
+\newcommand{\MPOptionsFile}[1]{\textit{#1}}
+\newenvironment{MPOptions}{%
+  \begin{MPSection}{OPTIONS}%
+    \begin{list}{}{
+      \setlength{\leftmargin}{\MPindent}%
+      \setlength{\itemindent}{0em}%
+      \setlength{\itemsep}{0em}%
+      \setlength{\topsep}{0em}%
+    % redefine external commands
+      \renewcommand{\Opt}[1]{\MPOptionsOpt{##1}}
+      \renewcommand{\Arg}[1]{\MPOptionsArg{##1}}
+      \renewcommand{\OptEqArg}[2]{\MPOptionsOpt{##1=}\MPOptionsArg{##2}}
+      \newenvironment{Flag}[1]{%
+	\item[##1]\mbox{}\\
+      }{\@print{<P>}}
+    }%
+}{%
+    \end{list}%
+  \end{MPSection}%
+}
+
+
+\newenvironment{ManPage}[3]{%
+% #1 - section
+% #2 - name
+% #3 - author
+  \cuthere{now}{#2}
+  % define section commands
+  \newenvironment{NAME}{\begin{MPSection}{NAME}}{\end{MPSection}}
+  \newenvironment{SYNOPSIS}{\begin{MPSection}{SYNOPSIS}}{\end{MPSection}}
+  \newenvironment{DESCRIPTION}{\begin{MPSection}{DESCRIPTION}}{\end{MPSection}}
+  \newenvironment{OPTIONS}{\begin{MPOptions}}{\end{MPOptions}}
+  \newenvironment{ENVIRONMENT}{\begin{MPSection}{ENVIRONMENT}}{\end{MPSection}}
+  \newenvironment{FILES}{\begin{MPSection}{FILES}}{\end{MPSection}}
+  \newenvironment{BUGS}{\begin{MPSection}{BUGS}}{\end{MPSection}}
+  \newenvironment{SEEALSO}{\begin{MPSection}{SEEALSO}}{\end{MPSection}}
+  % define external command names
+  \newcommand{\Opt}[1]{\MPOpt{##1}}			% Option
+  \newcommand{\Arg}[1]{\MPArg{##1}}			% Argument
+  \newcommand{\OptEqArg}[2]{\MPOpt{##1=}\MPArg{##2}}
+  \newcommand{\OptArg}[2]{\Opt{##1}\Arg{##2}}		% Option with Argument
+  \newcommand{\OptoArg}[2]{\Opt{##1}[\Arg{##2}]}	% Option with optinal
+							% Argument
+  \newcommand{\oArg}[1]{[\Arg{##1}]}			% optional Argument
+  \newcommand{\oOpt}[1]{[\Opt{##1}]}			% optional Option
+  \newcommand{\oOptArg}[2]{[\OptArg{##1}{##2}]}		% optional Option with
+							% Argument
+  \newcommand{\oOptoArg}[2]{[\OptoArg{##1}{##2}]}	% optional Option with
+							% optional Argument
+  \newcommand{\Prog}[1]{\textit{##1}}			% Program name
+  \newcommand{\Cmd}[2]{\textit{##1}(##2)}		% Command with section
+							% number
+  \newcommand{\File}[1]{\MPFile{##1}}			% File name
+  \newcommand{\Dots}{$\ldots$}
+}{}
+

@@ -1,0 +1,125 @@
+% manpage.sty
+%
+% COPYRIGHT (c) 2007 The Moby Project (http://moby.cs.uchicago.edu/)
+% All rights reserved.
+%
+% This package supports formatting of Unix-style manual pages.  It is
+% based, in part, on the latex2man package by Jurgen Vollmer.
+%
+% To use
+%
+%    \usepackage[options]{manpage}
+%
+% The supported options are
+%
+%    newpage	-- start each ManPage environment on its own page.
+%    toc		-- add tableofcontents entries for manual pages.
+%
+% This package provides the following commands and environments:
+%
+%    \begin{ManPage}{section}{name}{author}
+%      ... manpage sections ...
+%    \end{ManPage}
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{manpage}[2001/12/12 v1.0]
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%% Option processing %%%%%%%%%%%%%%%%%%%%
+\newboolean{MP@newpage}
+\setboolean{MP@newpage}{false}
+\newboolean{MP@contentsentry}
+\setboolean{MP@contentsentry}{false}
+
+\DeclareOption{newpage}{
+\setboolean{MP@newpage}{true}
+}
+\DeclareOption{toc}{
+\setboolean{MP@contentsentry}{true}
+}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%% Globals %%%%%%%%%%%%%%%%%%%%
+\newlength{\MPindent}
+\setlength{\MPindent}{4em}
+\newcommand{\MPsection}{section}
+
+%%%%%%%%%%%%%%%%%%%% Internal commands %%%%%%%%%%%%%%%%%%%%
+\newenvironment{MP@Section}[1]{%
+\item[#1]\mbox{}\\
+}{}
+\newcommand{\MP@Arg}[1]{\textit{#1}}
+\newcommand{\MP@Opt}[1]{\textbf{#1}}
+\newcommand{\MP@File}[1]{\texttt{#1}}
+%
+% versions for inside the OPTIONS environment
+%
+\newcommand{\MP@Options@Arg}[1]{\textit{#1}}
+\newcommand{\MP@Options@Opt}[1]{\texttt{\textbf{#1}}}
+\newcommand{\MP@Options@File}[1]{\textit{#1}}
+\newenvironment{MP@Options}{%
+  \begin{MP@Section}{OPTIONS}%
+    \begin{list}{}{
+      \setlength{\leftmargin}{\MPindent}%
+      \setlength{\itemindent}{0em}%
+      \setlength{\itemsep}{0em}%
+      \setlength{\topsep}{0em}%
+    % redefine external commands
+      \renewcommand{\Opt}[1]{\MP@Options@Opt{##1}}
+      \renewcommand{\Arg}[1]{\MP@Options@Arg{##1}}
+      \renewcommand{\OptEqArg}[2]{\MP@Options@Opt{##1=}\MP@Options@Arg{##2}}
+      \newenvironment{Flag}[1]{%
+	\item[##1]\mbox{}\\
+      }{}
+    }%
+}{%
+    \end{list}%
+  \end{MP@Section}%
+}
+
+%%%%%%%%%%%%%%%%%%%% External commands %%%%%%%%%%%%%%%%%%%%
+\newenvironment{ManPage}[3]{%
+% #1 - section
+% #2 - name
+% #3 - author
+  \ifthenelse{\boolean{MP@newpage}}{\clearpage}{}%
+  \ifthenelse{\boolean{MP@contentsentry}}{\addcontentsline{toc}{\MPsection}{#2}}{}%
+  % The manual page is a list environment
+  \begin{list}{}{
+    \setlength{\leftmargin}{\MPindent}%
+    \setlength{\itemindent}{0em}%
+    \setlength{\itemsep}{0em}%
+    \setlength{\topsep}{0em}%
+  }
+  % define section commands
+  \newenvironment{NAME}{\begin{MP@Section}{NAME}}{\end{MP@Section}}
+  \newenvironment{SYNOPSIS}{\begin{MP@Section}{SYNOPSIS}}{\end{MP@Section}}
+  \newenvironment{DESCRIPTION}{\begin{MP@Section}{DESCRIPTION}}{\end{MP@Section}}
+  \newenvironment{OPTIONS}{\begin{MP@Options}}{\end{MP@Options}}
+  \newenvironment{ENVIRONMENT}{\begin{MP@Section}{ENVIRONMENT}}{\end{MP@Section}}
+  \newenvironment{FILES}{\begin{MP@Section}{FILES}}{\end{MP@Section}}
+  \newenvironment{BUGS}{\begin{MP@Section}{BUGS}}{\end{MP@Section}}
+  \newenvironment{SEEALSO}{\begin{MP@Section}{SEEALSO}}{\end{MP@Section}}
+  \newenvironment{SECTION}[1]{\begin{MP@Section}{#1}}{\end{MP@Section}}
+  % define external command names
+  \newcommand{\Opt}[1]{\MP@Opt{##1}}			% Option
+  \newcommand{\Arg}[1]{\MP@Arg{##1}}			% Argument
+  \newcommand{\OptEqArg}[2]{\MP@Opt{##1=}\MP@Arg{##2}}
+  \newcommand{\OptArg}[2]{\Opt{##1}\Arg{##2}}		% Option with Argument
+  \newcommand{\OptoArg}[2]{\Opt{##1}[\Arg{##2}]}	% Option with optinal
+							% Argument
+  \newcommand{\oArg}[1]{[\Arg{##1}]}			% optional Argument
+  \newcommand{\oOpt}[1]{[\Opt{##1}]}			% optional Option
+  \newcommand{\oOptArg}[2]{[\OptArg{##1}{##2}]}		% optional Option with
+							% Argument
+  \newcommand{\oOptoArg}[2]{[\OptoArg{##1}{##2}]}	% optional Option with
+							% optional Argument
+  \newcommand{\Prog}[1]{\textit{##1}}			% Program name
+  \newcommand{\Cmd}[2]{\textit{##1}(##2)}		% Command with section
+							% number
+  \newcommand{\File}[1]{\MP@File{##1}}			% File name
+  \newcommand{\Dots}{$\ldots$}
+}{%
+  \end{list}%
+}
