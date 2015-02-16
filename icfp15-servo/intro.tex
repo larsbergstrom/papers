@@ -2,6 +2,34 @@
 
 \section{Introduction}
 \label{sec:intro}
+Servo\footnote{https://github.com/servo/servo} is a new web browser engine whose development
+was started in February of 2013.
+
+Modern web browser engines have a similar complexity level to that of operating systems.
+These engines are expected to execute arbitrary user programs within a safe sandbox, scale 
+across a wide variety of hardware, manage access to shared system resources, and further 
+do all of that while providing good performance and correct behavior
+against sometimes-incomplete standards.
+With the expectation of executing well on mobile devices and parallel hardware, the 
+fundamental design assumptions have significantly changed since all of the modern
+web engines were originally designed.
+
+Servo is a new web browser engine designed to address the major environment and 
+architectural changes over the last decade.
+To address security, we are using a new systems programming language, Rust,
+which adds static type checking to address by far the top cause of security
+issues in modern web browsers --- failure in handling manual memory allocation
+in \Cplusplus{}.
+We scale across a wide variety of hardware by building either data- or task-parallelism, 
+as appropriate, to each of the stages of the Web layout pipeline.
+Finally, we are improving concurrency by reducing the simultaneous access to data
+structures and using a message-passing architecture between components such as the
+JavaScript engine and the rendering engine that is painting graphics to the screen.
+In this experience report, we discuss the design and architecture of a modern web 
+browser engine, show how modern programming language techniques --- many of which
+originated in the functional programming community --- address these design 
+constraints, and also touch on ongoing challenges and areas of research where we
+would welcome additional community input.
 
 %%% Local Variables: 
 %%% mode: latex

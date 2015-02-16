@@ -3,6 +3,24 @@
 \section{Unsafe code}
 \label{sec:safety}
 
+There are several categories of code in Servo that cannot be written in the safe subset of Rust.
+
+\subsection{FFI calls}
+
+Interoperating with native C code often requires raw access to memory allocated in Rust or returns
+pointers to memory that was allocated by the C libraries.
+Translations to an from these raw pointers requires the use of unsafe code.
+
+\subsection{Intrusive data structures}
+
+Rust's ownership model assumes that there is a single owner for each piece of data.
+However, many data structures do not follow that model, in order to provide asymptotic
+improvements in access.
+For example, a doubly-linked list contains a back pointer to the previous element to aid
+in traversals in the opposite direction.
+Many optimized hashtable implementations also have both hash-based access to items
+and a linked list of all of the keys or values.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "paper"

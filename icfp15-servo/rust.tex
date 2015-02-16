@@ -3,6 +3,24 @@
 \section{Rust}
 \label{sec:rust}
 
+TODO: basic overview
+
+Bunch of features worked well here.
+
+Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
+
+Monomorphization, as in MLton, is a great way of providing predictable output code to developers.
+
+Whole-program compilation has some negative impacts in compilation speed, but it also allows for more modular development, since we're not as concerned about whether two things are in the same module for optimization purposes or relying on header-like forced inlining model of C++.
+
+Biggest lesson here is by having a large project like Servo, got very early feedback on how language design decisions affected building a large systems project. Contrast with Cyclone's attempt to build something very close to C; don't actually need to be for people to be successful. Also note that many language changes had very different metrics in Servo than in the Rust compiler --- compilers do not have the same language feature usage as the likely target programs written in Rust.
+
+\subsection{C++ interop}
+Would like to have full C++ inlining.
+
+\subsection{GC integration}
+Would like to be able to plug in our own GC and stack scanning.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "paper"
