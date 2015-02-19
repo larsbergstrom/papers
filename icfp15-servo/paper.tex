@@ -28,7 +28,13 @@
 \newcommand{\comColor}{Red}
 
 \usepackage{listings}
-\input{../common/lstlang-sml}
+\input{../common/lstlang-rust}
+\lstset{
+  basicstyle=\ttfamily\color{\cdColor},
+  keywordstyle=\color{\kwColor}\bfseries,
+  commentstyle=\color{\comColor}\itshape,
+  language=Rust
+}
 
 \newcommand{\dcfa}{{$\Delta$}{CFA}}
 \newcommand{\gcfa}{{$\Gamma$}{CFA}}

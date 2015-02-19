@@ -29,7 +29,21 @@ Through the use of Rust's ownership model, data cannot be owned by two threads a
 In the case of concurrency this works quite well --- there are often individual objects that need to be owned by
 a single object at a time.
 
-TODO: code sample
+%http://is.gd/tkcD9R
+\begin{lstlisting}
+fn main() {
+  let mut data = Box::new(0);
+
+  Thread::spawn(move || {
+    *data = *data + 1;
+  });
+  Thread::spawn(move || {
+    *data = *data + 1;
+  });
+  print!(``{}'', data);
+}
+\end{lstlisting}
+
 
 Data parallelism is a bit more tricky today because there is no way to \eg{} partition a vector in safe code
 for a data parallel operation and then stitch it back together afterwards without performing a copy of the data.
