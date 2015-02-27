@@ -26,20 +26,27 @@ Model (DOM) tree.
 From a programming languages standpoint, there are several interesting aspects of the parser design
 for HTML.
 First, though the specification allows the browser to abort on a parse error\footnote{\url{https://html.spec.whatwg.org/multipage/syntax.html#parsing}},
-in practice browsers follow the recovery algorithms described in that specification and make a best attempt to
-load any page given to them.
+in practice browsers follow the recovery algorithms described in that specification precisely so that
+even ill-formed HTML will be handled in an interoperable way across all browsers..
 Second, due to the presence of the \lstinline[language=HTML]{<script>} tag, the token stream can be modified
 during operation.
 For example, the below example that injects a close tag for the script block works in all modern browsers.
 \begin{lstlisting}[language=HTML]
 <html>
   <script>
-    document.write (``</script>
-  <li>this shows up just fine, thanks</li>
+  document.write(``<h'');
+  </script>1>
+  This is a h1 title
+
+  <script>
+  document.write(``<!-'');
+  </script>-
+  This is commented
 </html>
 \end{lstlisting}
-Finally, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
-all modern parsers also perform token stream scanning and prefectch of resources likely to be required~\cite{browsers-slow-smartphones}.
+This requirement causes parsing to pause while JavaScript code is running.
+But, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
+all modern parsers also perform token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Layout}
 
