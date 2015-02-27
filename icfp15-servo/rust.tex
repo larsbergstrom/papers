@@ -3,11 +3,19 @@
 \section{Rust}
 \label{sec:rust}
 
-TODO: basic overview, covering systems language basis; borrowing/ownership \& region/MLKit connection; ADT \& pattern matching; traits \& generics
-
+Rust is a statically typed systems programming language most heavily inspired by the C
+and ML families of languages~\cite{RUST}.
+Like the C family of languages, it provides the developer control over the use of system
+resources and facilities along with predictable performance.
+In addition, it provides an ownership-based type system inspired by the region systems work in the
+MLKit project~\cite{mlkit} and especially as implemented in the Cyclone project~\cite{cyclone}.
+Unlike the ownership system in the Singularity project~\cite{singularity}, Rust allows APIs to
+not only transfer ownership but also to temporarily \emph{borrow} values, significantly
+reducing the number of region and ownership annotations required in large programs.
+Rust also builds on ideas from typeclasses and type families in Haskell~\cite{haskell}.
+Complete documentation and a language reference for Rust are available at: \url{http://doc.rust-lang.org/}.
 
 \subsection{Concurrency and parallelism}
-
 Rust contains library functionality for concurrency and data parallelism.
 Concurrency, in particular, integrates cleanly with Rust's ownership types.
 In safe concurrent programs, the data operated on by distinct threads is also itself distinct.
