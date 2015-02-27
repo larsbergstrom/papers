@@ -33,7 +33,7 @@ fn main() {
 There is partial support for data parallelism, in the form of partitioning a vector statically in advance
 and transferring ownership of each of those partitions into newly spawned threads.
 But, it is not possible in safe Rust code to write work-stealing algorithms~\cite{blumeofe:multiprogrammed-work-stealing}
-that dynamically parition and adjust work across threads.
+that dynamically partition work across threads.
 
 
 %%% Local Variables: 
