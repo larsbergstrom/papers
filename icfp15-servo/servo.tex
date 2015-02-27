@@ -20,24 +20,39 @@ specifier wherever possible or specialize the code in some other way to avoid th
 
 Rust also attempted to stay close to familiar syntax, but did not require full fidelity or easy porting of
 programs from languages such as \Cplusplus{}.
-This approach has worked well for Rust because it has prevented some of the complexity that arose in Cyclone
-with their attempts to build a safe language that preserved most C idioms.
+This approach has worked well for Rust because it has prevented some of the complexity that arose in
+Cyclone~\cite{cyclone} with their attempts to build a safe language that required minimal porting effort
+for even complicated C code.
 
 \subsection{Compilation strategy}
-Monomorphization, as in MLton, is a great way of providing predictable output code to developers.
-
-Whole-program compilation has some negative impacts in compilation speed, but it also allows for more modular development, since we're not as concerned about whether two things are in the same module for optimization purposes or relying on header-like forced inlining model of C++.
+Many statically typed implementations of polymorphic languages such as Standard ML of New Jersey~\cite{SMLNJ} and
+\ocaml{}~\cite{ocaml-manual-3.0} have used a compilation strategy that optimizes representations of data types when
+polymorphic code is monomorphically used, but defaults to a less efficient style otherwise, in order to share
+code~\cite{ocaml-repr}.
+This strategy reduces code size, but leads to unpredictable performance and code, as changes to a codebase that
+either add a new instantiation of a polymorphic function at a given type or, in a modular compilation setting, that
+expose a polymorphic function externally, can change the performance of code that is not local to the change being
+made.
+Monomorphization, as in MLton~\cite{mlton}, instead instantiates each polymorphic code block at each of the types
+it is applied agains, and providing predictable output code to developers, at the cost of some code duplication.
+This approach, combined with whole-program compilation, has some negative impacts in compilation speed but has resulted
+in Rust code that easily matches the sequential speed of its \Cplusplus{} analog without requiring the Servo developers
+to become compiler experts.
 
 \subsection{Memory management}
-Rust has an ownership model.
-Unlike ML Kit (unbounded regions) and Singularity (ownership bleeding into interfaces), Rust has both statically scoped regions and a notion of borrowing.
-Statically scoped regions
+As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
+most once.
+One result of this fact is that in the more than two years since Servo has been under development, we have
+encountered zero use-after-free memory bugs in safe Rust code.
+Given that these bugs make up such a large portion of the security vulnerabilities in modern browsers,
+we believe that even the additional work required to get Rust code to pass the type checker initially is
+justified.
 
-Would like to be able to plug in our own GC and stack scanning.
-
-Compare with especially Singularity.
-Key point is having Servo and noticing that most APIs do not transfer ownership.
-By instead 'borrowing' the value, we do not have region types bleed into the interfaces, and avoid the major failure of Singularity.
+One area for future improvement is related to allocations that are not owned by Rust itself.
+Today, we simple wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
+custom memory alloctor or interoperate with the SpiderMonkey JavaScript engine from Gecko.
+We have implemented wrapper types and compiler plugins that check that these are being used correctly,
+but these are still a source of bugs and one of our largest areas of unsafe code.
 
 \subsection{Language interoperability}
 Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
