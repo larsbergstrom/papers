@@ -30,7 +30,7 @@ in practice browsers follow the recovery algorithms described in that specificat
 even ill-formed HTML will be handled in an interoperable way across all browsers..
 Second, due to the presence of the \lstinline[language=HTML]{<script>} tag, the token stream can be modified
 during operation.
-For example, the below example that injects a close tag for the script block works in all modern browsers.
+For example, the below example that injects an open tag for the header and comment blocks works in all modern browsers.
 \begin{lstlisting}[language=HTML]
 <html>
   <script>
@@ -57,7 +57,7 @@ styled to have an associated counter glyph.
 
 \subsection{Display}
 
-That tree of elements, called the flow tree in Servo, is then processed to product a set of display list items.
+That tree of elements, called the flow tree in Servo, is then processed to produce a set of display list items.
 These list items are the actual graphical elements, text runs, etc. in their final on-screen positions.
 The order in which these elements are displayed is well-defined by the standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
 
