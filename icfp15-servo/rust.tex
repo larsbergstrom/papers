@@ -3,46 +3,7 @@
 \section{Rust}
 \label{sec:rust}
 
-TODO: basic overview
-
-\subsection{Syntactic features}
-
-Rust provides struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
-well as pattern matching.
-These types and associated language features provided two large benefits to Servo over traditional browsers
-written in \Cplusplus{}.
-First, providing new abstractions and intermediate representations is syntactically easy, so there is very little
-pressure to tack additional fields into classes simply to avoid creating a large number of new header and implementation
-files.
-More importantly, this style of programming that uses pattern matching over concrete types instead of
-virtual function calls on a class hierarchy provides a non-trivial performance gain.
-Virtual functions can both have an in-memory storage cost associated with the virtual fuction tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
-incur indirect function call costs.
-All C++ browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
-specifier wherever possible or specialize the code in some other way to avoid this cost.
-
-Rust also attempted to stay close to familiar syntax, but did not require full fidelity or easy porting of
-programs from languages such as \Cplusplus.
-This approach has worked well for Rust because it has prevented some of the complexity that arose in Cyclone
-with their attempts to build a safe language that preserved most C idioms.
-
-\subsection{Language interoperability}
-Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
-
-Would like to have full C++ inlining.
-
-\subsection{Compilation strategy}
-Monomorphization, as in MLton, is a great way of providing predictable output code to developers.
-
-Whole-program compilation has some negative impacts in compilation speed, but it also allows for more modular development, since we're not as concerned about whether two things are in the same module for optimization purposes or relying on header-like forced inlining model of C++.
-
-\subsection{Memory management}
-Rust has an ownership model.
-Unlike ML Kit (unbounded regions) and Singularity (ownership bleeding into interfaces), Rust has both statically scoped regions and a notion of borrowing.
-Statically scoped regions
-
-
-Would like to be able to plug in our own GC and stack scanning.
+TODO: basic overview, covering systems language basis; borrowing/ownership \& region/MLKit connection; ADT \& pattern matching; traits \& generics
 
 
 
