@@ -5,9 +5,8 @@
 While this work has discussed many challenges in browser design and our current progress,
 there are many other interesting open problems.
 
-\paragraph{Just-in-time code} is produced from all modern JavaScript engines in order to
-dynamically produce native code that is intended to execute more efficiently than an
-interpreted strategy.
+\paragraph{Just-in-time code.} JavaScript engines dynamically produce native code that is
+intended to execute more efficiently than an interpreted strategy.
 Unfortunately, this area is a large source of security bugs.
 These bugs come from two sources.
 First, there are potential correctness issues.
@@ -18,13 +17,20 @@ Second, dynamically producing and compiling native code and patching it into mem
 while respecting all of the invariants required by the JavaScript runtime (e.g., the
 garbage collector's tracing hooks or free vs. in-use registers) is also a challenge.
 
-\paragraph{JavaScript object rooting} is a problem related to objects from the JavaScript
-heap that are held onto by \Cplusplus object --- and sometimes vice-versa.
+\paragraph{JavaScript object rooting.} Objects from the JavaScript
+heap  are held onto by \Cplusplus{} object --- and sometimes vice-versa.
 Today, all modern engines manually manage the boundary code to handle tracing
 these objects, and this leads to leaking objects or, worse, freeing objects that
 are still in use.
 The lack of a typical garbage collector for these objects also means that cycles
-between \Cplusplus and JavaScript need to be broken through ad-hoc means.
+between \Cplusplus{} and JavaScript need to be broken through ad-hoc means.
+
+\paragraph{Integer overflow/underflow.} It is still an open problem
+to provide optimized code that checks for overflow or underflow without
+incurring significant performance penalties.
+The current plan for Rust is to have debug-only checking of integer ranges
+and for Servo to run debug builds against a test suite, but that may miss
+scenarios that only occur in optimized builds.
 
 %%% Local Variables: 
 %%% mode: latex

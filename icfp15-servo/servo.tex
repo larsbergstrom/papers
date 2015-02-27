@@ -1,7 +1,9 @@
 \section{Servo}
+\label{sec:servo}
+In this section, we cover specific areas of Servo's design or implementation that make use of Rust
+and the impacts and limitations of these features.
 
-\subsection{Syntactic features}
-
+\subsection{Rust's syntax}
 Rust provides struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
 well as pattern matching.
 These types and associated language features provided two large benefits to Servo over traditional browsers
@@ -17,14 +19,9 @@ All C++ browser implementations transform performance-critical code to either us
 specifier wherever possible or specialize the code in some other way to avoid this cost.
 
 Rust also attempted to stay close to familiar syntax, but did not require full fidelity or easy porting of
-programs from languages such as \Cplusplus.
+programs from languages such as \Cplusplus{}.
 This approach has worked well for Rust because it has prevented some of the complexity that arose in Cyclone
 with their attempts to build a safe language that preserved most C idioms.
-
-\subsection{Language interoperability}
-Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
-
-Would like to have full C++ inlining.
 
 \subsection{Compilation strategy}
 Monomorphization, as in MLton, is a great way of providing predictable output code to developers.
@@ -36,27 +33,20 @@ Rust has an ownership model.
 Unlike ML Kit (unbounded regions) and Singularity (ownership bleeding into interfaces), Rust has both statically scoped regions and a notion of borrowing.
 Statically scoped regions
 
-
 Would like to be able to plug in our own GC and stack scanning.
 
+Compare with especially Singularity.
+Key point is having Servo and noticing that most APIs do not transfer ownership.
+By instead 'borrowing' the value, we do not have region types bleed into the interfaces, and avoid the major failure of Singularity.
 
-\subsection{Integer overflow/underflow}
+\subsection{Language interoperability}
+Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
 
-\subsection{Affine types}
-\label{sec:affine}
+Would like to have full C++ inlining.
 
-Compare with especially Singularity. Key point is having Servo and noticing that most APIs do not transfer ownership. By instead 'borrowing' the value, we do not have region types bleed into the interfaces, and avoid the major failure of Singularity.
-
-\subsection{Unsafe code}
-\label{sec:safety}
-
-There are several categories of code in Servo that cannot be written in the safe subset of Rust.
-
-\subsection{FFI calls}
-
-Interoperating with native C code often requires raw access to memory allocated in Rust or returns
+That said, interoperating with native C code often requires raw access to memory allocated in Rust or returns
 pointers to memory that was allocated by the C libraries.
-Translations to an from these raw pointers requires the use of unsafe code.
+Translations to and from these raw pointers requires the use of unsafe code.
 
 \subsection{Intrusive data structures}
 
@@ -67,8 +57,8 @@ For example, a doubly-linked list contains a back pointer to the previous elemen
 in traversals in the opposite direction.
 Many optimized hashtable implementations also have both hash-based access to items
 and a linked list of all of the keys or values.
+
 \subsection{Libraries and abstractions}
-\label{sec:libraries}
 
 Many high-level languages provide abstractions over I/O, threading, parallelism, and concurrency.
 This area is one where we started out with much larger aspirations in Rust but ultimately had to pare back,
@@ -87,34 +77,3 @@ as they have use cases where they create many thousands of vectors, nearly none 
 In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
 can be a significant space savings.
 But, these sorts of libraries are more highly optimized for a web browser than for a general-purpose systems language.
-
-\subsection{Concurrency and parallelism}
-
-Concurrency and data parallelism are two places where Rust's type system is very close to perfectly suited.
-In concurrent and (safe) data parallel libraries, the data operated on by distinct threads is also itself distinct.
-Through the use of Rust's ownership model, data cannot be owned by two threads at the same time.
-In the case of concurrency this works quite well --- there are often individual objects that need to be owned by
-a single object at a time.
-
-%http://is.gd/tkcD9R
-\begin{lstlisting}
-fn main() {
-  let mut data = Box::new(0);
-
-  Thread::spawn(move || {
-    *data = *data + 1;
-  });
-  Thread::spawn(move || {
-    *data = *data + 1;
-  });
-  print!(``{}'', data);
-}
-\end{lstlisting}
-
-
-Data parallelism is a bit more tricky today because there is no way to \eg{} partition a vector in safe code
-for a data parallel operation and then stitch it back together afterwards without performing a copy of the data.
-
-TODO: code sample
-
-
