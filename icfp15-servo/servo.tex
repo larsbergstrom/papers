@@ -117,3 +117,11 @@ can be a significant space savings.
 We also have our own work-stealing library that has been tuned to work on the flow tree during the process of layout,
 as described in \secref{sec:browsers}.
 It is our hope that this code might be useful to other projects as well, though it is fairly browser-specific today.
+
+\subsection{Compiler plugins}
+
+The Rust compiler has plugin framework that provides a couple of hooks that programmers can use to extend the behavior of the compiler. In particular, one can perform arbitrary expansion on the AST and define custom warnings or errors (which also operate on the AST).
+
+We have used this to great effect to interface with the Spidermonkey garbage collector. We can enforce, at compile time, that all objects dealing with DOM structs have trace hooks, as well as limiting the amount of ways GC-managed structs can be used to avoid leaking them.
+
+Future plans include hardening our GC safety checks and introducing compile time checks intended to improve performance, for example to reduce redundant cloning of data.
