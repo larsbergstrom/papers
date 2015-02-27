@@ -21,15 +21,15 @@ in \secref{sec:browsers}) of rendering several web sites, taken on a modern Macb
 \end{table}
 
 \subsection{Rust's syntax}
-Rust provides struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
+Rust has struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
 well as pattern matching.
 These types and associated language features provide two large benefits to Servo over traditional browsers
 written in \Cplusplus{}.
-First, providing new abstractions and intermediate representations is syntactically easy, so there is very little
+First, creating new abstractions and intermediate representations is syntactically easy, so there is very little
 pressure to tack additional fields into classes simply to avoid creating a large number of new header and implementation
 files.
-More importantly, this style of programming that uses pattern matching over concrete types instead of
-virtual function calls on a class hierarchy provides a non-trivial performance gain.
+More importantly, pattern matching with static dispatch is typically faster than a virtual function call on a class
+hierarchy.
 Virtual functions can both have an in-memory storage cost associated with the virtual fuction tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
 incur indirect function call costs.
 All C++ browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
