@@ -51,7 +51,7 @@ either add a new instantiation of a polymorphic function at a given type or, in 
 expose a polymorphic function externally, can change the performance of code that is not local to the change being
 made.
 Monomorphization, as in MLton~\cite{mlton-compiler}, instead instantiates each polymorphic code block at each of the types
-it is applied agains, and providing predictable output code to developers, at the cost of some code duplication.
+it is applied against, providing predictable output code to developers at the cost of some code duplication.
 This approach, combined with whole-program compilation~\cite{weeks:whole-program-mlton}, has a negative impact on
 compilation speed but has resulted in Rust code that easily matches the sequential speed of its \Cplusplus{} analog
 without requiring the Servo developers to become compiler experts.
@@ -122,13 +122,13 @@ For example, thread-local storage (TLS) provides variables that are associated w
 In the presence of both lightweight (stackless) and full native threads across a variety of architectures, though,
 it becomes difficult to understand what the cost of initialization and storage are for this feature.
 Even lightweight threads in general, when interacting with a built-in scheduler and generic I/O system that
-has to work across a variety of platforms (including Windows!) were too expensive to support in practice and
+has to work across a variety of platforms (including Windows!), were too expensive to support in practice and
 had to be removed.
 
 Therefore, much like other modern browsers, Servo contains many of its own specialized implementations of
 library functions that are tuned for the specific cases of web browsers.
 For example, we have special ``small'' vectors that allow instantiation with a default inline size,
-as there are uses cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
+as there are use cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
 In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
 can be a significant space savings.
 We also have our own work-stealing library that has been tuned to work on the flow tree during the process of layout,
