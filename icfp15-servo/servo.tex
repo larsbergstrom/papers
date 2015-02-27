@@ -97,11 +97,10 @@ places where the \Cplusplus{} code has been crafted to ensure the code is inline
 which results in degraded performance.
 
 \subsection{Libraries and abstractions}
-
 Many high-level languages provide abstractions over I/O, threading, parallelism, and concurrency.
 This area is one where we started out with much larger aspirations in Rust but ultimately had to pare back,
 for reasons very similar to the reasons that we have avoided GC by default --- it is difficult to provide a
-predictable, fast implementation that works across all platforms of many systems features.
+predictable, fast implementation that works across all platforms.
 For example, thread-local storage (TLS) provides variables that are associated with a given thread.
 In the presence of both lightweight (stackless) and full native threads across a variety of architectures, though,
 it becomes difficult to understand what the cost of initialization and storage are for this feature.
@@ -109,9 +108,12 @@ Even lightweight threads in general, when interacting with a built-in scheduler 
 has to work across a variety of platforms (including Windows!) were too expensive to support in practice and
 had to be removed.
 
-Even some basic sharing, such as hash tables and vectors has proven challenging.
-For example, most web browsers have implementations of vectors that allow instantiation with a default inline size,
-as they have use cases where they create many thousands of vectors, nearly none of which have more than 4~elements.
+Therefore, much like other modern browsers, Servo contains many of its own specialized implementations of
+library functions that are tuned for the specific cases of web browsers.
+For example, we have special ``small'' vectors that allow instantiation with a default inline size,
+as there are uses cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
 In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
 can be a significant space savings.
-But, these sorts of libraries are more highly optimized for a web browser than for a general-purpose systems language.
+We also have our own work-stealing library that has been tuned to work on the flow tree during the process of layout,
+as described in \secref{sec:browsers}.
+It is our hope that this code might be useful to other projects as well, though it is fairly browser-specific today.
