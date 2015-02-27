@@ -66,9 +66,9 @@ we believe that even the additional work required to get Rust code to pass the t
 justified.
 
 One area for future improvement is related to allocations that are not owned by Rust itself.
-Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
+Today, we simple wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
 custom memory alloctor or interoperate with the SpiderMonkey JavaScript engine from Gecko.
-We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
+We have implemented wrapper types and compiler plugins that check that these are being used correctly,
 but these are still a source of bugs and one of our largest areas of unsafe code.
 
 Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
@@ -137,8 +137,15 @@ It is our hope that this code might be useful to other projects as well, though 
 
 \subsection{Compiler plugins}
 
-The Rust compiler has plugin framework that provides a couple of hooks that programmers can use to extend the behavior of the compiler. In particular, one can perform arbitrary expansion on the AST and define custom warnings or errors (which also operate on the AST).
+The Rust compiler has a plugin framework that allows programmers to modify the behaviour of the compiler. In particular,
+it is possible to define arbitrary AST transformations, as well as custom warnings or errors (which also operate on the AST).
 
-We have used this to great effect to interface with the Spidermonkey garbage collector. We can enforce, at compile time, that all objects dealing with DOM structs have trace hooks, as well as limiting the amount of ways GC-managed structs can be used to avoid leaking them.
+These capabilities enable a safer and more correct interface to the SpiderMonkey garbage collector. For example, we
+can enforce at compile time that, during the tracing phase of garbage collection, all Rust objects visible to the GC
+will report all contained pointers to other GC values, avoiding the threat of incorrectly collecting reachable values.
+Furthermore, we restrict the ways our wrappers around SpiderMonkey pointers can be manipulated, thus turning
+potential runtime memory leaks and ownership semantic API mismatches into static compiler errors instead.
 
-Future plans include hardening our GC safety checks and introducing compile time checks intended to improve performance, for example to reduce redundant cloning of data.
+Future plans include refining our safety checks for garbage collected values, such as flagging invalid ownership
+transference, and introducing compile-time checks for constructs that are non-optimal in terms of performance or
+memory usage.
