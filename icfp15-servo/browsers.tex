@@ -32,28 +32,32 @@ Second, due to the presence of the \lstinline[language=HTML]{<script>} tag, the 
 during operation.
 For example, the below example that injects a close tag for the script block works in all modern browsers.
 \begin{lstlisting}[language=HTML]
-  <html>
-    <script>
-      document.write (``</script>
-    <li>this shows up just fine, thanks</li>
-  </html>
+<html>
+  <script>
+    document.write (``</script>
+  <li>this shows up just fine, thanks</li>
+</html>
 \end{lstlisting}
 Finally, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
-all modern parsers also perform token stream scanning and prefectch of resources likely to be required. CITE
+all modern parsers also perform token stream scanning and prefectch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Layout}
 
 After constructing the DOM and determining the set of styles defined in the Cascading Style Sheets (CSS) that has
-been loaded, those styles are applied to the DOM and a new tree that represents the elements for display is
-created.
+been loaded, those styles are applied to the DOM and a new tree that represents the elements is created.
 This process can create many more elements than previously existed in the DOM --- for example, when a list item is
 styled to have an associated counter glyph.
 
-\subsection{Painting}
+\subsection{Display}
 
-Once all of the elements to appear on screen have been computed, these elements are painted into memory buffers or
+That tree of elements, called the flow tree in Servo, is then processed to product a set of display list items.
+These list items are the actual graphical elements, text runs, etc. in their final on-screen positions.
+The order in which these elements are displayed is well-defined by the standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
+
+\subsection{Rendering}
+
+Once all of the elements to appear on screen have been computed, these elements are rendered, or painted, into memory buffers or
 directly to graphics surfaces.
-The order of painting these elements is well-defined by the standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
 
 \subsection{Scripting}
 

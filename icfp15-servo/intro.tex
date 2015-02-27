@@ -1,8 +1,7 @@
 %!TEX root = paper.tex
-
 \section{Introduction}
 \label{sec:intro}
-At the heart of a modern web browser is the browser engine, which is the code responsible
+The heart of a modern web browser is the browser engine, which is the code responsible
 for loading, processing, evaluating, and rendering web content.
 There are three current browser engine families:
 \begin{enumerate}
@@ -21,51 +20,24 @@ overflow.
 The other 50\% is split between errors in tracing values from the JavaScript heap in the
 \Cplusplus{} code and errors related to dynamically compiled code.
 
-Servo~\cite{SERVO} is a new web browser engine whose development
-was started in February of 2013.
-The goal of this project is to produce a browser that enables new applications to be authored
+Servo~\cite{SERVO} is a new web browser engine designed to address the major environment and 
+architectural changes over the last decade.
+The goal of the Servo project is to produce a browser that enables new applications to be authored
 against the web platform that run with more safety, better performance, and better power usage
 than in current browsers.
-Modern web browser engines have a similar complexity level to that of operating systems.
-These engines are expected to execute arbitrary user programs within a safe sandbox, scale 
-across a wide variety of hardware, manage access to shared system resources, and further 
-do all of that while providing good performance and correct behavior
-against sometimes-incomplete standards.
-With the expectation of executing well on mobile devices and parallel hardware, the 
-fundamental design assumptions have significantly changed since all of the modern
-web engines were originally designed.
-
-
-In this paper, \emph{systems} \emph{software} refers to programs that have some combination
-of soft realtime requirements and memory, CPU, and power usage constraints that require the
-programmer to be able to predict these features from their source code --- without being a
-compiler developer.
-
-enabled us to take on this project in a type-centric way instead of
-the traditional C++ that relies on coding conventions, imprecise static analyses, and
-fuzzers.
-While many languages before have offered some combination of memory safety, parallelism,
-and concurrency, Rust~\cite{RUST} is, to our knowledge, the first to do so that provides the programmer
-with the control over both memory and generated code that is required by systems programmers.
+To address memory-related safety issues, we are using a new systems programming language,
+Rust~\cite{RUST}.
+For parallelism and power, we scale across a wide variety of hardware by building either data-
+or task-parallelism, as appropriate, to each of the parts of the web platform.
+Additionally, we are improving concurrency by reducing the simultaneous access to data
+structures and using a message-passing architecture between components such as the
+JavaScript engine and the rendering engine that is painting graphics to the screen.
 Servo is currently over 300k lines of code and implements enough of the web to render and
 process many pages, though it is still a far cry from the over 7 million lines of code in
 the Mozilla Firefox browser and its associated libraries.
 However, we believe that we have implemented enough of the web platform to provide an
 early report on the successes, failures, and open problems remaining in Servo, from the
 point of view of programming languages and runtime research.
-
-
-Servo is a new web browser engine designed to address the major environment and 
-architectural changes over the last decade.
-To address security, we are using a new systems programming language, Rust,
-which adds static type checking to address by far the top cause of security
-issues in modern web browsers --- failure in handling manual memory allocation
-in \Cplusplus{}.
-We scale across a wide variety of hardware by building either data- or task-parallelism, 
-as appropriate, to each of the stages of the Web layout pipeline.
-Finally, we are improving concurrency by reducing the simultaneous access to data
-structures and using a message-passing architecture between components such as the
-JavaScript engine and the rendering engine that is painting graphics to the screen.
 In this experience report, we discuss the design and architecture of a modern web 
 browser engine, show how modern programming language techniques --- many of which
 originated in the functional programming community --- address these design 
