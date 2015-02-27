@@ -44,9 +44,9 @@ For example, the below example that injects a close tag for the script block wor
   This is commented
 </html>
 \end{lstlisting}
-This requirement causes parsing to pause while JavaScript code is running.
+This requires parsing to pause until JavaScript code has run to completion.
 But, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
-all modern parsers also perform token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
+all modern parsers also perform speculative token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Layout}
 
