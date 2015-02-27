@@ -66,9 +66,9 @@ we believe that even the additional work required to get Rust code to pass the t
 justified.
 
 One area for future improvement is related to allocations that are not owned by Rust itself.
-Today, we simple wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
+Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
 custom memory alloctor or interoperate with the SpiderMonkey JavaScript engine from Gecko.
-We have implemented wrapper types and compiler plugins that check that these are being used correctly,
+We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
 but these are still a source of bugs and one of our largest areas of unsafe code.
 
 Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
