@@ -129,7 +129,8 @@ For example, we have special ``small'' vectors that allow instantiation with a d
 as there are use cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
 In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
 can be a significant space savings.
-We also have our own work-stealing library that has been tuned to work on the flow tree during the process of layout,
+We also have our own work-stealing library that has been tuned to work on the
+DOM and flow trees during the process of styling and layout,
 as described in \secref{sec:browsers}.
 It is our hope that this code might be useful to other projects as well, though it is fairly browser-specific today.
 
