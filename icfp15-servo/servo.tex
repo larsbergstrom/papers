@@ -139,16 +139,35 @@ The major challenge we have encountered with this approach is the same one we ha
 of large concurrent systems --- reasoning about whether protocols make progress or threads eventually terminate
 is manual and quite challenging, particularly in the presence of arbitrary thread failures.
 
-\subsection{Compiler plugins}
+\subsection{Macros}
 
-The Rust compiler has a plugin framework that allows programmers to modify the behaviour of the compiler. In particular,
-it is possible to define arbitrary AST transformations, as well as custom warnings or errors (which also operate on the AST).
+Rust provides a hygienic macro system. Macros are defined using a declarative, pattern-based syntax~\cite{Kohlbecker:1987:MDS:41625.41632}. The macro system has proven invaluable; we have defined more than one hundred macros throughout Servo and its associated libraries.
 
-These capabilities enable a safer and more correct interface to the SpiderMonkey garbage collector. For example, we
-can enforce at compile time that, during the tracing phase of garbage collection, all Rust objects visible to the GC
-will report all contained pointers to other GC values, avoiding the threat of incorrectly collecting reachable values.
-Furthermore, we restrict the ways our wrappers around SpiderMonkey pointers can be manipulated, thus turning
-potential runtime memory leaks and ownership semantic API mismatches into static compiler errors instead.
+\begin{figure}
+\begin{lstlisting}
+match self.state {
+  states::Data => loop {
+    match get_char!(self) {
+      '&'  => go!(self: consume_char_ref),
+      '<'  => go!(self: to TagOpen),
+      '\0' => go!(self: error; emit '\0'),
+      c    => go!(self: emit c),
+\end{lstlisting}
+  \caption{Incremental HTML tokenizer rules, written in a succinct form using macros. Macro invocations are of the form \lstinline{identifier!(...)}.}
+  \label{fig:tokenizer-macros}
+\end{figure}
+
+For example, our HTML tokenizer rules, such as those shown in \figref{fig:tokenizer-macros}, are written in a macro-based domain specific language that closely matches the format of the HTML specification.\footnote{\url{https://html.spec.whatwg.org/multipage/syntax.html#tokenization}} Another macro handles incremental tokenization, so that the state machine can pause at any time to await further input. If no next character is available, the \lstinline{get_char!} macro will cause an early return from the function that contains the macro invocation. This careful use of non-local control flow, together with the overall expression-oriented style, makes Servo's HTML tokenizer unusually succinct and comprehensible.
+
+The Rust compiler can also load compiler plugins written in Rust. These can perform syntactic transformations beyond the capabilities of the hygienic rule-based macros. Compiler plugins use unstable internal APIs, so the maintenance burden is high compared to pattern-based macros. Nevertheless, Servo uses procedural macros for a number of purposes, including building perfect hash maps at compile time,\footnote{\url{https://github.com/sfackler/rust-phf}} interning string literals, and auto-generating GC trace hooks. Despite the exposure to internal compiler APIs, the deep integration with tooling makes procedural macros an attractive alternative to the traditional systems metaprogramming tools of preprocessors and code generators.
+
+\subsection{Project-specific static analysis}
+
+Compiler plugins can also provide ``lint'' checks\footnote{\url{http://doc.rust-lang.org/book/plugins.html#lint-plugins}} that use the same infrastructure as the compiler's built-in warnings. This allows project-specific safety or style checks to integrate deeply with the compiler. Lint plugins traverse a typechecked AST, and they can be enabled/disabled within any lexical scope, the same way as built-in warnings.
+
+Lint plugins provide some essential guarantees within Servo. Because our DOM objects are managed by the JavaScript garbage collector, we must add GC roots for any DOM object we wish to access from Rust code. Interaction with a third-party GC written in \Cplusplus{} is well outside the scope of Rust's built-in guarantees, so we bridge the gap with lint plugins. These capabilities enable a safer and more correct interface to the SpiderMonkey garbage collector. For example, we can enforce at compile time that, during the tracing phase of garbage collection, all Rust objects visible to the GC will report all contained pointers to other GC values, avoiding the threat of incorrectly collecting reachable values. Furthermore, we restrict the ways our wrappers around SpiderMonkey pointers can be manipulated, thus turning potential runtime memory leaks and ownership semantic API mismatches into static compiler errors instead.
+
+As the ``lint'' / ``warning'' terminology suggests, these checks may not catch all possible mistakes. Ad-hoc extensions to a type system cannot easily guarantee soundness. Rather, lint plugins are a lightweight way to catch mistakes deemed particularly common and/or damaging in practice. As plugins are ordinary libraries, members of the Rust community can share lint checks that they have found useful.\footnote{\url{https://github.com/Manishearth/rust-clippy}}
 
 Future plans include refining our safety checks for garbage collected values, such as flagging invalid ownership
 transference, and introducing compile-time checks for constructs that are non-optimal in terms of performance or
