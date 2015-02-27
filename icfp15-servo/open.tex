@@ -2,6 +2,29 @@
 
 \section{Open}
 \label{sec:open}
+While this work has discussed many challenges in browser design and our current progress,
+there are many other interesting open problems.
+
+\paragraph{Just-in-time code} is produced from all modern JavaScript engines in order to
+dynamically produce native code that is intended to execute more efficiently than an
+interpreted strategy.
+Unfortunately, this area is a large source of security bugs.
+These bugs come from two sources.
+First, there are potential correctness issues.
+Many of these optimizations are only valid when certain conditions of the calling
+code and environment hold, and ensuring the specialized code is called only when those
+conditions hold is non-trivial to verify.
+Second, dynamically producing and compiling native code and patching it into memory
+while respecting all of the invariants required by the JavaScript runtime (e.g., the
+garbage collector's tracing hooks or free vs. in-use registers) is also a challenge.
+
+\paragraph{JavaScript object rooting} is a problem related to objects from the JavaScript
+heap that are held onto by \Cplusplus object --- and sometimes vice-versa.
+Today, all modern engines manually manage the boundary code to handle tracing
+these objects, and this leads to leaking objects or, worse, freeing objects that
+are still in use.
+The lack of a typical garbage collector for these objects also means that cycles
+between \Cplusplus and JavaScript need to be broken through ad-hoc means.
 
 %%% Local Variables: 
 %%% mode: latex

@@ -1,0 +1,26 @@
+%!TEX root = paper.tex
+%
+\section{Related browser research}
+\label{sec:rel}
+The ZOOMM browser was an effort at Qualcomm Research to build a parallel browser, also
+focused on multicore mobile devices~\cite{ZOOMM}.
+This browser includes many features that we have not yet implemented in Servo, particularly
+around resource fetching.
+They also wrote their own JavaScript engine, which we have not done.
+Servo and ZOOMM share an extremely concurrent architecture --- both have script, layout,
+rendering, and the user interface operating concurrently from one another in order to maximize
+interactivity for the user.
+Parallel layout in Servo is one major area that was not investigated in the ZOOM browser.
+The other major difference is that Servo is implemented in Rust, whereas ZOOM is written
+in \Cplusplus, similarly to most modern browser engines.
+
+Ras Bodik's group at the University of California Berkely worked on a parallel browsing
+project (funded in part by Mozilla Research) that focused on improving the parallelism
+of layout~\cite{parallel-layout}.
+Instead of our approach to parallel layout, which focuses on multiple parallel tree
+traversals, they modeled a subset of CSS using attribute grammars.
+They showed significant speedups with their system over a reimplementation of Safari's
+algorithms, but we have not used this approach due to questions of whether it is possible
+to use attribute grammars to both accurately model the web as it is implemented today
+and to support new features as they are added.
+Servo uses a very similar CSS selector matching algorithm to theirs.

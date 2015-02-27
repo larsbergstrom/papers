@@ -10,7 +10,7 @@ based on the Unreal Engine\footnote{\url{https://blog.mozilla.org/blog/2015/02/2
 modern browsers have the ability to handle much more than simple static pages.
 \figref{fig:browser} shows the steps in processing a site.
 While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
-\begin{figure*}%[ht]
+\begin{figure*}[ht]
   \begin{center}
     \includegraphics[scale=0.7]{pics/browser}
   \end{center}%
@@ -58,7 +58,7 @@ The order of painting these elements is well-defined by the standard\footnote{\u
 \subsection{Scripting}
 
 Whether through timers, \lstinline[language=HTML]{<script>} blocks in the HTML, user interactions, or other event handlers,
-JavaScript (JS) code may execute at any point during parsing, layout, and painting or afterwards during display.
+JavaScript code may execute at any point during parsing, layout, and painting or afterwards during display.
 These scripts can modify the DOM tree, which may require rerunning the layout and painting passes in order to update
 the output.
 Most modern browsers use some form of dirty bit marking to attempt to minimize the recalculations during this process.

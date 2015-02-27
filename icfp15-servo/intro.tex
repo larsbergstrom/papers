@@ -6,9 +6,9 @@ At the heart of a modern web browser is the browser engine, which is the code re
 for loading, processing, evaluating, and rendering web content.
 There are three current browser engine families:
 \begin{enumerate}
-\item Trident/Spartan, the engine in Internet Explorer
-\item Webkit/Blink, the engine in Safari, Chrome, and Opera
-\item Gecko, the engine in Firefox
+\item Trident/Spartan, the engine in Internet Explorer~\cite{IE}
+\item Webkit\cite{WEBKIT}/Blink, the engine in Safari~\cite{SAFARI}, Chrome~\cite{CHROME}, and Opera~\cite{OPERA}
+\item Gecko, the engine in Firefox~\cite{FIREFOX}
 \end{enumerate}
 All of these engines have at their core many millions of lines of \Cplusplus code.
 While the use of \Cplusplus has enabled all of these browsers to achieve excellent sequential
@@ -18,9 +18,8 @@ do on desktop processors~\cite{parallelizing-web-pages,ZOOMM}.
 Further, in an informal inspection of the critical security bugs in Gecko, we determined that
 roughly 50\% of the bugs are use after free, out of range access, or related to integer
 overflow.
-The other 50\% is split between errors in tracing values from the JavaScript (JS) heap in the
-\Cplusplus code and errors related to Just-in-time (JIT) code, which we will not discuss
-further in this work.
+The other 50\% is split between errors in tracing values from the JavaScript heap in the
+\Cplusplus code and errors related to dynamically compiled code.
 
 Servo\footnote{https://github.com/servo/servo} is a new web browser engine whose development
 was started in February of 2013.
