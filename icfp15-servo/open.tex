@@ -12,18 +12,20 @@ These bugs come from two sources.
 First, there are potential correctness issues.
 Many of these optimizations are only valid when certain conditions of the calling
 code and environment hold, and ensuring the specialized code is called only when those
-conditions hold is non-trivial to verify.
+conditions hold is non-trivial.
 Second, dynamically producing and compiling native code and patching it into memory
 while respecting all of the invariants required by the JavaScript runtime (e.g., the
-garbage collector's tracing hooks or free vs. in-use registers) is also a challenge.
+garbage collector's read/write barriers or free vs. in-use registers) is also a challenge.
 
 \paragraph{JavaScript object rooting.} Objects from the JavaScript
-heap  are held onto by \Cplusplus{} objects --- and sometimes vice-versa.
+heap are held onto by \Cplusplus{} objects, and often vice-versa as well.
 Today, all modern engines manually manage the boundary code to handle tracing
-these objects, and this leads to leaking objects or, worse, freeing objects that
-are still in use.
-The lack of a typical garbage collector for these objects also means that cycles
-between \Cplusplus{} and JavaScript need to be broken through ad-hoc means.
+these foreign pointers. Any errors in this code lead to leaked object or, worse,
+freeing objects that are still in use.
+The lack of a holistic garbage collector also means that cycles
+between \Cplusplus{} and JavaScript must be broken on an ad-hoc basis, or
+a specialized cycle collector must be integrated that understands cross-language
+references.
 
 \paragraph{Integer overflow/underflow.} It is still an open problem
 to provide optimized code that checks for overflow or underflow without
