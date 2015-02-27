@@ -1,11 +1,10 @@
 \section{Servo}
 \label{sec:servo}
-In this section, we cover specific areas of Servo's design or implementation that make use of Rust
-and the impacts and limitations of these features.
-The most important test for a browser, though, is performance --- Servo must be at least as fast
+A crucial test of Servo is performance --- Servo must be at least as fast
 as other browsers at similar tasks to succeed, even if it provides additional memory safety.
-\tblref{servo-perf} shows a preliminary breakdown of the performance in the layout stage (described
-in \secref{sec:browsers}) of rendering several web sites, taken on a modern Macbook Pro.
+\tblref{servo-perf} shows a preliminary comparison of the performance of the layout stage (described
+in \secref{sec:browsers}) of rendering several web sites in Mozilla Firefox's Gecko engine compared
+to Servo, taken on a modern Macbook Pro.
 \begin{table}
   \begin{center}
     \begin{tabular}{r || r | r | r}
@@ -16,9 +15,11 @@ in \secref{sec:browsers}) of rendering several web sites, taken on a modern Macb
     \end{tabular}%
   \end{center}%
   \caption{Performance of Servo against Mozilla's Gecko rendering engine on the layout portion of some common sites.
-  Times are in milliseconds.}
+  Times are in milliseconds, where lower numbers are better.}
   \label{servo-perf}
 \end{table}
+In the remainder of this section, we cover specific areas of Servo's design or implementation that make use of
+Rust and the impacts and limitations of these features.
 
 \subsection{Rust's syntax}
 Rust has struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
@@ -52,9 +53,9 @@ expose a polymorphic function externally, can change the performance of code tha
 made.
 Monomorphization, as in MLton~\cite{mlton-compiler}, instead instantiates each polymorphic code block at each of the types
 it is applied against, providing predictable output code to developers at the cost of some code duplication.
-This approach, combined with whole-program compilation~\cite{weeks:whole-program-mlton}, has a negative impact on
-compilation speed but has resulted in Rust code that easily matches the sequential speed of its \Cplusplus{} analog
-without requiring the Servo developers to become compiler experts.
+This approach, combined with whole-program compilation~\cite{weeks:whole-program-mlton}, is used in Rust.
+This strategy has a negative impact on compilation speed but has resulted in Rust code that easily matches the
+sequential speed of its \Cplusplus{} analog without requiring the Servo developers to become compiler experts.
 
 \subsection{Memory management}
 As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
@@ -72,8 +73,8 @@ We have implemented wrapper types and compiler plugins that restrict incorrect u
 but they are still a source of bugs and one of our largest areas of unsafe code.
 
 Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
-However, many data structures do not follow that model, in order to provide asymptotic
-improvements in access.
+However, many data structures do not follow that model, in order to provide multiple traversal
+APIs without favoring the performance of one over the other.
 For example, a doubly-linked list contains a back pointer to the previous element to aid
 in traversals in the opposite direction.
 Many optimized hashtable implementations also have both hash-based access to items
@@ -111,7 +112,7 @@ In both cases, Servo uses C wrapper code to call into the code that Rust cannot 
 reach.
 While this approach is not a large problem for varargs-style functions, it defeats many of the
 places where the \Cplusplus{} code has been crafted to ensure the code is inlined into the caller,
-which results in degraded performance.
+resulting in degraded performance.
 
 \subsection{Libraries and abstractions}
 Many high-level languages provide abstractions over I/O, threading, parallelism, and concurrency.
@@ -163,7 +164,7 @@ The Rust compiler can also load compiler plugins written in Rust. These can perf
 
 \subsection{Project-specific static analysis}
 
-Compiler plugins can also provide ``lint'' checks\footnote{\url{http://doc.rust-lang.org/book/plugins.html#lint-plugins}} that use the same infrastructure as the compiler's built-in warnings. This allows project-specific safety or style checks to integrate deeply with the compiler. Lint plugins traverse a typechecked AST, and they can be enabled/disabled within any lexical scope, the same way as built-in warnings.
+Compiler plugins can also provide ``lint'' checks\footnote{\url{http://doc.rust-lang.org/book/plugins.html#lint-plugins}} that use the same infrastructure as the compiler's built-in warnings. This allows project-specific safety or style checks to integrate deeply with the compiler. Lint plugins traverse a typechecked abstract syntax tree (AST), and they can be enabled/disabled within any lexical scope, the same way as built-in warnings.
 
 Lint plugins provide some essential guarantees within Servo. Because our DOM objects are managed by the JavaScript garbage collector, we must add GC roots for any DOM object we wish to access from Rust code. Interaction with a third-party GC written in \Cplusplus{} is well outside the scope of Rust's built-in guarantees, so we bridge the gap with lint plugins. These capabilities enable a safer and more correct interface to the SpiderMonkey garbage collector. For example, we can enforce at compile time that, during the tracing phase of garbage collection, all Rust objects visible to the GC will report all contained pointers to other GC values, avoiding the threat of incorrectly collecting reachable values. Furthermore, we restrict the ways our wrappers around SpiderMonkey pointers can be manipulated, thus turning potential runtime memory leaks and ownership semantic API mismatches into static compiler errors instead.
 
