@@ -28,12 +28,14 @@
 \newcommand{\comColor}{Red}
 
 \usepackage{listings}
+\usepackage{textcomp}
 \input{../common/lstlang-rust}
 \lstset{
   basicstyle=\ttfamily\color{\cdColor},
   keywordstyle=\color{\kwColor}\bfseries,
   commentstyle=\color{\comColor}\itshape,
-  language=Rust
+  language=Rust,
+  upquote=true
 }
 
 \newcommand{\dcfa}{{$\Delta$}{CFA}}
