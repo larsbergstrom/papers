@@ -10,8 +10,8 @@ There are three current browser engine families:
 \item Webkit\cite{WEBKIT}/Blink, the engine in Safari~\cite{SAFARI}, Chrome~\cite{CHROME}, and Opera~\cite{OPERA}
 \item Gecko, the engine in Firefox~\cite{FIREFOX}
 \end{enumerate}
-All of these engines have at their core many millions of lines of \Cplusplus code.
-While the use of \Cplusplus has enabled all of these browsers to achieve excellent sequential
+All of these engines have at their core many millions of lines of \Cplusplus{} code.
+While the use of \Cplusplus{} has enabled all of these browsers to achieve excellent sequential
 performance on a single web page, on mobile devices with lower processor speed but many
 more processors, these browsers do not provide the same level of interactivity that they
 do on desktop processors~\cite{parallelizing-web-pages,ZOOMM}.
@@ -19,9 +19,9 @@ Further, in an informal inspection of the critical security bugs in Gecko, we de
 roughly 50\% of the bugs are use after free, out of range access, or related to integer
 overflow.
 The other 50\% is split between errors in tracing values from the JavaScript heap in the
-\Cplusplus code and errors related to dynamically compiled code.
+\Cplusplus{} code and errors related to dynamically compiled code.
 
-Servo\footnote{https://github.com/servo/servo} is a new web browser engine whose development
+Servo~\cite{SERVO} is a new web browser engine whose development
 was started in February of 2013.
 The goal of this project is to produce a browser that enables new applications to be authored
 against the web platform that run with more safety, better performance, and better power usage
@@ -45,7 +45,7 @@ enabled us to take on this project in a type-centric way instead of
 the traditional C++ that relies on coding conventions, imprecise static analyses, and
 fuzzers.
 While many languages before have offered some combination of memory safety, parallelism,
-and concurrency, Rust is, to our knowledge, the first to do so that provides the programmer
+and concurrency, Rust~\cite{RUST} is, to our knowledge, the first to do so that provides the programmer
 with the control over both memory and generated code that is required by systems programmers.
 Servo is currently over 300k lines of code and implements enough of the web to render and
 process many pages, though it is still a far cry from the over 7 million lines of code in
