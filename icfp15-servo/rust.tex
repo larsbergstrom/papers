@@ -32,7 +32,8 @@ fn main() {
 
 Data parallelism is a bit more tricky today because there is no way to \eg{} partition a vector in safe code
 for a data parallel operation and then stitch it back together afterwards without performing a copy of the data.
-
+% XXX Is this true? Now that Send no longer implies 'static, you can send
+%     slices to different threads
 
 %%% Local Variables: 
 %%% mode: latex
