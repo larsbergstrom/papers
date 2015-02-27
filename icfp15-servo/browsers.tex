@@ -9,7 +9,7 @@ From application suites such as the Google Apps\footnote{\url{https://apps.googl
 based on the Unreal Engine\footnote{\url{https://www.unrealengine.com/}},
 modern browsers have the ability to handle much more than simple static pages.
 \figref{fig:browser} shows the steps in processing a site.
-While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
+While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
 \begin{figure*}[ht]
   \begin{center}
     \includegraphics[scale=0.7]{pics/browser}
@@ -25,7 +25,7 @@ This resource usually consists of HTML, which is then parsed and typically turne
 Model (DOM) tree.
 From a programming languages standpoint, there are several interesting aspects of the parser design
 for HTML.
-First, though the specification allows the browser to abort on a parse error\footnote{\url{https://html.spec.whatwg.org/multipage/syntax.html#parsing}},
+First, though the specification allows the browser to abort on a parse error\footnote{\url{https://html.spec.whatwg.org/multipage/#parsing}},
 in practice browsers follow the recovery algorithms described in that specification and make a best attempt to
 load any page given to them.
 Second, due to the presence of the \lstinline[language=HTML]{<script>} tag, the token stream can be modified
@@ -39,18 +39,18 @@ For example, the below example that injects a close tag for the script block wor
 </html>
 \end{lstlisting}
 Finally, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
-all modern parsers also perform token stream scanning and prefectch of resources likely to be required~\cite{browsers-slow-smartphones}.
+all modern parsers also perform token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Layout}
 
 After constructing the DOM and determining the set of styles defined in the Cascading Style Sheets (CSS) that has
-been loaded, those styles are applied to the DOM and a new tree that represents the elements is created.
-This process can create many more elements than previously existed in the DOM --- for example, when a list item is
+been loaded, those styles are applied to the DOM and a new flow tree that represents the elements is created.
+This process can create many more flows than elements existed in the DOM --- for example, when a list item is
 styled to have an associated counter glyph.
 
 \subsection{Display}
 
-That tree of elements, called the flow tree in Servo, is then processed to product a set of display list items.
+That tree of elements, called the flow tree in Servo, is then processed to produce a set of display list items.
 These list items are the actual graphical elements, text runs, etc. in their final on-screen positions.
 The order in which these elements are displayed is well-defined by the standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
 

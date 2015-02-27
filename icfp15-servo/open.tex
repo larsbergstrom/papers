@@ -18,7 +18,7 @@ while respecting all of the invariants required by the JavaScript runtime (e.g.,
 garbage collector's tracing hooks or free vs. in-use registers) is also a challenge.
 
 \paragraph{JavaScript object rooting.} Objects from the JavaScript
-heap  are held onto by \Cplusplus{} object --- and sometimes vice-versa.
+heap  are held onto by \Cplusplus{} objects --- and sometimes vice-versa.
 Today, all modern engines manually manage the boundary code to handle tracing
 these objects, and this leads to leaking objects or, worse, freeing objects that
 are still in use.
