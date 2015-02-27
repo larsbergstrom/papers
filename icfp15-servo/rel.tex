@@ -10,11 +10,11 @@ They also wrote their own JavaScript engine, which we have not done.
 Servo and ZOOMM share an extremely concurrent architecture --- both have script, layout,
 rendering, and the user interface operating concurrently from one another in order to maximize
 interactivity for the user.
-Parallel layout in Servo is one major area that was not investigated in the ZOOM browser.
-The other major difference is that Servo is implemented in Rust, whereas ZOOM is written
+Parallel layout in Servo is one major area that was not investigated in the ZOOMM browser.
+The other major difference is that Servo is implemented in Rust, whereas ZOOMM is written
 in \Cplusplus, similarly to most modern browser engines.
 
-Ras Bodik's group at the University of California Berkely worked on a parallel browsing
+Ras Bodik's group at the University of California Berkeley worked on a parallel browsing
 project (funded in part by Mozilla Research) that focused on improving the parallelism
 of layout~\cite{parallel-layout}.
 Instead of our approach to parallel layout, which focuses on multiple parallel tree
