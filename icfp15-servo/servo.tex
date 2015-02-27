@@ -112,7 +112,11 @@ In both cases, Servo uses C wrapper code to call into the code that Rust cannot 
 reach.
 While this approach is not a large problem for varargs-style functions, it defeats many of the
 places where the \Cplusplus{} code has been crafted to ensure the code is inlined into the caller,
-resulting in degraded performance.
+resulting in degraded performance. We intend to fix this through cross-language inlining, taking
+advantage of the fact that both \lstinline{rustc} and \lstinline{clang++} can produce output in the
+LLVM\footnote{\url{http://llvm.org}} intermediate representation, which is subject to link-time
+optimization. We have demonstrated this capability at small scale, but have not yet deployed it
+within Servo.
 
 \subsection{Libraries and abstractions}
 Many high-level languages provide abstractions over I/O, threading, parallelism, and concurrency.
