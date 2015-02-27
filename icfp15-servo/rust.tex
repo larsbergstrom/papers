@@ -20,10 +20,11 @@ Rust contains library functionality for concurrency and data parallelism.
 Concurrency, in particular, integrates cleanly with Rust's ownership types.
 In safe concurrent programs, the data operated on by distinct threads is also itself distinct.
 Through the use of Rust's ownership model, data cannot be owned by two threads at the same time.
-For example, the following code generates a static error from the compiler because after the first
-thread is spawned, the ownership of \lstinline{data} has been transferred into the closure associated
-with that thread and is unavailable for transfer in to the closure for the second thread.
+For example, the code in \figref{fig:bad-concurrency} generates a static error from the compiler because
+after the first thread is spawned, the ownership of \lstinline{data} has been transferred into the
+closure associated with that thread and is unavailable for transfer in to the closure for the second thread.
 %http://is.gd/tkcD9R
+\begin{figure}
 \begin{lstlisting}
 fn main() {
   let mut data = Box::new(0);
@@ -37,6 +38,9 @@ fn main() {
   print!(``{}'', data);
 }
 \end{lstlisting}
+  \caption{Code that will not compile because it attempts to access mutable state from two threads.}
+  \label{fig:bad-concurrency}
+\end{figure}
 
 There is partial support for data parallelism, in the form of partitioning a vector statically in advance
 and transferring ownership of each of those partitions into newly spawned threads.

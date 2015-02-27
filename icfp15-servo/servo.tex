@@ -2,6 +2,23 @@
 \label{sec:servo}
 In this section, we cover specific areas of Servo's design or implementation that make use of Rust
 and the impacts and limitations of these features.
+The most important test for a browser, though, is performance --- Servo must be at least as fast
+as other browsers at similar tasks to succeed, even if it provides additional memory safety.
+\tblref{servo-perf} shows a preliminary breakdown of the performance in the layout stage (described
+in \secref{sec:browsers}) of rendering several web sites, taken on a modern Macbook Pro.
+\begin{table}
+  \begin{center}
+    \begin{tabular}{r || r | r | r}
+      Site & Gecko & Servo 1 thread & Servo 4 threads \\
+      \hline
+      Reddit & 250 & 100 & 55  \\
+      CNN & 105 & 50 & 35 \\
+    \end{tabular}%
+  \end{center}%
+  \caption{Performance of Servo against Mozilla's Gecko rendering engine on the layout portion of some common sites.
+  Times are in milliseconds.}
+  \label{servo-perf}
+\end{table}
 
 \subsection{Rust's syntax}
 Rust provides struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
