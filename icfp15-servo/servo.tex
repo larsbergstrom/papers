@@ -33,11 +33,11 @@ This strategy reduces code size, but leads to unpredictable performance and code
 either add a new instantiation of a polymorphic function at a given type or, in a modular compilation setting, that
 expose a polymorphic function externally, can change the performance of code that is not local to the change being
 made.
-Monomorphization, as in MLton~\cite{mlton}, instead instantiates each polymorphic code block at each of the types
+Monomorphization, as in MLton~\cite{mlton-compiler}, instead instantiates each polymorphic code block at each of the types
 it is applied agains, and providing predictable output code to developers, at the cost of some code duplication.
-This approach, combined with whole-program compilation, has some negative impacts in compilation speed but has resulted
-in Rust code that easily matches the sequential speed of its \Cplusplus{} analog without requiring the Servo developers
-to become compiler experts.
+This approach, combined with whole-program compilation~\cite{weeks:whole-program-mlton}, has a negative impact on
+compilation speed but has resulted in Rust code that easily matches the sequential speed of its \Cplusplus{} analog
+without requiring the Servo developers to become compiler experts.
 
 \subsection{Memory management}
 As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
@@ -55,13 +55,36 @@ We have implemented wrapper types and compiler plugins that check that these are
 but these are still a source of bugs and one of our largest areas of unsafe code.
 
 \subsection{Language interoperability}
-Clean C interop, both for calling and being called were key for integration with various C libraries and bootstrapping larger projects that we intend to eventually be written entirely in Rust, but not initially. This support also means being able to define structs with exact layout expected by C for APIs like that, intead of writing shim layers.
+Rust has nearly complete interoperability with C code, both exposing code to and using code from
+C programs.
+This support has allowed us to smoothly integrate with many browser libraries, which has been
+critical for bootstrapping a browser without rewriting all of lower-level libraries immediately, such as
+graphics rendering code, the JavaScript engine, font selection code, etc.
+\tblref{servo-loc} shows the breakdown between current lines of Rust code (including generated code that
+handles interfacing with the JavaScript engine) and C code.
+This table also includes test code, though the majority of that code is in HTML and JavaScript.
+\begin{table}
+  \begin{center}
+    \begin{tabular}{r || r}
+      Language & Lines of Code \\
+      \hline
+      C or \Cplusplus{} & 1,678,427 \\
+      Rust & 410,817 \\
+      HTML or JavaScript & 217,827 \\
+    \end{tabular}%
+  \end{center}%
+  \caption{Lines of code in Servo}
+  \label{servo-loc}
+\end{table}
 
-Would like to have full C++ inlining.
-
-That said, interoperating with native C code often requires raw access to memory allocated in Rust or returns
-pointers to memory that was allocated by the C libraries.
-Translations to and from these raw pointers requires the use of unsafe code.
+There are two limitations in the language interoperability that pose challenges for Servo today.
+First, Rust cannot currently expose varargs-style functions to C code.
+Second, Rust cannot compile against \Cplusplus{} code.
+In both cases, Servo uses C wrapper code to call into the code that Rust cannot directly
+reach.
+While this approach is not a large problem for varargs-style functions, it defeats many of the
+places where the \Cplusplus{} code has been crafted to ensure the code is inlined into the caller,
+which results in degraded performance.
 
 \subsection{Intrusive data structures}
 
