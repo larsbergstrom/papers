@@ -35,7 +35,7 @@ fn main() {
   Thread::spawn(move || {
     *data = *data + 1;
   });
-  print!(``{}'', data);
+  print!("{}", data);
 }
 \end{lstlisting}
   \caption{Code that will not compile because it attempts to access mutable state from two threads.}

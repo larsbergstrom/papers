@@ -34,14 +34,15 @@ For example, the below example that injects an open tag for the header and comme
 \begin{lstlisting}[language=HTML]
 <html>
   <script>
-  document.write(``<h'');
+  document.write("<h");
   </script>1>
   This is a h1 title
 
   <script>
-  document.write(``<!-'');
+  document.write("<!-");
   </script>-
   This is commented
+  -->
 </html>
 \end{lstlisting}
 This requires parsing to pause until JavaScript code has run to completion.
