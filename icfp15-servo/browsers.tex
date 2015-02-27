@@ -7,9 +7,16 @@ Modern web browsers do not just load static pages, but can also handle pages tha
 complexity to native applications.
 From application suites such as the Google Apps\footnote{\url{https://apps.google.com}} to games
 based on the Unreal Engine\footnote{\url{https://blog.mozilla.org/blog/2015/02/24/unreal-engine-4-7-binary-release-includes-html5-export-3/}},
-modern browsers have the ability to
-While Servo is designed to handle applications of that complexity, in this section we will
-focus on the subset of the browser design that supports loading and displaying a single page.
+modern browsers have the ability to handle much more than simple static pages.
+\figref{fig:browser} shows the steps in processing a site.
+While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
+\begin{figure*}%[ht]
+  \begin{center}
+    \includegraphics[scale=0.7]{pics/browser}
+  \end{center}%
+  \caption{Processing stages and intermediate representations in a browser engine.}
+  \label{fig:browser}
+\end{figure*}%
 
 \subsection{Parsing HTML and CSS}
 

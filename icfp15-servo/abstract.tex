@@ -1,30 +1,22 @@
 %!TEX root = paper.tex
 %
 \begin{abstract}
-Servo is a project started at Mozilla Research to build a new web browser
-engine that takes advantage of both modern parallel hardware and advances in language
-technology that prevent many of the common security errors that plague all of the other
-modern browsers.
-The new language, Rust, enabled us to take on this project in a type-centric way instead of
-the traditional C++ that relies on coding conventions, imprecise static analyses, and
-fuzzers.
-While many languages before have offered some combination of memory safety, parallelism,
-and concurrency, Rust is, to our knowledge, the first to do so that provides the programmer
-with the control over both memory and generated code that is required by systems programmers.
-In this paper, \emph{systems} \emph{software} refers to programs that have some combination
-of soft realtime requirements and memory, CPU, and power usage constraints that require the
-programmer to be able to predict these features from their source code --- without being a
-compiler developer.
+All modern web browsers --- Internet Explorer, Firefox, Chrome, Opera, and Webkit ---
+have a core rendering engine written in \Cplusplus.
+This language choice was made because it affords the systems programmer complete control
+of the underlying hardware features and memory in use plus provides a transparent
+compilation model.
 
-Servo is currently over 300k lines of code and implements enough of the web to render and
-process many pages, though it is still a far cry from the over 7 million lines of code in
-the Mozilla Firefox browser and its associated libraries.
-However, we believe that we have implemented enough of the web platform to provide an
-early report on the successes, failures, and open problems remaining in Servo, from the
-point of view of programming languages and runtime research.
-In this work, we show how a language with an affine type system and many syntactic
-features from the ML family of languages can be successfully used to build state-of-the-art
-systems software.
+Servo is a project started at Mozilla Research to build a new web browser engine that
+preserves the capabilities of these other browser engines but also both takes more
+advantage of the recent trends in parallel hardware and is more memory-safe.
+We use a new language, Rust, that provides us a similar level of control of the underlying
+system but which builds on many concepts familiar to the functional programming community
+to form a novelty - a useful, safe systems programming language.
+
+In this paper, we show how a language with an affine type system and many syntactic
+features familiar to functional language programmers can be successfully used to build
+state-of-the-art systems software.
 We also outline several pitfalls encountered along the way and describe some potential
 areas for future research.
 \end{abstract}

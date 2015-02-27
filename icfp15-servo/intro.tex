@@ -2,9 +2,31 @@
 
 \section{Introduction}
 \label{sec:intro}
+At the heart of a modern web browser is the browser engine, which is the code responsible
+for loading, processing, evaluating, and rendering web content.
+There are three current browser engine families:
+\begin{enumerate}
+\item Trident/Spartan, the engine in Internet Explorer
+\item Webkit/Blink, the engine in Safari, Chrome, and Opera
+\item Gecko, the engine in Firefox
+\end{enumerate}
+All of these engines have at their core many millions of lines of \Cplusplus code.
+While the use of \Cplusplus has enabled all of these browsers to achieve excellent sequential
+performance on a single web page, on mobile devices with lower processor speed but many
+more processors, these browsers do not provide the same level of interactivity that they
+do on desktop processors~\cite{parallelizing-web-pages,ZOOMM}.
+Further, in an informal inspection of the critical security bugs in Gecko, we determined that
+roughly 50\% of the bugs are use after free, out of range access, or related to integer
+overflow.
+The other 50\% is split between errors in tracing values from the JavaScript (JS) heap in the
+\Cplusplus code and errors related to Just-in-time (JIT) code, which we will not discuss
+further in this work.
+
 Servo\footnote{https://github.com/servo/servo} is a new web browser engine whose development
 was started in February of 2013.
-
+The goal of this project is to produce a browser that enables new applications to be authored
+against the web platform that run with more safety, better performance, and better power usage
+than in current browsers.
 Modern web browser engines have a similar complexity level to that of operating systems.
 These engines are expected to execute arbitrary user programs within a safe sandbox, scale 
 across a wide variety of hardware, manage access to shared system resources, and further 
@@ -13,6 +35,26 @@ against sometimes-incomplete standards.
 With the expectation of executing well on mobile devices and parallel hardware, the 
 fundamental design assumptions have significantly changed since all of the modern
 web engines were originally designed.
+
+
+In this paper, \emph{systems} \emph{software} refers to programs that have some combination
+of soft realtime requirements and memory, CPU, and power usage constraints that require the
+programmer to be able to predict these features from their source code --- without being a
+compiler developer.
+
+enabled us to take on this project in a type-centric way instead of
+the traditional C++ that relies on coding conventions, imprecise static analyses, and
+fuzzers.
+While many languages before have offered some combination of memory safety, parallelism,
+and concurrency, Rust is, to our knowledge, the first to do so that provides the programmer
+with the control over both memory and generated code that is required by systems programmers.
+Servo is currently over 300k lines of code and implements enough of the web to render and
+process many pages, though it is still a far cry from the over 7 million lines of code in
+the Mozilla Firefox browser and its associated libraries.
+However, we believe that we have implemented enough of the web platform to provide an
+early report on the successes, failures, and open problems remaining in Servo, from the
+point of view of programming languages and runtime research.
+
 
 Servo is a new web browser engine designed to address the major environment and 
 architectural changes over the last decade.
