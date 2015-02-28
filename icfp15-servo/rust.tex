@@ -42,7 +42,7 @@ fn main() {
     *data = *data + 1;
   });
   // error: accessing moved value
-  print!(``{}'', data);
+  print!("{}", data);
 }
 \end{lstlisting}
   \caption{Code that will not compile because it attempts to access mutable state from two threads.}
@@ -61,9 +61,9 @@ fn main() {
   let data = &1;
 
   Thread::scoped(|| {
-    println!(``{}'', data);
+    println!("{}", data);
   });
-  print!(``{}'', data);
+  print!("{}", data);
 }
 \end{lstlisting}
   \caption{Safely reading immutable state from two threads.}
@@ -82,7 +82,7 @@ fn main() {
     *data2.lock().unwrap() = 1;
   });
 
-  print!(``{}'', *data.lock().unwrap());
+  print!("{}", *data.lock().unwrap());
 }
 \end{lstlisting}
   \caption{Safely mutating state from two threads.}

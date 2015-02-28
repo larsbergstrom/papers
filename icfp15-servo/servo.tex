@@ -55,17 +55,18 @@ made.
 
 Monomorphization, as in MLton~\cite{mlton-compiler}, instead instantiates each polymorphic code block at each of the types
 it is applied against, providing predictable output code to developers at the cost of some code duplication.
-This is the strategy used by virtually all \Cplusplus{} compilers to implement templates, so it is proven and well-known
-within systems programming. Rust follows this approach, although it improves on the ergonomics of \Cplusplus{} templates
+This strategy is used by virtually all \Cplusplus{} compilers to implement templates, so it is proven and well-known
+within systems programming.
+Rust also follows this approach, although it improves on the ergonomics of \Cplusplus{} templates
 by embedding serialized generic function ASTs within ``compiled'' binaries.
 
 Rust also chooses a fairly large default compilation unit size. A Rust \textit{crate} is subject to whole-program
 compilation~\cite{weeks:whole-program-mlton}, and is optimized as a unit. A crate may comprise hundreds of modules,
-which provide namespacing and abstraction. Module dependencies within a crate are allowed to be cyclic.  The distinction
-between crates and modules reflects the fact that computers have grown by a factor of approximately $10^9$ since C was
-designed for the PDP-7, while the human capacity to understand code as a unit has regretfully not kept pace.
+which provide namespacing and abstraction. Module dependencies within a crate are allowed to be cyclic.
 
-The large compilation unit size slows down compilation, and especially diminishes the ability to build code in parallel. It has however enabled us to write Rust code that easily matches the sequential speed of its \Cplusplus{} analog, without requiring the Servo developers to become compiler experts. Servo contains about 600 modules within 20 crates.
+The large compilation unit size slows down compilation and especially diminishes the ability to build code in parallel.
+However, it has enabled us to write Rust code that easily matches the sequential speed of its \Cplusplus{} analog, without requiring the Servo developers to become compiler experts.
+Servo contains about 600 modules within 20 crates.
 
 \subsection{Memory management}
 As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
