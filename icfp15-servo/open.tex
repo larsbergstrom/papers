@@ -28,8 +28,9 @@ by the test suite.
 \paragraph{Unsafe code correctness.} Today, when we write unsafe code in Rust
 there is limited validation of memory lifetimes or type safety within that
 code block.
-However, many of our uses of unsafe code are well-behaved pointer lifetime
-or memory translations that cannot be annotated or inferred in Rust.
+However, many of our uses of unsafe code are well-behaved translations of
+either pointer lifetimes or data representations that cannot be annotated
+or inferred in Rust.
 We are very interested in additional annotations that would help us prove
 basic properties about our unsafe code, even if these annotations require a
 theorem prover or ILP solver to check.
