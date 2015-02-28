@@ -58,22 +58,33 @@ styled to have an associated counter glyph.
 
 \subsection{Display}
 
-That tree of elements, called the \emph{flow tree} in Servo, is then processed to produce a set of \emph{display list} items.
-These list items are the actual graphical elements, text runs, etc. in their final on-screen positions.
-The order in which these elements are displayed is well-defined by the standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
+That tree of elements, called the \emph{flow tree} in Servo, is then processed
+to produce a set of \emph{display list} items.  These list items are the
+actual graphical elements, text runs, etc. in their final on-screen positions.
+The order in which these elements are displayed is well-defined by the
+standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
 
 \subsection{Rendering}
 
-Once all of the elements to appear on screen have been computed, these elements are rendered, or painted, into memory buffers or
-directly to graphics surfaces.
+Once all of the elements to appear on screen have been computed, these
+elements are rendered, or painted, into memory buffers or directly to graphics
+surfaces.
+
+\subsection{Compositing}
+
+The set of memory buffers or graphical surfaces, called layers, are then
+transformed and composited together to form a final image for
+presentation.
 
 \subsection{Scripting}
 
-Whether through timers, \lstinline[language=HTML]{<script>} blocks in the HTML, user interactions, or other event handlers,
-JavaScript code may execute at any point during parsing, layout, and painting or afterwards during display.
-These scripts can modify the DOM tree, which may require rerunning the layout and painting passes in order to update
-the output.
-Most modern browsers use some form of dirty bit marking to attempt to minimize the recalculations during this process.
+Whether through timers, \lstinline[language=HTML]{<script>} blocks in the
+HTML, user interactions, or other event handlers, JavaScript code may execute
+at any point during parsing, layout, and painting or afterwards during
+display.  These scripts can modify the DOM tree, which may require rerunning
+the layout and painting passes in order to update the output.  Most modern
+browsers use some form of dirty bit marking to attempt to minimize the
+recalculations during this process.
 
 
 %%% Local Variables: 
