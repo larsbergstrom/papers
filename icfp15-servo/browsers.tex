@@ -52,13 +52,13 @@ all modern parsers also perform speculative token stream scanning and prefetch o
 \subsection{Layout}
 
 After constructing the DOM and determining the set of styles defined in the Cascading Style Sheets (CSS) that has
-been loaded, those styles are applied to the DOM and a new flow tree that represents the elements is created.
+been loaded, those styles are applied to the DOM and a new tree that represents the elements is created. In Servo, we call this the \emph{flow tree}.
 This process can create many more flows than previously existed in the DOM --- for example, when a list item is
 styled to have an associated counter glyph.
 
 \subsection{Display}
 
-That tree of elements, called the \emph{flow tree} in Servo, is then processed
+The flow tree is then processed
 to produce a set of \emph{display list} items.  These list items are the
 actual graphical elements, text runs, etc. in their final on-screen positions.
 The order in which these elements are displayed is well-defined by the
