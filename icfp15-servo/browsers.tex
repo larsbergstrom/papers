@@ -12,7 +12,7 @@ modern browsers have the ability to handle much more than simple static pages.
 While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
 \begin{figure*}[ht]
   \begin{center}
-    \includegraphics[scale=0.7]{pics/browser}
+    \includegraphics[scale=0.5]{pics/browser}
   \end{center}%
   \caption{Processing stages and intermediate representations in a browser engine.}
   \label{fig:browser}
@@ -49,18 +49,19 @@ This requires parsing to pause until JavaScript code has run to completion.
 But, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
 all modern parsers also perform speculative token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
+\subsection{Styling}
+
+After constructing the DOM, the browser uses the styling information in linked
+CSS files and in the HTML to compute a styled tree of flows and fragments,
+called the \emph{flow tree} in Servo.
+This process can create many more flows than previously existed in the DOM ---
+for example, when a list item is styled to have an associated counter glyph.
+
 \subsection{Layout}
 
-After constructing the DOM and determining the set of styles defined in the Cascading Style Sheets (CSS) that has
-been loaded, those styles are applied to the DOM and a new flow tree that represents the elements is created.
-This process can create many more flows than previously existed in the DOM --- for example, when a list item is
-styled to have an associated counter glyph.
-
-\subsection{Display}
-
-That tree of elements, called the \emph{flow tree} in Servo, is then processed
-to produce a set of \emph{display list} items.  These list items are the
-actual graphical elements, text runs, etc. in their final on-screen positions.
+The flow tree is then processed to produce a set of \emph{display list} items.
+These list items are the actual graphical elements, text runs, etc. in their
+final on-screen positions.
 The order in which these elements are displayed is well-defined by the
 standard\footnote{\url{http://www.w3.org/TR/CSS21/zindex.html#painting-order}}.
 
@@ -72,9 +73,10 @@ surfaces.
 
 \subsection{Compositing}
 
-The set of memory buffers or graphical surfaces, called layers, are then
+The set of memory buffers or graphical surfaces, called \emph{layers}, are then
 transformed and composited together to form a final image for
-presentation.
+presentation. Layerization is used to optimize interactive transformations
+like scrolling and certain animations.
 
 \subsection{Scripting}
 
