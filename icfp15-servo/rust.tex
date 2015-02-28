@@ -5,48 +5,96 @@
 
 Rust is a statically typed systems programming language most heavily inspired by the C
 and ML families of languages~\cite{RUST}.
-Like the C family of languages, it provides the developer control over the use of system
-resources and facilities along with predictable performance.
-In addition, it provides an ownership-based type system inspired by the region systems work in the
+Like the C family of languages, it provides the developer fine control over memory layout
+and predictable performance.
+Unlike with the C family Rust programs are \emph{memory safe} by default,
+only allowing unsafe operations in specially-delineated blocks.
+
+Rust features an \emph{ownership-based} type system inspired by the region systems work in the
 MLKit project~\cite{mlkit} and especially as implemented in the Cyclone language~\cite{cyclone}.
-Unlike the related ownership system in Singularity OS~\cite{singularity}, Rust allows APIs to
-not only transfer ownership but also to temporarily \emph{borrow} values, significantly
+Unlike the related ownership system in Singularity OS~\cite{singularity}, Rust allows programs to
+not only transfer ownership but also to temporarily \emph{borrow} owned values, significantly
 reducing the number of region and ownership annotations required in large programs.
-Rust also builds on ideas from typeclasses and type families in Haskell~\cite{haskell}.
+The ownership model encourages immutability by default while allowing for controlled
+mutation of owned or uniquely-borrowed values.
+
 Complete documentation and a language reference for Rust are available at: \url{http://doc.rust-lang.org/}.
 
-\subsection{Concurrency and parallelism}
-Rust contains library functionality for concurrency and data parallelism.
-Concurrency, in particular, integrates cleanly with Rust's ownership types.
-In safe concurrent programs, the data operated on by distinct threads is also itself distinct.
-Through the use of Rust's ownership model, data cannot be owned by two threads at the same time.
+\subsection{Ownership and concurrency}
+Because the Rust type system provides very strong guarantees about memory aliasing,
+most notably that mutable data is unaliased,
+Rust code is memory safe even in concurrent and multithreaded environments,
+but beyond that Rust also ensures \emph{data-race freedom}.
+
+In concurrent programs, the data operated on by distinct threads is also itself distinct:
+under Rust's ownership model, data cannot be owned by two threads at the same time.
 For example, the code in \figref{fig:bad-concurrency} generates a static error from the compiler because
 after the first thread is spawned, the ownership of \lstinline{data} has been transferred into the
-closure associated with that thread and is unavailable for transfer in to the closure for the second thread.
+closure associated with that thread and is no longer available in the original thread.
 %http://is.gd/tkcD9R
 \begin{figure}
 \begin{lstlisting}
 fn main() {
+  // An owned pointer to a heap-allocated
+  // integer
   let mut data = Box::new(0);
 
   Thread::spawn(move || {
     *data = *data + 1;
   });
-  Thread::spawn(move || {
-    *data = *data + 1;
-  });
-  print!("{}", data);
+  // error: accessing moved value
+  print!(``{}'', data);
 }
 \end{lstlisting}
   \caption{Code that will not compile because it attempts to access mutable state from two threads.}
   \label{fig:bad-concurrency}
 \end{figure}
 
-There is partial support for data parallelism, in the form of partitioning a vector statically in advance
-and transferring ownership of each of those partitions into newly spawned threads.
-But, it is not possible in safe Rust code to write work-stealing algorithms~\cite{blumeofe:multiprogrammed-work-stealing}
-that dynamically partition work across threads.
+On the other hand, the immutable value in \figref{fig:shared-concurrency} can be borrowed and shared between multiple threads as long as those threads don't outlive the scope of the data, and even mutable values can be shared as long
+as they are owned by a type that preserves the invariant that mutable memory is unaliased, as with the
+mutex is \figref{fig:shared-mutable-concurrency}.
 
+\begin{figure}
+\begin{lstlisting}
+fn main() {
+  // An immutable borrowed pointer to a
+  // stack-allocated integer
+  let data = &1;
+
+  Thread::scoped(|| {
+    println!(``{}'', data);
+  });
+  print!(``{}'', data);
+}
+\end{lstlisting}
+  \caption{Safely reading immutable state from two threads.}
+  \label{fig:shared-concurrency}
+\end{figure}
+
+\begin{figure}
+\begin{lstlisting}
+fn main() {
+  // A heap allocated integer protected by an
+  // atomically-reference-counted mutex
+  let data = Arc::new(Mutex::new(0));
+  let data2 = data.clone();
+
+  Thread::scoped(move || {
+    *data2.lock().unwrap() = 1;
+  });
+
+  print!(``{}'', *data.lock().unwrap());
+}
+\end{lstlisting}
+  \caption{Safely mutating state from two threads.}
+  \label{fig:shared-mutable-concurrency}
+\end{figure}
+
+With relatively few simple rules, ownership in Rust enables foolproof task parallism,
+but also data parallism, by partitioning vectors and lending mutable references into properly scoped threads.
+Rust's concurrency abstractions are entirely implemented in libraries, and though
+many advanced concurrent patterns such as work-stealing~~\cite{blumeofe:multiprogrammed-work-stealing}
+cannot be implemented in safe Rust, they can usually be encapsulated in a memory-safe interface.
 
 %%% Local Variables: 
 %%% mode: latex
