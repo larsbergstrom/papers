@@ -56,7 +56,7 @@ mutex is \figref{fig:shared-mutable-concurrency}.
 \begin{figure}
 \begin{lstlisting}
 fn main() {
-  // An immutable borrowed pointer to a
+  // An immutably borrowed pointer to a
   // stack-allocated integer
   let data = &1;
 
@@ -94,6 +94,44 @@ but also data parallism, by partitioning vectors and lending mutable references 
 Rust's concurrency abstractions are entirely implemented in libraries, and though
 many advanced concurrent patterns such as work-stealing~~\cite{blumeofe:multiprogrammed-work-stealing}
 cannot be implemented in safe Rust, they can usually be encapsulated in a memory-safe interface.
+
+\subsection{Traits and polymorphism}
+
+Rust supports both static and dynamic parametric polymorphism via \emph{traits},
+which build on ideas from type classes and type families in Haskell~\cite{haskell}.
+
+As with Haskell type classes, traits define functions and types that are associated
+with all implementing types. Function and types in turn can be parameterized over
+generic types that are bounded by traits, as with the trait that defines overloaded
+addition in \figref{fig:fn-trait}
+
+Such calls to associated functions are statically dispatched, so optimize well,
+but Rust also allows types that implement traits to be packaged with a vtable
+so that functions can be resolved dynamically. Because Rust's generics must
+perform as well as C++'s inlined templates, performance-sensitive Rust
+code tends to prefer the static dispatch of traits-as-typeclasses.
+This is true of much of the standard library.
+
+Rust includes several types of closures that are distinguished by whether
+they own or borrow their environment, and these are defined as traits.
+
+\begin{figure}
+\begin{lstlisting}
+pub trait Add<RHS=Self> {
+  type Output;
+
+  fn add(self, rhs: RHS) -> Self::Output;
+}
+
+fn add_pair<T>(pair: (T, T)) -> T::Output
+                             where T: Add {
+  pair.0 + pair.1
+}
+\end{lstlisting}
+  \caption{Rust trait with associated type.}
+  \label{fig:fn-trait}
+\end{figure}
+
 
 %%% Local Variables: 
 %%% mode: latex
