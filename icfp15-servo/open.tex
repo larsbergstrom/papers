@@ -25,6 +25,27 @@ and for Servo to run debug builds against a test suite, but that may miss
 scenarios that only occur in optimized builds or that are not represented
 by the test suite.
 
+\paragraph{Unsafe code correctness.} Today, when we write unsafe code in Rust
+there is limited validation of memory lifetimes or type safety within that
+code block.
+However, many of our uses of unsafe code are well-behaved pointer lifetime
+or memory translations that cannot be annotated or inferred in Rust.
+We are very interested in additional annotations that would help us prove
+basic properties about our unsafe code, even if these annotations require a
+theorem prover or ILP solver to check.
+
+\paragraph{Incremental computation.} As mentioned in \secref{sec:browsers},
+all modern browsers use some combination of dirty bit marking and incremental
+recomputation heuristics to avoid reprocessing the full page when
+the state is mutated.
+Unfortunately, these heuristics are not only frequently the source of
+performance differences between browsers, but they are also a source of
+correctness bugs.
+A library that provided a form of self adjusting computation suited to
+incremental recomputation of only the visible part of the page, perhaps
+like the work on Adapton~\cite{adapton}, seems like a promising
+approach to addressing this problem.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "paper"
