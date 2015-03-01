@@ -51,7 +51,7 @@ fn main() {
 
 On the other hand, the immutable value in \figref{fig:shared-concurrency} can be borrowed and shared between multiple threads as long as those threads don't outlive the scope of the data, and even mutable values can be shared as long
 as they are owned by a type that preserves the invariant that mutable memory is unaliased, as with the
-mutex is \figref{fig:shared-mutable-concurrency}.
+mutex in \figref{fig:shared-mutable-concurrency}.
 
 \begin{figure}
 \begin{lstlisting}
