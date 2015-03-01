@@ -89,8 +89,8 @@ fn main() {
   \label{fig:shared-mutable-concurrency}
 \end{figure}
 
-With relatively few simple rules, ownership in Rust enables foolproof task parallism,
-but also data parallism, by partitioning vectors and lending mutable references into properly scoped threads.
+With relatively few simple rules, ownership in Rust enables foolproof task parallelism,
+but also data parallelism, by partitioning vectors and lending mutable references into properly scoped threads.
 Rust's concurrency abstractions are entirely implemented in libraries, and though
 many advanced concurrent patterns such as work-stealing~~\cite{blumeofe:multiprogrammed-work-stealing}
 cannot be implemented in safe Rust, they can usually be encapsulated in a memory-safe interface.
