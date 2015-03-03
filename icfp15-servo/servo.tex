@@ -79,7 +79,7 @@ justified.
 
 One area for future improvement is related to allocations that are not owned by Rust itself.
 Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
-custom memory alloctor or interoperate with the SpiderMonkey JavaScript engine from Gecko.
+custom memory allocator or interoperate with the SpiderMonkey JavaScript engine from Gecko.
 We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
 but they are still a source of bugs and one of our largest areas of unsafe code.
 
@@ -97,7 +97,7 @@ though we are typically able to provide a safe interface to users.
 Rust has nearly complete interoperability with C code, both exposing code to and using code from
 C programs.
 This support has allowed us to smoothly integrate with many browser libraries, which has been
-critical for bootstrapping a browser without rewriting all of lower-level libraries immediately, such as
+critical for bootstrapping a browser without rewriting all of the lower-level libraries immediately, such as
 graphics rendering code, the JavaScript engine, font selection code, etc.
 \tblref{servo-loc} shows the breakdown between current lines of Rust code (including generated code that
 handles interfacing with the JavaScript engine) and C code.
