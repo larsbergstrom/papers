@@ -32,7 +32,7 @@ pressure to tack additional fields into classes simply to avoid creating a large
 files.
 More importantly, pattern matching with static dispatch is typically faster than a virtual function call on a class
 hierarchy.
-Virtual functions can both have an in-memory storage cost associated with the virtual fuction tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
+Virtual functions can both have an in-memory storage cost associated with the virtual function tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
 incur indirect function call costs.
 All \Cplusplus{} browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
 specifier wherever possible or specialize the code in some other way to avoid this cost.
