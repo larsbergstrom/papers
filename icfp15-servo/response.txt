@@ -1,0 +1,20 @@
+We would like to thank the reviewers for their time spent reviewing the paper and providing their feedback. We agree with the presentation-related comments, in particular that there is writing that could be improved and we could use a better presentation of Rust, and will incorporate this feedback in a final draft.
+
+In the following, text preceded by a '-' is from a reviewer's question or comment.
+
+Review 1
+
+- Section 4.2, what does it means that Rust embeds serialized generic function
+ASTs within "compiled" binary? What's the point? When and how these ASTs
+are later used?
+
+TODO: ANSWER
+
+We agree that the problems of JIT correctness and incremental computation are not specific to Rust; they are problems faced by Servo (and all web browser engines, generically).
+
+Review 2
+
+In a final draft, we would be happy to provide a more detailed breakdown of Servo's usage of unsafe Rust code, categorized by purpose.
+
+It is more ambiguous to quantify the costs of Rust's guarnatees. It is much harder to get a program to compile, but debugging basic memory safety errors is largely eliminated. We also did not go into great depth on our usage of Rust's memory management abstractions because we largely use our own. Because Rust does not support integer type specialization (https://github.com/rust-lang/rfcs/pull/884), many of the web-specific optimizations made to optimize default sizes and layouts of data structures based on common web usage patterns require explicit encodings.
+
