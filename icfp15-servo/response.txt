@@ -8,7 +8,16 @@ Review 1
 ASTs within "compiled" binary? What's the point? When and how these ASTs
 are later used?
 
-TODO: ANSWER
+Rust serializes ASTs of items with type parameters into libraries so
+that when those items are later instantiated with specific types, the
+compiler can generate machine code that is optimized for those
+instances. The effect is as with C++ requiring templates to be written
+header files. We will clarify.
+
+- Section 5.1, JS JIT, I'm not sure to understand why you consider than JIT
+correctness is a problem faced by Rust, inside the Servo implementation.
+A little bit of elaboration would have helped me to understand the
+problem you want to address here.
 
 We agree that the problems of JIT correctness and incremental computation are not specific to Rust; they are problems faced by Servo (and all web browser engines, generically).
 
