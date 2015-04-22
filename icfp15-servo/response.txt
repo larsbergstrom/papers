@@ -8,22 +8,26 @@ Review 1
 ASTs within "compiled" binary? What's the point? When and how these ASTs
 are later used?
 
-Rust serializes ASTs of items with type parameters into libraries so
-that when those items are later instantiated with specific types, the
-compiler can generate machine code that is optimized for those
-instances. The effect is as with C++ requiring templates to be written
-header files. We will clarify.
+Rust implements generic functions by generating optimized machine code for each
+type instantiation. When a library exports a generic function, the compiler
+will include a serialized AST in the "compiled" output to support instantiation
+by library consumers. We will clarify this in the paper.
+
+Similarly, C++ libraries often contain monomorphic code that is compiled once,
+in addition to templates that are exposed in header files. Rust improves
+usability by performing this split automatically.
 
 - Section 5.1, JS JIT, I'm not sure to understand why you consider than JIT
 correctness is a problem faced by Rust, inside the Servo implementation.
 A little bit of elaboration would have helped me to understand the
 problem you want to address here.
 
-We agree that the problems of JIT correctness and incremental computation are not specific to Rust; they are problems faced by Servo (and all web browser engines, generically).
+We agree that JIT correctness is a problem regardless of implementation language. Indeed, we mention it due to the history of security holes resulting from mis-optimizations in SpiderMonkey. The open problem for Servo is how to obtain Rust-like memory-safety guarantees on the JIT compiler's output. We will clarify this in the final draft.
 
 Review 2
 
 In a final draft, we would be happy to provide a more detailed breakdown of Servo's usage of unsafe Rust code, categorized by purpose.
 
-It is more ambiguous to quantify the costs of Rust's guarnatees. It is much harder to get a program to compile, but debugging basic memory safety errors is largely eliminated. We also did not go into great depth on our usage of Rust's memory management abstractions because we largely use our own. Because Rust does not support integer type specialization (https://github.com/rust-lang/rfcs/pull/884), many of the web-specific optimizations made to optimize default sizes and layouts of data structures based on common web usage patterns require explicit encodings.
+It's harder to quantify the cost/benefit tradeoff of Rust's static checking. Gecko is deployed on hundreds of millions of diverse end-user systems, with the result that Mozilla engineers spend substantial time tracking down individually-rare memory-safety bugs. For this reason, we believe Rust's up-front checking will be especially valuable for a browser engine.
 
+We also did not go into great depth on our usage of Rust's memory management abstractions because we largely use our own. Because Rust does not support integer type specialization (https://github.com/rust-lang/rfcs/pull/884), many of the web-specific optimizations made to optimize default sizes and layouts of data structures based on common web usage patterns require explicit encodings.
