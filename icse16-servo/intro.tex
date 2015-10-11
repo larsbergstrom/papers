@@ -1,0 +1,50 @@
+%!TEX root = paper.tex
+\section{Introduction}
+\label{sec:intro}
+The heart of a modern web browser is the browser engine, which is the code responsible
+for loading, processing, evaluating, and rendering web content.
+There are three major browser engine families:
+\begin{enumerate}
+\item Trident/Spartan, the engine in Internet Explorer~\cite{IE}
+\item Webkit\cite{WEBKIT}/Blink, the engine in Safari~\cite{SAFARI}, Chrome~\cite{CHROME}, and Opera~\cite{OPERA}
+\item Gecko, the engine in Firefox~\cite{FIREFOX}
+\end{enumerate}
+All of these engines have at their core many millions of lines of \Cplusplus{} code.
+While the use of \Cplusplus{} has enabled all of these browsers to achieve excellent sequential
+performance on a single web page, on mobile devices with lower processor speed but many
+more processors, these browsers do not provide the same level of interactivity that they
+do on desktop processors~\cite{parallelizing-web-pages,ZOOMM}.
+Further, in an informal inspection of the critical security bugs in Gecko, we determined that
+roughly 50\% of the bugs are use after free, out of range access, or related to integer
+overflow.
+The other 50\% are split between errors in tracing values from the JavaScript heap in the
+\Cplusplus{} code and errors related to dynamically compiled code.
+
+Servo~\cite{SERVO} is a new web browser engine designed to address the major environment and 
+architectural changes over the last decade.
+The goal of the Servo project is to produce a browser that enables new applications to be authored
+against the web platform that run with more safety, better performance, and better power usage
+than in current browsers.
+To address memory-related safety issues, we are using a new systems programming language,
+Rust~\cite{RUST}.
+For parallelism and power, we scale across a wide variety of hardware by building either data-
+or task-parallelism, as appropriate, into each part of the web platform.
+Additionally, we are improving concurrency by reducing the simultaneous access to data
+structures and using a message-passing architecture between components such as the
+JavaScript engine and the rendering engine that paints graphics to the screen.
+Servo is currently over 400k lines of Rust code and implements enough of the web platform to render and
+process many pages, though it is still a far cry from the over 7 million lines of code in
+the Mozilla Firefox browser and its associated libraries.
+However, we believe that we have implemented enough of the web platform to provide an
+early report on the successes, failures, and open problems remaining in Servo, from the
+point of view of programming languages and runtime research.
+In this experience report, we discuss the design and architecture of a modern web 
+browser engine, show how modern programming language techniques --- many of which
+originated in the functional programming community --- address these design 
+constraints, and also touch on ongoing challenges and areas of research where we
+would welcome additional community input.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 

@@ -1,0 +1,129 @@
+\documentclass[preprint]{../common/acm_proc_article-sp}
+
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{url}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows}
+\usetikzlibrary{fit}					% fitting shapes to coordinates
+\usetikzlibrary{backgrounds}	% drawing the background after the foreground
+\usetikzlibrary{arrows}
+
+\usepackage{color}
+\definecolor{Red}{rgb}{0.9,0.0,0.0}  % fixme
+\definecolor{Green}{rgb}{0.0,0.4,0.0}
+\definecolor{Blue}{rgb}{0.0,0.0,0.9}
+\definecolor{DarkBlue}{rgb}{0.0,0.0,0.75}
+\definecolor{Midnight}{rgb}{0.0,0.0,0.5}
+\definecolor{Purple}{rgb}{0.5,0.0,0.4}
+\definecolor{Black}{rgb}{0.0,0.0,0.0}
+\definecolor{Yellow}{rgb}{1.0,1.0, 0.25}
+\definecolor{Cyan}{rgb}{0.25,1.0, 1.0}
+
+\newcommand{\cdColor}{Black}
+\newcommand{\kwColor}{DarkBlue}
+\newcommand{\comColor}{Red}
+
+\usepackage{listings}
+\usepackage{textcomp}
+\input{../common/lstlang-rust}
+\lstset{
+  basicstyle=\ttfamily\color{\cdColor},
+  keywordstyle=\color{\kwColor}\bfseries,
+  commentstyle=\color{\comColor}\itshape,
+  language=Rust,
+  upquote=true
+}
+
+\newcommand{\dcfa}{{$\Delta$}{CFA}}
+\newcommand{\gcfa}{{$\Gamma$}{CFA}}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\input{../common/common-defs}
+\newcommand{\superbeta}{Super-\ensuremath{\beta{}} }
+
+\usepackage{../common/code}
+
+
+\title{Engineering the Servo Web Browser Engine using Rust}
+
+\numberofauthors{6}
+
+\author{
+\alignauthor
+Brian Anderson\\
+       \affaddr{Mozilla Research}\\
+       \email{banderson@mozilla.com}
+\alignauthor
+Lars Bergstrom\\
+       \affaddr{Mozilla Research}\\
+       \email{larsberg@mozilla.com}
+\alignauthor
+Manish Goregaokar\\
+       \affaddr{Indian Institute of Technology Bombay}\\
+       \email{manishg@iitb.ac.in}
+\and
+\alignauthor
+Josh Matthews\\
+       \affaddr{Mozilla}\\
+       \email{jdm@mozilla.com}
+\alignauthor
+Keegan McAllister\titlenote{Work performed while employed at Mozilla}\\
+       \email{mcallister.keegan@gmail.com}
+\alignauthor
+Jack Moffitt\\
+       \affaddr{Mozilla}\\
+       \email{jack@mozilla.com}
+\and
+\alignauthor
+Simon Sapin\\
+       \affaddr{Mozilla}\\
+       \email{ssapin@mozilla.com}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%\thispagestyle{empty}
+
+%\sloppy
+
+\input{abstract}
+
+% A category with the (minimum) three required fields
+\category{H.5.4}{Information Interfaces and Presentation}{Hypertext/Hypermedia}
+%A category including the fourth, optional field follows...
+\category{D.2.11}{Software Engineering}{Software Architectures}[languages, patterns]
+
+\keywords{browser engine, Rust, Servo, concurrency, parallelism} % NOT required for Proceedings
+
+\input{intro}
+\input{browsers}
+\input{rust}
+\input{servo}
+\input{open}
+\input{rel}
+
+\section{Acknowledgments}
+The Servo project was started at Mozilla Research, but has benefitted from
+contributions from Samsung, Igalia, and hundreds of volunteer community members.
+These contributions amount to more than half of the commits to the project,
+and we are grateful for both our partners' and volunteers' efforts to make
+this project a success.
+
+We would like to thank Robert Clipsham, David Herman, Tim Kuehn, Lindsey Kuper,
+Ms2ger, and Ben Striegel for their comments on drafts of this paper.
+
+
+\bibliographystyle{../common/alpha}
+\bibliography{../common/strings-short,../common/manticore,../common/browser}
+
+\end{document}

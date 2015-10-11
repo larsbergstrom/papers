@@ -1,0 +1,190 @@
+\section{Servo}
+\label{sec:servo}
+A crucial test of Servo is performance --- Servo must be at least as fast
+as other browsers at similar tasks to succeed, even if it provides additional memory safety.
+\tblref{servo-perf} shows a preliminary comparison of the performance of the layout stage (described
+in \secref{sec:browsers}) of rendering several web sites in Mozilla Firefox's Gecko engine compared
+to Servo, taken on a modern MacBook Pro.
+\begin{table}
+  \begin{center}
+    \begin{tabular}{r || r | r | r}
+      Site & Gecko & Servo 1 thread & Servo 4 threads \\
+      \hline
+      Reddit & 250 & 100 & 55  \\
+      CNN & 105 & 50 & 35 \\
+    \end{tabular}%
+  \end{center}%
+  \caption{Performance of Servo against Mozilla's Gecko rendering engine on the layout portion of some common sites.
+  Times are in milliseconds, where lower numbers are better.}
+  \label{servo-perf}
+\end{table}
+
+In the remainder of this section, we cover specific areas of Servo's design or implementation that make use of
+Rust and the impacts and limitations of these features.
+
+\subsection{Rust's syntax}
+Rust has struct and enum types (similar to Standard ML's record types and datatypes~\cite{sml97-definition}) as
+well as pattern matching.
+These types and associated language features provide two large benefits to Servo over traditional browsers
+written in \Cplusplus{}.
+First, creating new abstractions and intermediate representations is syntactically easy, so there is very little
+pressure to tack additional fields into classes simply to avoid creating a large number of new header and implementation
+files.
+More importantly, pattern matching with static dispatch is typically faster than a virtual function call on a class
+hierarchy.
+Virtual functions can both have an in-memory storage cost associated with the virtual function tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
+incur indirect function call costs.
+All \Cplusplus{} browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
+specifier wherever possible or specialize the code in some other way to avoid this cost.
+
+Rust also attempted to stay close to familiar syntax, but did not require full fidelity or easy porting of
+programs from languages such as \Cplusplus{}.
+This approach has worked well for Rust because it has prevented some of the complexity that arose in
+Cyclone~\cite{cyclone} with their attempts to build a safe language that required minimal porting effort
+for even complicated C code.
+
+\subsection{Compilation strategy}
+Many statically typed implementations of polymorphic languages such as Standard ML of New Jersey~\cite{SMLNJ} and
+\ocaml{}~\cite{ocaml-manual-3.0} have used a compilation strategy that optimizes representations of data types when
+polymorphic code is monomorphically used, but defaults to a less efficient style otherwise, in order to share
+code~\cite{ocaml-repr}.
+This strategy reduces code size, but leads to unpredictable performance and code, as changes to a codebase that
+either add a new instantiation of a polymorphic function at a given type or, in a modular compilation setting, that
+expose a polymorphic function externally, can change the performance of code that is not local to the change being
+made.
+
+Monomorphization, as in MLton~\cite{mlton-compiler}, instead instantiates each polymorphic code block at each of the types
+it is applied against, providing predictable output code to developers at the cost of some code duplication.
+This strategy is used by virtually all \Cplusplus{} compilers to implement templates, so it is proven and well-known
+within systems programming.
+Rust also follows this approach, although it improves on the ergonomics of \Cplusplus{} templates
+by embedding serialized generic function ASTs within ``compiled'' binaries.
+
+Rust also chooses a fairly large default compilation unit size. A Rust \textit{crate} is subject to whole-program
+compilation~\cite{weeks:whole-program-mlton}, and is optimized as a unit. A crate may comprise hundreds of modules,
+which provide namespacing and abstraction. Module dependencies within a crate are allowed to be cyclic.
+
+The large compilation unit size slows down compilation and especially diminishes the ability to build code in parallel.
+However, it has enabled us to write Rust code that easily matches the sequential speed of its \Cplusplus{} analog, without requiring the Servo developers to become compiler experts.
+Servo contains about 600 modules within 20 crates.
+
+\subsection{Memory management}
+As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
+most once.
+One result of this fact is that in the more than two years since Servo has been under development, we have
+encountered zero use-after-free memory bugs in safe Rust code.
+Given that these bugs make up such a large portion of the security vulnerabilities in modern browsers,
+we believe that even the additional work required to get Rust code to pass the type checker initially is
+justified.
+
+One area for future improvement is related to allocations that are not owned by Rust itself.
+Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
+custom memory allocator or interoperate with the SpiderMonkey JavaScript engine from Gecko.
+We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
+but they are still a source of bugs and one of our largest areas of unsafe code.
+
+Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
+However, many data structures do not follow that model, in order to provide multiple traversal
+APIs without favoring the performance of one over the other.
+For example, a doubly-linked list contains a back pointer to the previous element to aid
+in traversals in the opposite direction.
+Many optimized hashtable implementations also have both hash-based access to items
+and a linked list of all of the keys or values.
+In Servo, we have had to use unsafe code to implement data structures with this form,
+though we are typically able to provide a safe interface to users.
+
+\subsection{Language interoperability}
+Rust has nearly complete interoperability with C code, both exposing code to and using code from
+C programs.
+This support has allowed us to smoothly integrate with many browser libraries, which has been
+critical for bootstrapping a browser without rewriting all of the lower-level libraries immediately, such as
+graphics rendering code, the JavaScript engine, font selection code, etc.
+\tblref{servo-loc} shows the breakdown between current lines of Rust code (including generated code that
+handles interfacing with the JavaScript engine) and C code.
+This table also includes test code, though the majority of that code is in HTML and JavaScript.
+\begin{table}
+  \begin{center}
+    \begin{tabular}{r || r}
+      Language & Lines of Code \\
+      \hline
+      C or \Cplusplus{} & 1,678,427 \\
+      Rust & 410,817 \\
+      HTML or JavaScript & 217,827 \\
+    \end{tabular}%
+  \end{center}%
+  \caption{Lines of code in Servo}
+  \label{servo-loc}
+\end{table}
+
+There are two limitations in the language interoperability that pose challenges for Servo today.
+First, Rust cannot currently expose varargs-style functions to C code.
+Second, Rust cannot compile against \Cplusplus{} code.
+In both cases, Servo uses C wrapper code to call into the code that Rust cannot directly
+reach.
+While this approach is not a large problem for varargs-style functions, it defeats many of the
+places where the \Cplusplus{} code has been crafted to ensure the code is inlined into the caller,
+resulting in degraded performance. We intend to fix this through cross-language inlining, taking
+advantage of the fact that both \lstinline{rustc} and \lstinline{clang++} can produce output in the
+LLVM intermediate representation~\cite{LLVM}, which is subject to link-time optimization. We have
+demonstrated this capability at small scale, but have not yet deployed it within Servo.
+
+\subsection{Libraries and abstractions}
+Many high-level languages provide abstractions over I/O, threading, parallelism, and concurrency.
+Rust provides functionality that addresses each of these concerns, but they are designed as thin
+wrappers over the underlying services, in order to provide a predictable, fast implementation
+that works across all platforms.
+Therefore, much like other modern browsers, Servo contains many of its own specialized implementations of
+library functions that are tuned for the specific cases of web browsers.
+For example, we have special ``small'' vectors that allow instantiation with a default inline size,
+as there are use cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
+In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
+can be a significant space savings.
+We also have our own work-stealing library that has been tuned to work on the
+DOM and flow trees during the process of styling and layout,
+as described in \secref{sec:browsers}.
+It is our hope that this code might be useful to other projects as well, though it is fairly browser-specific today.
+
+Concurrency is available in Rust in the form of CML-style channels~\cite{reppy:cml}, but with a separation
+between the reader and writer ends of the channel.
+This separation allows Rust to enforce a multiple-writer, single-reader constraint, both simplifying and improving
+the performance of the implementation over one that supports multiple readers.
+We have structured the entire Servo browser engine as a series of threads that communicate over channels,
+avoiding unsafe explicitly shared global memory for all but a single case (reading properties in the flow tree
+from script, an operation whose performance is crucially tested in many browser benchmarks).
+The major challenge we have encountered with this approach is the same one we have heard from other designers
+of large concurrent systems --- reasoning about whether protocols make progress or threads eventually terminate
+is manual and quite challenging, particularly in the presence of arbitrary thread failures.
+
+\subsection{Macros}
+
+Rust provides a hygienic macro system. Macros are defined using a declarative, pattern-based syntax~\cite{Kohlbecker:1987:MDS:41625.41632}. The macro system has proven invaluable; we have defined more than one hundred macros throughout Servo and its associated libraries.
+
+\begin{figure}
+\begin{lstlisting}
+match self.state {
+  states::Data => loop {
+    match get_char!(self) {
+      '&'  => go!(self: consume_char_ref),
+      '<'  => go!(self: to TagOpen),
+      '\0' => go!(self: error; emit '\0'),
+      c    => go!(self: emit c),
+\end{lstlisting}
+  \caption{Incremental HTML tokenizer rules, written in a succinct form using macros. Macro invocations are of the form \lstinline{identifier!(...)}.}
+  \label{fig:tokenizer-macros}
+\end{figure}
+
+For example, our HTML tokenizer rules, such as those shown in \figref{fig:tokenizer-macros}, are written in a macro-based domain specific language that closely matches the format of the HTML specification.\footnote{\url{https://html.spec.whatwg.org/multipage/syntax.html#tokenization}} Another macro handles incremental tokenization, so that the state machine can pause at any time to await further input. If no next character is available, the \lstinline{get_char!} macro will cause an early return from the function that contains the macro invocation. This careful use of non-local control flow, together with the overall expression-oriented style, makes Servo's HTML tokenizer unusually succinct and comprehensible.
+
+The Rust compiler can also load compiler plugins written in Rust. These can perform syntactic transformations beyond the capabilities of the hygienic pattern-based macros. Compiler plugins use unstable internal APIs, so the maintenance burden is high compared to pattern-based macros. Nevertheless, Servo uses procedural macros for a number of purposes, including building perfect hash maps at compile time,\footnote{\url{https://github.com/sfackler/rust-phf}} interning string literals, and auto-generating GC trace hooks. Despite the exposure to internal compiler APIs, the deep integration with tooling makes procedural macros an attractive alternative to the traditional systems metaprogramming tools of preprocessors and code generators.
+
+\subsection{Project-specific static analysis}
+
+Compiler plugins can also provide ``lint'' checks\footnote{\url{http://doc.rust-lang.org/book/plugins.html#lint-plugins}} that use the same infrastructure as the compiler's built-in warnings. This allows project-specific safety or style checks to integrate deeply with the compiler. Lint plugins traverse a typechecked abstract syntax tree (AST), and they can be enabled/disabled within any lexical scope, the same way as built-in warnings.
+
+Lint plugins provide some essential guarantees within Servo. Because our DOM objects are managed by the JavaScript garbage collector, we must add GC roots for any DOM object we wish to access from Rust code. Interaction with a third-party GC written in \Cplusplus{} is well outside the scope of Rust's built-in guarantees, so we bridge the gap with lint plugins. These capabilities enable a safer and more correct interface to the SpiderMonkey garbage collector. For example, we can enforce at compile time that, during the tracing phase of garbage collection, all Rust objects visible to the GC will report all contained pointers to other GC values, avoiding the threat of incorrectly collecting reachable values. Furthermore, we restrict the ways our wrappers around SpiderMonkey pointers can be manipulated, thus turning potential runtime memory leaks and ownership semantic API mismatches into static compiler errors instead.
+
+As the ``lint'' / ``warning'' terminology suggests, these checks may not catch all possible mistakes. Ad-hoc extensions to a type system cannot easily guarantee soundness. Rather, lint plugins are a lightweight way to catch mistakes deemed particularly common or damaging in practice. As plugins are ordinary libraries, members of the Rust community can share lint checks that they have found useful.\footnote{\url{https://github.com/Manishearth/rust-clippy}}
+
+Future plans include refining our safety checks for garbage collected values, such as flagging invalid ownership
+transference, and introducing compile-time checks for constructs that are non-optimal in terms of performance or
+memory usage.

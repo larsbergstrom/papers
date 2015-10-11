@@ -1,0 +1,52 @@
+%!TEX root = paper.tex
+
+\section{Open problems}
+\label{sec:open}
+While this work has discussed many challenges in browser design and our current progress,
+there are many other interesting open problems.
+
+\paragraph{Just-in-time code.} JavaScript engines dynamically produce native code that is
+intended to execute more efficiently than an interpreted strategy.
+Unfortunately, this area is a large source of security bugs.
+These bugs come from two sources.
+First, there are potential correctness issues.
+Many of these optimizations are only valid when certain conditions of the calling
+code and environment hold, and ensuring the specialized code is called only when those
+conditions hold is non-trivial.
+Second, dynamically producing and compiling native code and patching it into memory
+while respecting all of the invariants required by the JavaScript runtime (e.g., the
+garbage collector's read/write barriers or free vs. in-use registers) is also a challenge.
+
+\paragraph{Integer overflow/underflow.} It is still an open problem
+to provide optimized code that checks for overflow or underflow without
+incurring significant performance penalties.
+The current plan for Rust is to have debug-only checking of integer ranges
+and for Servo to run debug builds against a test suite, but that may miss
+scenarios that only occur in optimized builds or that are not represented
+by the test suite.
+
+\paragraph{Unsafe code correctness.} Today, when we write unsafe code in Rust
+there is limited validation of memory lifetimes or type safety within that
+code block.
+However, many of our uses of unsafe code are well-behaved translations of
+either pointer lifetimes or data representations that cannot be annotated
+or inferred in Rust.
+We are very interested in additional annotations that would help us prove
+basic properties about our unsafe code, even if these annotations require a
+theorem prover or ILP solver to check.
+
+\paragraph{Incremental computation.} As mentioned in \secref{sec:browsers},
+all modern browsers use some combination of dirty bit marking and incremental
+recomputation heuristics to avoid reprocessing the full page when
+a mutatation is performed.
+Unfortunately, these heuristics are not only frequently the source of
+performance differences between browsers, but they are also a source of
+correctness bugs.
+A library that provided a form of self adjusting computation suited to
+incremental recomputation of only the visible part of the page, perhaps
+based on the Adapton~\cite{adapton} approach, seems promising.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
