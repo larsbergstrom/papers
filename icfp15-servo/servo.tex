@@ -30,12 +30,19 @@ written in \Cplusplus{}.
 First, creating new abstractions and intermediate representations is syntactically easy, so there is very little
 pressure to tack additional fields into classes simply to avoid creating a large number of new header and implementation
 files.
+
 More importantly, pattern matching with static dispatch is typically faster than a virtual function call on a class
 hierarchy.
 Virtual functions can both have an in-memory storage cost associated with the virtual function tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
 incur indirect function call costs.
 All \Cplusplus{} browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
 specifier wherever possible or specialize the code in some other way to avoid this cost.
+
+Rust's pattern matching syntax is also worthy of note as it makes implementing
+code that comes from specifications read much closer to the specifications
+than code written with typical imperative style. Match patterns in Servo are
+often annotated with references to the sections of the appropriate
+specification to further aid review and debugging.
 
 Rust also attempted to stay close to familiar syntax, but did not require full fidelity or easy porting of
 programs from languages such as \Cplusplus{}.
@@ -76,6 +83,12 @@ encountered zero use-after-free memory bugs in safe Rust code.
 Given that these bugs make up such a large portion of the security vulnerabilities in modern browsers,
 we believe that even the additional work required to get Rust code to pass the type checker initially is
 justified.
+
+Another example is that Rust's memory safety properties prevent iterator
+invalidation in DOM implementations. Since iterators in the DOM implementation
+may trigger execuation of arbitrary JavaScript code, it is important that that
+code cannot somehow invalidate the iteration, which is one of the common
+patterns leading to the previously mentioned browser bugs.
 
 One area for future improvement is related to allocations that are not owned by Rust itself.
 Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
@@ -176,6 +189,19 @@ match self.state {
 For example, our HTML tokenizer rules, such as those shown in \figref{fig:tokenizer-macros}, are written in a macro-based domain specific language that closely matches the format of the HTML specification.\footnote{\url{https://html.spec.whatwg.org/multipage/syntax.html#tokenization}} Another macro handles incremental tokenization, so that the state machine can pause at any time to await further input. If no next character is available, the \lstinline{get_char!} macro will cause an early return from the function that contains the macro invocation. This careful use of non-local control flow, together with the overall expression-oriented style, makes Servo's HTML tokenizer unusually succinct and comprehensible.
 
 The Rust compiler can also load compiler plugins written in Rust. These can perform syntactic transformations beyond the capabilities of the hygienic pattern-based macros. Compiler plugins use unstable internal APIs, so the maintenance burden is high compared to pattern-based macros. Nevertheless, Servo uses procedural macros for a number of purposes, including building perfect hash maps at compile time,\footnote{\url{https://github.com/sfackler/rust-phf}} interning string literals, and auto-generating GC trace hooks. Despite the exposure to internal compiler APIs, the deep integration with tooling makes procedural macros an attractive alternative to the traditional systems metaprogramming tools of preprocessors and code generators.
+
+\subsection{Derived Traits}
+
+Rust supports automatic derivation of some built-in traits including the
+Encode and Decode traits which do serialization of data structures. Combined
+with being able to choose serialization implementation, this makes
+interprocess communication code very easy to create.
+
+Currently these derived traits are limited to a fixed set, but it is planned
+for this to be extensible to user defined traits. Servo currently works around
+this limitation by using the macro system. For example, the jstraceable macro
+in Servo automatically implements trace hooks for JavaScript integration
+types.
 
 \subsection{Project-specific static analysis}
 
