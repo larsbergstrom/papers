@@ -96,9 +96,11 @@ though we are typically able to provide a safe interface to users.
 \subsection{Language interoperability}
 Rust has nearly complete interoperability with C code, both exposing code to and using code from
 C programs.
-This support has allowed us to smoothly integrate with many browser libraries, which has been
+The ability to use C code has allowed us to smoothly integrate with many browser libraries, which has been
 critical for bootstrapping a browser without rewriting all of the lower-level libraries immediately, such as
 graphics rendering code, the JavaScript engine, font selection code, etc.
+Additionally, interoperation with C is required for components of a browser engine such as media decoders
+for DRM content, which are sometimes delivered by vendors as a binary along with a C API.
 \tblref{servo-loc} shows the breakdown between current lines of Rust code (including generated code that
 handles interfacing with the JavaScript engine) and C code.
 This table also includes test code, though the majority of that code is in HTML and JavaScript.
@@ -107,14 +109,21 @@ This table also includes test code, though the majority of that code is in HTML 
     \begin{tabular}{r || r}
       Language & Lines of Code \\
       \hline
-      C or \Cplusplus{} & 1,678,427 \\
-      Rust & 410,817 \\
-      HTML or JavaScript & 217,827 \\
+      C or \Cplusplus{} & 1,187,939 \\
+      Rust & 816,158 \\
+      HTML or JavaScript & 248,768 \\
     \end{tabular}%
   \end{center}%
-  \caption{Lines of code in Servo}
+  \caption{Lines of code in Servo (October 2015)}
   \label{servo-loc}
 \end{table}
+
+In the future, we hope to expose our Rust libraries written for Servo to C, in order to reuse them
+in the Firefox web brower.
+A first potential libraries is our Rust-based URL parser.\footnote{https://github.com/servo/rust-url}
+While URL parsing seems like a simple and secure task, an audit of the public security bugs\footnote{Firefox public security bugs: http://mzl.la/1GkOiIC} shows that all four of the ones that come from URL parsing are related to either indexing out of
+range of a raw memory buffer or using data that had already been freed --- both of which are
+prevented by Rust code.
 
 There are two limitations in the language interoperability that pose challenges for Servo today.
 First, Rust cannot currently expose varargs-style functions to C code.

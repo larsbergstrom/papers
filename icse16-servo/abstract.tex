@@ -6,6 +6,8 @@ have a core rendering engine written in \Cplusplus{}.
 This language choice was made because it affords the systems programmer complete control
 of the underlying hardware features and memory in use, and it provides a transparent
 compilation model.
+Unfortunately, this language is both complex and highly susceptible to memory safety
+issues that potentially lead to security holes.
 
 Servo is a project started at Mozilla Research to build a new web browser engine that
 preserves the capabilities of these other browser engines but also both takes 
@@ -14,9 +16,10 @@ We use a new language, Rust, that provides us a similar level of control of the 
 system to \Cplusplus{} but which builds on many concepts familiar to the functional programming
 community, forming a novelty --- a useful, safe systems programming language.
 
-In this paper, we show how a language with an affine type system, regions, and many syntactic
-features familiar to functional language programmers can be successfully used to build
-state-of-the-art systems software.
+In this paper, we show how a language with an advanced type system can address many of
+the most common security issues and software engineering challenges in other browser
+engines, while still producing code that has the same performance and memory profile
+required by these applications.
 We also outline several pitfalls encountered along the way and describe some potential
 areas for future research.
 \end{abstract}
