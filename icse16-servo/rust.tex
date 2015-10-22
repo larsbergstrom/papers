@@ -38,7 +38,7 @@ fn main() {
   // integer
   let mut data = Box::new(0);
 
-  Thread::spawn(move || {
+  thread::spawn(move || {
     *data = *data + 1;
   });
   // error: accessing moved value
@@ -51,19 +51,19 @@ fn main() {
 
 On the other hand, the immutable value in \figref{fig:shared-concurrency} can be borrowed and shared between multiple threads as long as those threads don't outlive the scope of the data, and even mutable values can be shared as long
 as they are owned by a type that preserves the invariant that mutable memory is unaliased, as with the
-mutex in \figref{fig:shared-mutable-concurrency}.
+mutex in \figref{fig:shared-mutable-concurrency}. It is also possible to share stack-local data across appropriately scoped threads safely without extra cost.\footnote{\url{https://github.com/Kimundi/scoped-threadpool-rs}}
 
 \begin{figure}
 \begin{lstlisting}
 fn main() {
-  // An immutable borrowed pointer to a
-  // stack-allocated integer
-  let data = &1;
+  // An immutable shared pointer
+  // (atomically reference counted)
+  let data = Arc::new(1);
 
-  Thread::scoped(|| {
-    println!("{}", data);
+  thread::spawn(|| {
+    println!("{}", *data);
   });
-  print!("{}", data);
+  print!("{}", *data);
 }
 \end{lstlisting}
   \caption{Safely reading immutable state from two threads.}
@@ -78,7 +78,7 @@ fn main() {
   let data = Arc::new(Mutex::new(0));
   let data2 = data.clone();
 
-  Thread::scoped(move || {
+  thread::spawn(move || {
     *data2.lock().unwrap() = 1;
   });
 
@@ -90,7 +90,7 @@ fn main() {
 \end{figure}
 
 With relatively few simple rules, ownership in Rust enables foolproof task parallelism,
-but also data parallelism, by partitioning vectors and lending mutable references into properly scoped threads.
+but also data parallelism, by partitioning vectors and lending mutable references across threads.
 Rust's concurrency abstractions are entirely implemented in libraries, and though
 many advanced concurrent patterns such as work-stealing~~\cite{blumeofe:multiprogrammed-work-stealing}
 cannot be implemented in safe Rust, they can usually be encapsulated in a memory-safe interface.
