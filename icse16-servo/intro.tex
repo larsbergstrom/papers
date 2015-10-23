@@ -1,16 +1,15 @@
 %!TEX root = paper.tex
 \section{Introduction}
 \label{sec:intro}
+When most web browsers were originally designed, web pages were mostly static.
 Modern web browsers do not just display static pages, but run web applications
 with complexity similar to native software.
 From application suites such as Google Apps\footnote{\url{https://apps.google.com}} to games
 based on the Unreal Engine,\footnote{\url{https://www.unrealengine.com/}}
 modern browsers are a delivery platform for the types of rich media experiences historically
 tied to single hardware and operating system platforms.
-
-The architecture called upon to realize these experiences was not exactly designed for the task.
-
-TODO: history of web in one sentence.
+This shift has greatly increased the amount and complexity of code in a modern web engine
+as well as users' expectations around performance and security.
 
 The heart of a modern web browser is its engine, the code responsible
 for loading, processing, evaluating, and rendering web content.
@@ -23,37 +22,51 @@ There are three major browser engine families:
 All of these engines have at their core many millions of lines of \Cplusplus{} code.
 The use of \Cplusplus{} has enabled all of these browsers to achieve excellent sequential
 performance on a single web page, particularly on desktop computers.
-But, on mobile devices with lower processor speed but many more processors, these browsers
-do not provide the same level of interactivity~\cite{parallelizing-web-pages,ZOOMM}.
-Further, in an informal inspection of the critical security bugs in Gecko, we determined that
-roughly 50\% of the bugs are use after free, out of range access, or related to integer
-overflow.
-The other 50\% are split between errors in tracing values from the JavaScript heap in the
-\Cplusplus{} code and errors related to dynamically compiled code.
+But, they all face several challenges:
+\begin{itemize}
+  \item On mobile devices with lower processor speed but many more processors, these browsers
+    do not provide the same level of interactivity~\cite{parallelizing-web-pages,ZOOMM}.
+  \item In Gecko, we determined that roughly 50\% of the security critical bugs are memory use after
+    free, array out of range access, or related to integer overflow.
+  \item As the web has become more interactive, the mostly-sequential architecture of these engines
+    has made it challenging to incorporate new features without sacrificing interactivity.
+  \item With the growth in the popularity of other languages at the expense of \Cplusplus{}, both
+    the number of volunteer contributors to the core \Cplusplus{} parts of these browser engine
+    open source codebases has not grown apace with the increase in the size
+    of the codebase.
+\end{itemize}
 
 Servo~\cite{SERVO} is a new web browser engine designed to address the major environment and 
 architectural changes over the last decade.
 The goal of the Servo project is to produce a browser that enables new applications to be authored
 against the web platform that run with more safety, better performance, and better power usage
 than in current browsers.
+
 To address memory-related safety issues, we are using a new systems programming language,
 Rust~\cite{RUST}.
+In Rust, errors such as off-by-one array access or memory buffer use after free are
+prevented statically at compile time.
+
 For parallelism and power, we scale across a wide variety of hardware by building either data-
 or task-parallelism, as appropriate, into each part of the web platform.
 Additionally, we are improving concurrency by reducing the simultaneous access to data
 structures and using a message-passing architecture between components such as the
 JavaScript engine and the rendering engine that paints graphics to the screen.
-Servo is currently over 400k lines of Rust code and implements enough of the web platform to render and
+
+With an average of 5 new contributors per week and several volunteers who have turned
+into key members of the project, we believe that Rust has helped Servo to lower the
+barrier to entry in systems programming.
+
+Servo is currently over 800k lines of Rust code and implements enough of the web platform to render and
 process many pages, though it is still a far cry from the over 7 million lines of code in
 the Mozilla Firefox browser.
 However, we believe that we have implemented enough of the web platform to provide an
 early report on the successes, failures, and open problems remaining in Servo, from the
 point of view of programming languages and runtime research.
 In this experience report, we discuss the design and architecture of a modern web 
-browser engine, show how modern programming language techniques --- many of which
-originated in the functional programming community --- address these design 
-constraints, and also touch on ongoing challenges and areas of research where we
-would welcome additional community input.
+browser engine, show how using the Rust programming language has helped us to  address the
+engineering challenges we have encountered when building the browser engine, and also touch on
+open problems and areas of future investigation.
 
 %%% Local Variables: 
 %%% mode: latex
