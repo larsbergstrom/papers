@@ -32,7 +32,7 @@ pressure to tack additional fields into classes simply to avoid creating a large
 files.
 More importantly, pattern matching with static dispatch is typically faster than a virtual function call on a class
 hierarchy.
-Virtual functions can both have an in-memory storage cost associated with the virtual function tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
+Virtual functions can have an in-memory storage cost associated with the virtual function tables (sometimes many thousands of bytes\footnote{\url{https://chromium.googlesource.com/chromium/blink/+/c048c5c7c2578274d82faf96e9ebda4c55e428da}}) but more importantly
 incur indirect function call costs.
 All \Cplusplus{} browser implementations transform performance-critical code to either use the \lstinline[language=C]{final}
 specifier wherever possible or specialize the code in some other way to avoid this cost.
@@ -120,7 +120,7 @@ This table also includes test code, though the majority of that code is in HTML 
 
 In the future, we hope to expose our Rust libraries written for Servo to C, in order to reuse them
 in the Firefox web brower.
-A first potential libraries is our Rust-based URL parser.\footnote{https://github.com/servo/rust-url}
+A first potential library is our Rust-based URL parser.\footnote{https://github.com/servo/rust-url}
 While URL parsing seems like a simple and secure task, an audit of the public security bugs\footnote{Firefox public security bugs: http://mzl.la/1GkOiIC} shows that all four of the ones that come from URL parsing are related to either indexing out of
 range of a raw memory buffer or using data that had already been freed --- both of which are
 prevented by Rust code.
