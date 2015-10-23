@@ -3,13 +3,10 @@
 \section{Browsers}
 \label{sec:browsers}
 
-Modern web browsers do not just load static pages, but can also handle pages that have similar
-complexity to native applications.
-From application suites such as the Google Apps\footnote{\url{https://apps.google.com}} to games
-based on the Unreal Engine,\footnote{\url{https://www.unrealengine.com/}}
-modern browsers have the ability to handle much more than simple static pages.
-\figref{fig:browser} shows the steps in processing a site.
-While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
+The architecture of all browsers are broadly the same, as demanded be the specifications of
+the web platform and the shared history and wisdom of browsers and their authors.
+As such, the steps Servo uses in \figref{fig:browser} to process a web page
+are similar to those used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
 \begin{figure*}[ht]
   \begin{center}
     \includegraphics[scale=0.55]{pics/browser}
@@ -23,7 +20,7 @@ While the naming is specific to the Servo browser, similar steps are used in all
 A URL identifies a resource to load.
 This resource usually consists of HTML, which is then parsed and typically turned into a Document Object
 Model (DOM) tree.
-From a programming languages standpoint, there are several interesting aspects of the parser design
+From an implementation standpoint, there are two interesting aspects of the parser design
 for HTML.
 First, though the specification allows the browser to abort on a parse error,\footnote{\url{https://html.spec.whatwg.org/multipage/#parsing}}
 in practice browsers follow the recovery algorithms described in that specification precisely so that
@@ -46,16 +43,17 @@ For example, the below example that injects an open tag for the header and comme
 </html>
 \end{lstlisting}
 This requires parsing to pause until JavaScript code has run to completion.
-But, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
+But since resource loading is such a large factor in the latency of loading many webpages,
 all modern parsers also perform speculative token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Styling}
 
 After constructing the DOM, the browser uses the styling information in linked
-CSS files and in the HTML to compute a styled tree of flows and fragments,
-called the \emph{flow tree} in Servo.
-This process can create many more flows than previously existed in the DOM ---
-for example, when a list item is styled to have an associated counter glyph.
+CSS files and in the HTML to compute a styled tree of flows and fragments.
+This \emph{flow tree}, as it is named in Servo, describes the layout of DOM elements on the page,
+and may contain many more flows than previously existed in the DOM.
+For example, when a list item is styled to have an associated bullet, that bullet
+will itself be represented in the flow tree, though it is not part of the DOM.
 
 \subsection{Layout}
 
