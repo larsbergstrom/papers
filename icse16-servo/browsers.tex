@@ -3,13 +3,10 @@
 \section{Browsers}
 \label{sec:browsers}
 
-Modern web browsers do not just load static pages, but can also handle pages that have similar
-complexity to native applications.
-From application suites such as the Google Apps\footnote{\url{https://apps.google.com}} to games
-based on the Unreal Engine,\footnote{\url{https://www.unrealengine.com/}}
-modern browsers have the ability to handle much more than simple static pages.
-\figref{fig:browser} shows the steps in processing a site.
-While the naming is specific to the Servo browser, similar steps are used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
+The architecture of all browsers are broadly the same, as demanded be the specifications of
+the web platform and the shared history and wisdom of browsers and their authors.
+As such, the steps Servo uses in \figref{fig:browser} to process a web page
+are similar to those used in all modern browsers.\footnote{\url{http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/}}
 \begin{figure*}[ht]
   \begin{center}
     \includegraphics[scale=0.55]{pics/browser}
