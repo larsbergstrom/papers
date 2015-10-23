@@ -44,8 +44,8 @@ than in current browsers.
 
 To address memory-related safety issues, we are using a new systems programming language,
 Rust~\cite{RUST}.
-In Rust, errors such as off-by-one array access or memory buffer use after free are
-prevented statically at compile time.
+In Rust, errors such as memory buffer use after free and data races are prevented statically at
+compile time.
 
 For parallelism and power, we scale across a wide variety of hardware by building either data-
 or task-parallelism, as appropriate, into each part of the web platform.
