@@ -51,7 +51,9 @@ fn main() {
 
 On the other hand, the immutable value in \figref{fig:shared-concurrency} can be borrowed and shared between multiple threads as long as those threads don't outlive the scope of the data, and even mutable values can be shared as long
 as they are owned by a type that preserves the invariant that mutable memory is unaliased, as with the
-mutex in \figref{fig:shared-mutable-concurrency}. It is also possible to share stack-local data across appropriately scoped threads safely without extra cost.\footnote{\url{https://github.com/Kimundi/scoped-threadpool-rs}}
+mutex in \figref{fig:shared-mutable-concurrency}.
+It is also possible to share stack-local data across appropriately scoped threads safely without extra
+cost.\footnote{\url{https://github.com/Kimundi/scoped-threadpool-rs}}
 
 \begin{figure}
 \begin{lstlisting}
