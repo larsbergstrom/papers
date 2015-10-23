@@ -10,10 +10,10 @@ There are three major browser engine families:
 \item Gecko, the engine in Firefox~\cite{FIREFOX}
 \end{enumerate}
 All of these engines have at their core many millions of lines of \Cplusplus{} code.
-While the use of \Cplusplus{} has enabled all of these browsers to achieve excellent sequential
-performance on a single web page, on mobile devices with lower processor speed but many
-more processors, these browsers do not provide the same level of interactivity that they
-do on desktop processors~\cite{parallelizing-web-pages,ZOOMM}.
+The use of \Cplusplus{} has enabled all of these browsers to achieve excellent sequential
+performance on a single web page, particularly on desktop computers.
+But, on mobile devices with lower processor speed but many more processors, these browsers
+do not provide the same level of interactivity~\cite{parallelizing-web-pages,ZOOMM}.
 Further, in an informal inspection of the critical security bugs in Gecko, we determined that
 roughly 50\% of the bugs are use after free, out of range access, or related to integer
 overflow.

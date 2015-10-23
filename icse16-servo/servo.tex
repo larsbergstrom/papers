@@ -5,6 +5,7 @@ as other browsers at similar tasks to succeed, even if it provides additional me
 \tblref{servo-perf} shows a preliminary comparison of the performance of the layout stage (described
 in \secref{sec:browsers}) of rendering several web sites in Mozilla Firefox's Gecko engine compared
 to Servo, taken on a modern MacBook Pro.
+While these measurements only reflect layout performance, they show that Servo is already faster than Gecko with even a single thread, and achieves speedups with multiple threads.
 \begin{table}
   \begin{center}
     \begin{tabular}{r || r | r | r}
@@ -58,7 +59,7 @@ it is applied against, providing predictable output code to developers at the co
 This strategy is used by virtually all \Cplusplus{} compilers to implement templates, so it is proven and well-known
 within systems programming.
 Rust also follows this approach, although it improves on the ergonomics of \Cplusplus{} templates
-by embedding serialized generic function ASTs within ``compiled'' binaries.
+by embedding serialized generic function ASTs within ``compiled'' binaries so that library consumers can instantiate that AST directly instead of re-parsing the \Cplusplus{} header files for the templates.
 
 Rust also chooses a fairly large default compilation unit size. A Rust \textit{crate} is subject to whole-program
 compilation~\cite{weeks:whole-program-mlton}, and is optimized as a unit. A crate may comprise hundreds of modules,
@@ -81,7 +82,7 @@ One area for future improvement is related to allocations that are not owned by 
 Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
 custom memory allocator or interoperate with the SpiderMonkey JavaScript engine from Gecko.
 We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
-but they are still a source of bugs and one of our largest areas of unsafe code.
+but they are still a source of bugs and one of our largest areas of unsafe code.\footnote{https://blog.mozilla.org/research/2014/08/26/javascript-servos-only-garbage-collector/}
 
 Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
 However, many data structures do not follow that model, in order to provide multiple traversal

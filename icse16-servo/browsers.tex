@@ -75,8 +75,10 @@ surfaces.
 
 The set of memory buffers or graphical surfaces, called \emph{layers}, are then
 transformed and composited together to form a final image for
-presentation. Layerization is used to optimize interactive transformations
-like scrolling and certain animations.
+presentation.
+These layers are then used to optimize interactive transformations, such as scrolling
+and certain animations, by only redrawing the buffers that have changed and
+otherwise simply re-composing the surface that has already been rendered into.
 
 \subsection{Scripting}
 
