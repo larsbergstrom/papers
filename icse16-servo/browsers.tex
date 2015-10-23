@@ -20,7 +20,7 @@ are similar to those used in all modern browsers.\footnote{\url{http://www.html5
 A URL identifies a resource to load.
 This resource usually consists of HTML, which is then parsed and typically turned into a Document Object
 Model (DOM) tree.
-From a programming languages standpoint, there are several interesting aspects of the parser design
+From an implementation standpoint, there are two interesting aspects of the parser design
 for HTML.
 First, though the specification allows the browser to abort on a parse error,\footnote{\url{https://html.spec.whatwg.org/multipage/#parsing}}
 in practice browsers follow the recovery algorithms described in that specification precisely so that
@@ -43,16 +43,17 @@ For example, the below example that injects an open tag for the header and comme
 </html>
 \end{lstlisting}
 This requires parsing to pause until JavaScript code has run to completion.
-But, since resource loading is such a large factor in the latency of loading many webpages (particularly on mobile),
+But since resource loading is such a large factor in the latency of loading many webpages,
 all modern parsers also perform speculative token stream scanning and prefetch of resources likely to be required~\cite{browsers-slow-smartphones}.
 
 \subsection{Styling}
 
 After constructing the DOM, the browser uses the styling information in linked
-CSS files and in the HTML to compute a styled tree of flows and fragments,
-called the \emph{flow tree} in Servo.
-This process can create many more flows than previously existed in the DOM ---
-for example, when a list item is styled to have an associated counter glyph.
+CSS files and in the HTML to compute a styled tree of flows and fragments.
+This \emph{flow tree}, as it is named in Servo, describes the layout of DOM elements on the page,
+and may contain many more flows than previously existed in the DOM.
+For example, when a list item is styled to have an associated bullet, that bullet
+will itself be represented in the flow tree, though it is not part of the DOM.
 
 \subsection{Layout}
 
