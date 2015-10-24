@@ -92,9 +92,9 @@ may have associated instance methods and static methods, called with the dot
 Static methods are common in Rust as they are used to construct
 values, conventionally with a method called
 \lstinline[language=Rust]{new}, as in
-\lstinline[language=Rust]{Ponit2D::new(0.0, 0.0)}.
+\lstinline[language=Rust]{Point2D::new(0.0, 0.0)}.
 Notably, methods in Rust are dispatched statically, making them
-eligable for inlining and aggressive optimization; methods are never
+eligible for inlining and aggressive optimization; methods are never
 dispatched dynamically through a function pointer in Rust unless
 explicitly requested.
 
@@ -107,7 +107,7 @@ thus signified by the adorable series of characters, \lstinline[language=Rust]~|
 Rust closures are translated as efficiently as other types
 in Rust and can be inlined and optimized as well as any function.
 
-Finally, Rust has a hygeinic macro system, much more powerful than
+Finally, Rust has a hygienic macro system, much more powerful than
 the C preprocessor. Macro invocations look like function invocations
 where the function name is appended with a bang (\lstinline[language=Rust]{!}).
 They are not functions though, but are expanded in place at compile time,
@@ -119,7 +119,7 @@ See \figref{fig:bad-concurrency} for an example of closures and macros.
 \subsection{Ownership}
 The features of Rust described so far are common to many languages.
 Rust's novelty though is in \emph{ownership and borrowing}.
-In Rust, each value is uniquly owned by a single variable, and
+In Rust, each value is uniquely owned by a single variable, and
 assigning that value to another transfers ownership of, and access to,
 that value to the receiver. Rust calls this transfer of ownership a \emph{move}.
 When a value is allowed to go out of scope
