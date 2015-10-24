@@ -67,7 +67,7 @@ which provide namespacing and abstraction. Module dependencies within a crate ar
 
 The large compilation unit size slows down compilation and especially diminishes the ability to build code in parallel.
 However, it has enabled us to write Rust code that easily matches the sequential speed of its \Cplusplus{} analog, without requiring the Servo developers to become compiler experts.
-Servo contains about 600 modules within 20 crates.
+Servo contains thousands of modules from over 200 crates.
 
 \subsection{Memory management}
 As described in \secref{sec:rust}, Rust has an affine type system that ensures every value is used at
@@ -161,9 +161,14 @@ the performance of the implementation over one that supports multiple readers.
 We have structured the entire Servo browser engine as a series of threads that communicate over channels,
 avoiding unsafe explicitly shared global memory for all but a single case (reading properties in the flow tree
 from script, an operation whose performance is crucially tested in many browser benchmarks).
-The major challenge we have encountered with this approach is the same one we have heard from other designers
-of large concurrent systems --- reasoning about whether protocols make progress or threads eventually terminate
-is manual and quite challenging, particularly in the presence of arbitrary thread failures.
+
+Many other systems programs have struggled with the complexity that arises in systems that have
+many concurrent threads.
+This complexity comes in the form of difficulty reasoning about whether a protocol will terminate, whether
+a message will eventually be handled, etc.
+Fortunately, Rust has a library that implements \emph{session types}, which allow expressing a concurrent
+communication protocol in the type system and having the compiler enforce it~\cite{rust-session-types}.
+We are just starting to use this library in Servo to manage the complexity of concurrency.
 
 \subsection{Macros}
 
@@ -198,3 +203,43 @@ As the ``lint'' / ``warning'' terminology suggests, these checks may not catch a
 Future plans include refining our safety checks for garbage collected values, such as flagging invalid ownership
 transference, and introducing compile-time checks for constructs that are non-optimal in terms of performance or
 memory usage.
+
+\subsection{Integer overflow}
+
+While more rare than memory safety bugs, overflowing an integer is still a
+source of some bugs in modern systems software.
+In Rust, integer overflow is checked by default in debug builds, and we
+have caught several potential bugs simply by compiling the code and running
+our tests with debugging enabled in our automation systems.
+
+\subsection{New contributors}
+
+As mentioned in \secref{sec:intro}, Servo gains roughly 5 new contributors per week.
+While part of that is due to tremendous outreach efforts on the part of the team, we believe that the accessibility
+of Rust to non-systems programmers plays a large role as well.
+Almost none of our new contributors come to Servo with \Cplusplus{} experience, and
+nearly a third of our full-time staff members did not program in it professionally
+before beginning work on Servo.
+
+\subsection{Modular development}
+
+Most large systems projects have a \emph{monorepo} design for their source code control (SCC)
+and build system.
+That is, all of the millions of lines of code that make them up live in a single SCC
+system and use a toplevel build system that drives it all in one step.
+This organization is great for developers on the system, as they can make coordinated changes
+to many parts of the system and complete them in one step.
+However, it has meant that many parts of the browser engine, such as the HTML parser,
+CSS selector matching, or URL parsing, could not easily be separated out and reused by other
+projects, so there are separate projects (which do not typically implement quite the same
+standards as the implementations in browsers!) that attempt to provide these facilities to
+other programs.
+
+In Servo, we instead use a \emph{polyrepo} design, which is inherited from Rust's default
+tooling.
+Our source code is stored across many repositories on GitHub\footnote{\url{http://www.github.com}},
+and we use Rust's Cargo\footnote{\url{http://crates.io}} build system to compile, link, and
+manage the dependencies between all of the parts that make up Servo.
+While this design has the downside that coordinated changes spanning multiple parts of the
+system take many steps, it has the advantage that many of Servo's submodules are used and
+contributed to by developers who do not directly work on Servo.
