@@ -26,11 +26,12 @@ But, they all face several challenges:
 \begin{itemize}
   \item On mobile devices with lower processor speed but many more processors, these browsers
     do not provide the same level of interactivity~\cite{parallelizing-web-pages,ZOOMM}.
-  \item In Gecko, we determined that roughly 50\% of the security critical bugs are memory use after
-    free, array out of range access, or related to integer overflow.
+  \item In Gecko, roughly 50\% of the security critical bugs are memory use after free, array
+    out of range access, or related to integer overflow, all mistakes commonly made by even
+    experienced C++ programmers with access to the best static analysis tools available.
   \item As the web has become more interactive, the mostly-sequential architecture of these engines
     has made it challenging to incorporate new features without sacrificing interactivity.
-  \item With the growth in the popularity of other languages at the expense of \Cplusplus{}, both
+  \item With the growth in the popularity of other languages at the expense of \Cplusplus{}, 
     the number of volunteer contributors to the core \Cplusplus{} parts of these browser engine
     open source codebases has not grown apace with the increase in the size
     of the codebase.
@@ -45,7 +46,7 @@ than in current browsers.
 To address memory-related safety issues, we are using a new systems programming language,
 Rust~\cite{RUST}.
 In Rust, errors such as off-by-one array access or memory buffer use after free are
-prevented statically at compile time.
+prevented by the language and its builtin libraries.
 
 For parallelism and power, we scale across a wide variety of hardware by building either data-
 or task-parallelism, as appropriate, into each part of the web platform.
@@ -62,9 +63,9 @@ process many pages, though it is still a far cry from the over 7 million lines o
 the Mozilla Firefox browser.
 However, we believe that we have implemented enough of the web platform to provide an
 early report on the successes, failures, and open problems remaining in Servo, from the
-point of view of programming languages and runtime research.
+point of view of experimenting with the new programming language, Rust.
 In this experience report, we discuss the design and architecture of a modern web 
-browser engine, show how using the Rust programming language has helped us to  address the
+browser engine, show how using the Rust programming language has helped us to address the
 engineering challenges we have encountered when building the browser engine, and also touch on
 open problems and areas of future investigation.
 
