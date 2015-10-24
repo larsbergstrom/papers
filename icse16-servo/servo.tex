@@ -78,11 +78,14 @@ Given that these bugs make up such a large portion of the security vulnerabiliti
 we believe that even the additional work required to get Rust code to pass the type checker initially is
 justified.
 
+Rust also requires that all memory is initialized.
+Failure to initialize memory also has led to crashes in Firefox.\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1088731}}
+
 One area for future improvement is related to allocations that are not owned by Rust itself.
 Today, we simply wrap raw C pointers in \lstinline[language=Rust]{unsafe} blocks when we need to use a
 custom memory allocator or interoperate with the SpiderMonkey JavaScript engine from Gecko.
 We have implemented wrapper types and compiler plugins that restrict incorrect uses of these foreign values,
-but they are still a source of bugs and one of our largest areas of unsafe code.\footnote{https://blog.mozilla.org/research/2014/08/26/javascript-servos-only-garbage-collector/}
+but they are still a source of bugs and one of our largest areas of unsafe code.\footnote{\url{https://blog.mozilla.org/research/2014/08/26/javascript-servos-only-garbage-collector/}}
 
 Additionally, Rust's ownership model assumes that there is a single owner for each piece of data.
 However, many data structures do not follow that model, in order to provide multiple traversal
@@ -121,8 +124,8 @@ This table also includes test code, though the majority of that code is in HTML 
 
 In the future, we hope to expose our Rust libraries written for Servo to C, in order to reuse them
 in the Firefox web browser.
-A first potential library is our Rust-based URL parser.\footnote{https://github.com/servo/rust-url}
-While URL parsing seems like a simple and secure task, an audit of the public security bugs\footnote{Firefox public security bugs: http://mzl.la/1GkOiIC} shows that all four of the ones that come from URL parsing are related to either indexing out of
+A first potential library is our Rust-based URL parser.\footnote{\url{https://github.com/servo/rust-url}}
+While URL parsing seems like a simple and secure task, an audit of the public security bugs\footnote{Firefox public security bugs: \url{http://mzl.la/1GkOiIC}} shows that all four of the ones that come from URL parsing are related to either indexing out of
 range of a raw memory buffer or using data that had already been freed --- both of which are
 prevented by Rust code.
 
