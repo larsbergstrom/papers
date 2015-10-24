@@ -5,25 +5,172 @@
 
 Rust is a statically typed systems programming language most heavily inspired by the C
 and ML families of languages~\cite{RUST}.
-Like the C family of languages, it provides the developer fine control over memory layout
+Like the C family of languages, it gives the developer fine control over memory layout
 and predictable performance.
 Unlike C programs, Rust programs are \emph{memory safe} by default,
-only allowing unsafe operations in specially-delineated blocks.
+only allowing unsafe operations in specially-delineated \lstinline[language=Rust]{unsafe} blocks.
 
-Rust features an \emph{ownership-based} type system inspired by the region systems work in the
-MLKit project~\cite{mlkit} and especially as implemented in the Cyclone language~\cite{cyclone}.
-Unlike the related ownership system in Singularity OS~\cite{singularity}, Rust allows programs to
-not only transfer ownership but also to temporarily \emph{borrow} owned values, significantly
-reducing the number of region and ownership annotations required in large programs.
-The ownership model encourages immutability by default while allowing for controlled
-mutation of owned or uniquely-borrowed values.
+Beyond performance and safety Rust features the expressive facilities
+of modern high level languages such as generics, algebraic data types,
+pattern matching, and closures.
+Abstractions in Rust are designed to have predictable and minimal
+performance impact, approaching the ideal of 'zero-cost' abstractions.
 
 Complete documentation and a language reference for Rust are available at: \url{http://doc.rust-lang.org/}.
 
+\subsection{Feature overview}
+
+Rust's syntax draws heavily from C++, and many of its features will be
+familiar to modern programmers, though the details of both
+often differ in significant and interesting ways.
+What follows is a brief primer of the basics needed to understand the examples in this paper.
+
+Local variables, declared with \lstinline[language=Rust]{let}, are immutable by default.
+To mutate a variable in Rust it must be declared \lstinline[language=Rust]{mut}.
+Both scalars and aggregates like structs are value types, allocated on the stack.
+The heap is accessed through library container types, the simplest of which are \lstinline[language=Rust]{Box},
+a pointer to a value on the heap, and \lstinline[language=Rust]{Vec}, a dynamically-sized
+array of values. Both mutability and simple heap types are
+illustrated in \figref{fig:mut}.
+
+\begin{figure}
+\begin{lstlisting}
+let max = 100;
+let mut counter = 0;
+let mut boxes: Vec<Box<i32>> = Vec::new();
+while counter < max {
+  // Append a boxed integer to a vector
+  boxes.push(Box::new(counter));
+  counter += 1;
+}
+\end{lstlisting}
+  \caption{Mutability and heap allocation.}
+  \label{fig:mut}
+\end{figure}
+
+Rust's most prominent influence from the ML languages are algebraic data types,
+along with \emph{pattern matching} to destructure
+them into their components. Rust calls algebraic data types \emph{enums},
+and they are the union of multiple types,
+each of which contains their own fields. Although superficially
+similar to C unions, they are significantly different in that
+instances of enums cannot be indiscriminately cast between
+variants; to access the values in an enum one must employ the \lstinline[language=Rust]{match}
+expression to first check the variant, then bind references
+to its interior fields. In \figref{fig:enums} the values of
+a drawing message are extracted from an enum for further processing,
+with the bindings to the enum's fields established to the left of the
+fat arrow (\lstinline[language=Rust]{=>}) and the block of code operating
+on those bindings to the right.
+
+\begin{figure}
+\begin{lstlisting}
+enum Canvas2dMsg {
+  BeginPath,
+  ArcTo(Point2D<f32>, Point2D<f32>, f32),
+  EndPath
+}
+
+let msg = Canvas2dMsg::BeginPath;
+
+match msg {
+  BeginPath => { }
+  EndPath => { }
+  ArcTo(point_a, point_b, radius) => {
+    draw_arc_to(point_a, point_b, radius);
+  }
+}
+\end{lstlisting}
+  \caption{Pattern matching to access the fields of an enum variant.}
+  \label{fig:enums}
+\end{figure}
+
+Both enums and structs (which are substantially similar to C structs)
+may have associated instance methods and static methods, called with the dot
+(\lstinline[language=Rust]{.}) operator and the double-colon
+(\lstinline[language=Rust]{::}) operator, respectively.
+Static methods are common in Rust as they are used to construct
+values, conventionally with a method called
+\lstinline[language=Rust]{new}, as in
+\lstinline[language=Rust]{Ponit2D::new(0.0, 0.0)}.
+Notably, methods in Rust are dispatched statically, making them
+eligable for inlining and aggressive optimization; methods are never
+dispatched dynamically through a function pointer in Rust unless
+explicitly requested.
+
+Like many modern languages, Rust has first-class closures,
+anonymous functions that capture their environment. These
+use a compact notation with the arguments between pipes,
+and the body between brackets: \lstinline[language=Rust]~|a, b| { a + b }~.
+The closure that takes no arguments and performs no computation is
+thus signified by the adorable series of characters, \lstinline[language=Rust]~||{}~.
+Rust closures are translated as efficiently as other types
+in Rust and can be inlined and optimized as well as any function.
+
+Finally, Rust has a hygeinic macro system, much more powerful than
+the C preprocessor. Macro invocations look like function invocations
+where the function name is appended with a bang (\lstinline[language=Rust]{!}).
+They are not functions though, but are expanded in place at compile time,
+and perform syntactic transformations unavailable to functions.
+The common method of performing console output, \lstinline[language=Rust]~println!(``{}'', foo)~,
+is a macro.
+See \figref{fig:bad-concurrency} for an example of closures and macros.
+
+\subsection{Ownership}
+The features of Rust described so far are common to many languages.
+Rust's novelty though is in \emph{ownership and borrowing}.
+In Rust, each value is uniquly owned by a single variable, and
+assigning that value to another transfers ownership of, and access to,
+that value to the receiver. Rust calls this transfer of ownership a \emph{move}.
+When a value is allowed to go out of scope
+it is destroyed. In this way ownership-based resource management is
+like RAII\footnote{``resource acquisition is initialization''} in C++.
+
+To make using variables usably ergonomic Rust can create temporary
+references to values with the ampersand (\lstinline[language=Rust]{&})
+operator. References are simply pointers with limited scope, and may be either
+immutable or mutable. They are the only type of pointer in safe Rust.
+\emph{The rules for borrowing ensure that no two pointers are ever mutably
+aliased, and that invalid memory is never accessible.
+This is what makes Rust memory safe.} See the example in \figref{fig:own}.
+
+\begin{figure}
+\begin{lstlisting}
+
+// The single value we'll work with.
+let val = Box::foo(0);
+
+// Move the value in a to a new location
+let moved_val = val;
+// `val` is no longer accessible.
+// The following will not compile.
+// println(``{}'', val);
+
+// Borrow and share the value immutably
+// several times. This is done in a new
+// block to limit the scope of the borrows.
+{
+  let shared1 = &moved_val;
+  let shared2 = &moved_val;
+  println!(``{}'', shared1);
+  println!(``{}'', shared2);
+  // Borrows are released at the end
+  // of the block.
+}
+\end{lstlisting}
+  \caption{Ownership and borrowing.}
+  \label{fig:own}
+\end{figure}
+
+Ownership-based type systems are a kind of \emph{affine} type system. Rust's
+model is influenced by the ownership model of Singularity OS~\cite{singularity},
+as well as the region systems in the Cyclone language~\cite{cyclone} and MLKit~\cite{mlkit}.
+
 \subsection{Ownership and concurrency}
+
 Because the Rust type system provides very strong guarantees about memory aliasing,
 Rust code is memory safe even in concurrent and multithreaded environments,
-but beyond that Rust also ensures \emph{data-race freedom}.
+and, perhaps surprisingly, is even guaranteed to be \emph{data-race free}.
 
 In concurrent programs, the data operated on by distinct threads is also itself distinct:
 under Rust's ownership model, data cannot be owned by two threads at the same time.
@@ -38,6 +185,8 @@ fn main() {
   // integer
   let mut data = Box::new(0);
 
+  // The `move` keyword here moves ownership of
+  // the environment into the closure.
   thread::spawn(move || {
     *data = *data + 1;
   });
@@ -52,8 +201,6 @@ fn main() {
 On the other hand, the immutable value in \figref{fig:shared-concurrency} can be borrowed and shared between multiple threads as long as those threads don't outlive the scope of the data, and even mutable values can be shared as long
 as they are owned by a type that preserves the invariant that mutable memory is unaliased, as with the
 mutex in \figref{fig:shared-mutable-concurrency}.
-It is also possible to share stack-local data across appropriately scoped threads safely without extra
-cost.\footnote{\url{https://github.com/Kimundi/scoped-threadpool-rs}}
 
 \begin{figure}
 \begin{lstlisting}
@@ -61,9 +208,10 @@ fn main() {
   // An immutable shared pointer
   // (atomically reference counted)
   let data = Arc::new(1);
+  let shared_data = data.clone();
 
-  thread::spawn(|| {
-    println!("{}", *data);
+  thread::spawn(move || {
+    println!("{}", *shared_data);
   });
   print!("{}", *data);
 }
@@ -78,10 +226,10 @@ fn main() {
   // A heap allocated integer protected by an
   // atomically-reference-counted mutex
   let data = Arc::new(Mutex::new(0));
-  let data2 = data.clone();
+  let shared_data = data.clone();
 
   thread::spawn(move || {
-    *data2.lock().unwrap() = 1;
+    *shared_data.lock().unwrap() = 1;
   });
 
   print!("{}", *data.lock().unwrap());
