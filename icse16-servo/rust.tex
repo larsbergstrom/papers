@@ -55,7 +55,8 @@ and they are the union of multiple types,
 each of which contains their own fields. Although superficially
 similar to C unions, they are significantly different in that
 instances of enums cannot be indiscriminately cast between
-variants; to access the values in an enum one must employ the \lstinline[language=Rust]{match}
+variants.
+To access the values in an enum one must employ the \lstinline[language=Rust]{match}
 expression to first check the variant, then bind references
 to its interior fields. In \figref{fig:enums} the values of
 a drawing message are extracted from an enum for further processing,
@@ -94,9 +95,9 @@ values, conventionally with a method called
 \lstinline[language=Rust]{new}, as in
 \lstinline[language=Rust]{Point2D::new(0.0, 0.0)}.
 Notably, methods in Rust are dispatched statically, making them
-eligible for inlining and aggressive optimization; methods are never
-dispatched dynamically through a function pointer in Rust unless
-explicitly requested.
+eligible for inlining and aggressive optimization.
+Methods are never dispatched dynamically through a function pointer in Rust
+unless explicitly requested.
 
 Like many modern languages, Rust has first-class closures,
 anonymous functions that capture their environment. These
@@ -110,23 +111,23 @@ in Rust and can be inlined and optimized as well as any function.
 Finally, Rust has a hygienic macro system, much more powerful than
 the C preprocessor. Macro invocations look like function invocations
 where the function name is appended with a bang (\lstinline[language=Rust]{!}).
-They are not functions though, but are expanded in place at compile time,
+They are not functions, but are instead expanded in place at compile time,
 and perform syntactic transformations unavailable to functions.
-The common method of performing console output, \lstinline[language=Rust]~println!(``{}'', foo)~,
+The common method of performing console output, \lstinline[language=Rust]~println!("{}", foo)~,
 is a macro.
 See \figref{fig:bad-concurrency} for an example of closures and macros.
 
 \subsection{Ownership}
 The features of Rust described so far are common to many languages.
-Rust's novelty though is in \emph{ownership and borrowing}.
+Rust's novelty is in \emph{ownership and borrowing}.
 In Rust, each value is uniquely owned by a single variable, and
-assigning that value to another transfers ownership of, and access to,
+assigning that value to another variable transfers ownership of, and access to,
 that value to the receiver. Rust calls this transfer of ownership a \emph{move}.
 When a value is allowed to go out of scope
 it is destroyed. In this way ownership-based resource management is
 like RAII\footnote{``resource acquisition is initialization''} in C++.
 
-To make using variables usably ergonomic Rust can create temporary
+To make using variables ergonomic, Rust can create temporary
 references to values with the ampersand (\lstinline[language=Rust]{&})
 operator. References are simply pointers with limited scope, and may be either
 immutable or mutable. They are the only type of pointer in safe Rust.
@@ -140,7 +141,7 @@ This is what makes Rust memory safe.} See the example in \figref{fig:own}.
 // The single value we'll work with.
 let val = Box::foo(0);
 
-// Move the value in a to a new location
+// Move the value in `val` to a new location
 let moved_val = val;
 // `val` is no longer accessible.
 // The following will not compile.
