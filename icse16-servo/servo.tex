@@ -146,8 +146,8 @@ Many high-level languages provide abstractions over I/O, threading, parallelism,
 Rust provides functionality that addresses each of these concerns, but they are designed as thin
 wrappers over the underlying services, in order to provide a predictable, fast implementation
 that works across all platforms.
-Therefore, much like other modern browsers, Servo contains many of its own specialized implementations of
-library functions that are tuned for the specific cases of web browsers.
+Much like other modern browsers, Servo contains many of its own specialized implementations of
+library functions that are tuned for the specific use cases of web browsers. This exhibits the control that Rust provides the programmer -- high level abstractions are available, but should the need arise for a specialized abstraction, it can be written with ease by using lower-level constructs.
 For example, we have special ``small'' vectors that allow instantiation with a default inline size,
 as there are use cases where we create many thousands of vectors, nearly none of which have more than 4~elements.
 In that case, removing the extra pointer indirection --- particularly if the values are of less than pointer size ---
