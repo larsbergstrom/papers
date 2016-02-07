@@ -9,6 +9,15 @@ Like the C family of languages, it gives the developer fine control over memory 
 and predictable performance.
 Unlike C programs, Rust programs are \emph{memory safe} by default,
 only allowing unsafe operations in specially-delineated \lstinline[language=Rust]{unsafe} blocks.
+Specifically, Rust prevents all of the following conditions:
+\begin{itemize}
+\item Dangling pointers
+\item Data races
+\item Integer overflow (in debug builds)
+\item Buffer overflow
+\item Iterator invalidation
+\end{itemize}
+Only integer overflow checking and prevention of buffer overflow require run-time checks, and buffer overflow checks are minimized idiomatically through the use of iterators.
 
 Beyond performance and safety Rust features the expressive facilities
 of modern high level languages such as generics, algebraic data types,
