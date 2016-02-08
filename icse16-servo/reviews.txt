@@ -1,0 +1,193 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 41
+TITLE: Engineering the Servo Web Browser Engine using Rust
+AUTHORS: Lars Bergstrom, Brian Anderson, Manish Goregaokar, Josh
+Matthews, Keegan McAllister, Jack Moffitt and Simon Sapin
+
+
+----------- SUMMARY OF THE PAPER -----------
+Summary: the paper describes the uses of the type-safe, concurrent
+language Rust for developing the Servo web browser engine at Mozilla
+Research. It introduces several important features of Rust (e.g.,
+ownership, channels) that make Rust memory safe and data-race free.
+Then it describes various practical issues and choices made when
+implementing Servo with Rust, including several open questions
+affecting Servo's safety and performance.
+
+----------- SHORT LIST OF THE PAPER'S STRENGTHS AND WEAKNESSES -----------
+Strengths:
++ First-hand experience sharing of the benefits and limitations of
+using Rust for Servo
+
+Weaknesses:
+- Benefits of various Rust features used (e.g., ownership, channel)
+are not new; same for various challenges and open issues mentioned;
+- The implementation of Servo seems still premature, hard to judge
+whether certain practices used are good or bad;
+- Lack of clear take-away messages besides the encouragement for
+others to use Rust, although the paper covers quite a broad number of
+issues;
+
+----------- DETAILED EVALUATION OF THE PAPER -----------
+As a reader who is familiar with type systems in general, I can
+benefit from this experience report paper for enhancing my
+appreciation of various safety, convenience features in Rust and
+improving my understanding of practical issues faced in developing a
+large-scale application with such a relatively new language.
+
+On the other hand, the paper covers many issues in using Rust without
+a clear take-away message. Even though the main message in the
+Conclusion is for readers to "strongly consider the use of Rust as an
+implementation language", the evidences for supporting the main
+message may not be convincing due to many practical issues mentioned
+in the paper.
+
+Technically, the paper lacks of detailed explanations on some issues.
+For example,
+
+- As mentioned in the beginning of the paper, Rust is a systems PL
+offering "complete control of the underlying hardware features and
+memory", but the paper has no actual contents related to controling
+underlying hardware and memory.
+
+- As shown in Table 1, Servo can perform much better than Gekco. What
+are the main reasons for its better performance? Is it because of some
+Rust's features or some better algorithms in Servo? Different reasons
+may convey different messages.
+
+- Parallel layout seems to be a major area that Servo does well. Is it
+just because the algorithm used is better, or does it have anything to
+do with the features of Rust? It may be worthwhile to describe
+parallel layout in more details if it can help demonstrate the
+benefits of using Rust.
+
+- Compiler plugins are a useful feature too, but how convenient is it
+to write the plugins? Is it as easy as writing lint or findbugs rules?
+
+- The paper says Servo contains thousands of modules from over 200
+crates and a polyrepo design is used to manage dependencies and
+contributions among all the modules. Although the description makes
+sense at a high level, it lacks of sufficient details that can help
+others who may want to replicate this practice.
+
+- The paper says "Servo contains many of its own specialized
+implementations of library functions..." Is this showing the
+deficiency or benefit of Rust? What's the role of Rust played in these
+implementations?
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 41
+TITLE: Engineering the Servo Web Browser Engine using Rust
+AUTHORS: Lars Bergstrom, Brian Anderson, Manish Goregaokar, Josh
+Matthews, Keegan McAllister, Jack Moffitt and Simon Sapin
+
+
+----------- SUMMARY OF THE PAPER -----------
+This paper presents a new web browser engine Servo that is built on
+the Rust language, which provides static prevention of memory safety
+issues and also provides direct support for parallelism and
+concurrency. Interestingly, the performance and memory profile of
+Servo is comparable (or better) as compared to the browser engines
+written in C++. The paper describes how Servo's components are built
+using Rust features such as ownership types, pattern matching etc.
+
+----------- SHORT LIST OF THE PAPER'S STRENGTHS AND WEAKNESSES -----------
+Strengths:
++ Industrial-scale web browser engine Servo using a statically typed
+memory safe language Rust
++ Comparable (or Better) performance than Firefox
++ Interesting use of Rust features for parallelism and memory safety
+
+Weaknesses:
+- Fewer details on Servo's design
+- No large scale in-depth evaluation
+
+----------- DETAILED EVALUATION OF THE PAPER -----------
+Overall, I enjoyed reading the paper and it is great to see
+development of web browser engines in a type-safe, memory-safe
+language such as Rust. Another great thing is that Rust avoids
+data-race freedom, which makes it easy to perform tasks concurrently.
+It is also commendable that the performance is comparable or even
+better than tradition engines written in C++.
+
+I have two issues which I would like to have seen addressed in the
+paper. First, a lot of the text in the paper seems like a Rust
+tutorial. Instead, it would have been much better if the authors could
+use those Rust features to explain what component of Servo are built
+using them, and how are they helpful. Second, it seems like it should
+easy to perform more in-depth experiments. The paper mentions only two
+websites Reddit and CNN, why not present results for few more of them?
+Also, it would be great if some other results can be presented such as
+user interaction time, memory consumption, reload performance, etc.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 41
+TITLE: Engineering the Servo Web Browser Engine using Rust
+AUTHORS: Lars Bergstrom, Brian Anderson, Manish Goregaokar, Josh
+Matthews, Keegan McAllister, Jack Moffitt and Simon Sapin
+
+
+----------- SUMMARY OF THE PAPER -----------
+This paper introduces the programming language Rust and the experience
+of developing a new web browser engine, called Servo, with Rust. The
+introduction to Rust subsumes its syntax, type system, and memory
+model. With some of Rust's distinct language features, the development
+team is able to address many security and software engineering issues
+that are commonly seen in other modern browser engines. The paper
+reported the latest progress in developing Servo and summarized a
+number of open problems encountered during the development.
+
+----------- SHORT LIST OF THE PAPER'S STRENGTHS AND WEAKNESSES -----------
+Strengths
+
+* Nice summarization on Rust
+
+* First-hand experience of engineering an industry-quality web browser
+  engine with a relatively new programming language
+
+Weaknesses
+
+* More evaluation on Servo's performance and security would be nice
+
+* It is unclear how much effort it would typically take Rust
+  programmers to pass the compiler's static check
+
+----------- DETAILED EVALUATION OF THE PAPER -----------
+Personally, I am very interested in the Rust programming language. As
+a programming language that integrates many results from the PL
+research during the past several decades, I do think Rust should get
+more attention. This paper is a very good guide for the research
+community as well as the industry to know about Rust and its unique
+features. The type system and memory model of Rust might enlight new
+ideas in software engineering research. Another major point of this
+paper is about using Rust to develop Servo. The authors presented
+several problems and solutions that emerged during the development,
+which I believe is very valuable information for both the academia and
+the industry.
+
+Although the paper unboxed how a large-scale software project is
+developed in a real production environment, I was hoping to see more
+evaluation results from the Servo team. Overall, the evaluation part
+of the paper is not as good as it could have been. The data on the
+rendering performance of Servo against Gecko is nice, but two sites
+are probably not enough for readers to draw a strong conclusion. On
+security, we know that the type system of Rust can guarantee the
+elimination of certain memory bugs like dangling pointers, but there
+are other types of memory-related security vulnerabilities. The paper
+had some discussions on integer overflow, but we don't know much about
+others, e.g., buffer overflow. It would be great if the authors can
+provide a breakdown showing (roughly) how many memory errors out of
+all can be prevented by the employment of Rust, based on the authors'
+experience of developing Revo and (possibly) other projects in
+Mozilla. Also, it is interesting to know exactly how much code in
+Servo is annotated with "unsafe".
+
+In the paper it was said that "the additional work required to get
+Rust code to pass the type checker initially is justified." So how
+much additional work is required according to the authors'
+observation? I think some data or reasonable estimation on this can
+provide researchers with hints on how much of the code sanity check
+work can be handed over to programmers themselves instead of compilers
+and other static analyzers.

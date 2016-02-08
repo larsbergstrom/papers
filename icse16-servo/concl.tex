@@ -2,6 +2,20 @@
 \label{sec:concl}
 In this experience report, we have described our experiences using the new Rust
 programming language to develop Servo.
-Based on our experiences to date, we would recommend that either any new systems
-project or new submodule within a larger C or \Cplusplus{} systems project strongly
-consider the use of Rust as an implementation language.
+We cannot yet quantify the amount of additional work that is required by
+the stricter typesystem to author Rust code instead of C or \Cplusplus{}.
+But, we have found that the Rust language is accessible to new developers who
+only have experience in \Cplusplus{}, Python, or JavaScript --- even for writing
+core performance- and memory-sensitive libraries.
+Further, with a relatively small team and short time, we have written a browser
+engine that is increasingly competitive both in performance and functionality
+with other modern browser engines.
+
+The strongest evidence that Rust is not too expensive to write, though, is that
+it can statically verify the absence of memory safety errors.
+Other systems projects --- including all currently shipping browser engines --
+have spent great amounts of time writing and reviewing their C or \Cplusplus{}
+code, written fuzzers, and used internal and external static analysis tools, but
+their security vulnerabilities are still primarily memory safety errors.
+For projects where memory safety errors need to be eliminated, Rust is a
+superior choice.
